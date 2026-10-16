@@ -38,6 +38,8 @@
                         display: ['Montserrat', 'sans-serif'],
                         body: ['Roboto', 'sans-serif'],
                         fredoka: ['Fredoka', 'sans-serif'],
+                        lexend: ['Lexend', 'Ledenx', 'sans-serif'],
+                        ledenx: ['Lexend', 'Ledenx', 'sans-serif'],
                     }
                 },
             },
@@ -46,10 +48,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Grandstander:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Grandstander:wght@900&display=swap" rel="stylesheet">
     <!-- Google Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
+        @font-face {
+            font-family: 'Ledenx';
+            src: local('Lexend Bold'), local('Lexend-Bold'), local('Lexend'), url('https://fonts.gstatic.com/s/lexend/v22/wlptgwvFAVdoq2_F94zlCpf5tSkLhA.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
         .primary {
             color: #4583E2 !important;
         }
@@ -57,9 +65,9 @@
             background-color: #4583E2 !important;
             color: #FFFFFF !important;
         }
-        .font-grandstander, .titles {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
+        .titles, .header-cta-btn, .font-lexend, .font-ledenx {
+            font-family: 'Lexend', 'Ledenx', sans-serif !important;
+            font-weight: 700 !important;
         }
         .font-fredoka {
             font-family: 'Fredoka', sans-serif;
@@ -84,7 +92,7 @@
                 <a href="/#boost" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Gym</a>
                 
                 <!-- Download CTA -->
-                <a href="/#download" class="titles primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
+                <a href="/#download" class="titles header-cta-btn primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
                     Download
                 </a>
             </div>
@@ -102,7 +110,7 @@
             <a href="/#features" class="block text-sm font-medium text-gray-700 hover:text-black">Board</a>
             <a href="/#chests" class="block text-sm font-medium text-gray-700 hover:text-black">Route</a>
             <a href="/#boost" class="block text-sm font-medium text-gray-700 hover:text-black">Gym</a>
-            <a href="/#download" class="titles primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
+            <a href="/#download" class="titles header-cta-btn primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
         </div>
     </nav>
 
@@ -111,9 +119,9 @@
         <!-- Page Header Card -->
         <div class="bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 shadow-xs">
             <span class="text-xs font-bold uppercase tracking-widest primary">LEGAL AGREEMENT</span>
-            <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Terms of Service</h1>
+            <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Sloper – Terms of Service</h1>
             <p class="text-sm text-gray-500 mb-6">
-                Last updated: <span class="text-black font-semibold">October 2, 2026</span>
+                Last updated: <span class="text-black font-semibold">October 16, 2026</span>
             </p>
             <p class="text-gray-700 leading-relaxed text-base">
                 These Terms govern your use of the <strong class="text-black">Sloper</strong> mobile app ("Sloper", "the App"), operated by Gerardo Zenteno Gaeta, an individual developer based in Mexico ("we", "us"). By creating an account or using the App, you agree to these Terms. If you do not agree, do not use the App.
@@ -139,7 +147,7 @@
             <section class="space-y-3">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">2. Your Account</h2>
                 <p>
-                    You may register with email and password or via Google or Apple sign-in. You are responsible for keeping your credentials secure and for all activity under your account. Provide accurate information and notify us of any unauthorized use. You may delete your account at any time in <strong class="text-black">Profile → Danger Zone</strong>.
+                    You may register with email and password or via Google or Apple sign-in. You are responsible for keeping your credentials secure and for all activity under your account. Provide accurate information and notify us of any unauthorized use. You may delete your account at any time in <strong class="text-black">Settings → Danger Zone</strong>.
                 </p>
             </section>
 
@@ -161,7 +169,7 @@
                     <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
                         <div class="font-bold text-black text-lg">Annual Plan</div>
                         <div class="text-xl font-extrabold text-black">USD $59.99 <span class="text-xs text-gray-500 font-normal">/ year</span></div>
-                        <div class="text-xs text-green-700 font-semibold">Includes 3-day free trial</div>
+                        <div class="text-xs text-emerald-700 font-semibold">Includes 3-day free trial</div>
                     </div>
                     <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
                         <div class="font-bold text-black text-lg">Quarterly Plan</div>
@@ -175,25 +183,25 @@
 
                 <div class="space-y-3 pt-2">
                     <p>
-                        <strong class="text-black">Auto-renewal:</strong> Subscriptions renew automatically at the end of each period unless canceled at least 24 hours before the period ends. Your account is charged for renewal within 24 hours before the end of the current period.
+                        <strong class="text-black">Auto-renewal.</strong> Subscriptions renew automatically at the end of each period unless canceled at least 24 hours before the period ends. Your account is charged for renewal within 24 hours before the end of the current period.
                     </p>
                     <p>
-                        <strong class="text-black">Free trial:</strong> The 3-day trial is available on the annual plan only, and may be limited to new subscribers. If you do not cancel at least 24 hours before the trial ends, you will be charged USD $59.99 and the subscription will renew annually. Any unused part of a trial is forfeited when you purchase a subscription.
+                        <strong class="text-black">Free trial.</strong> The 3-day trial is available on the annual plan only, and may be limited to new subscribers. If you do not cancel at least 24 hours before the trial ends, you will be charged USD $59.99 and the subscription will renew annually. Any unused part of a trial is forfeited when you purchase a subscription.
                     </p>
                     <p>
-                        <strong class="text-black">Billing:</strong> Payment is charged to your Apple ID or Google Play account at confirmation of purchase. Subscriptions are managed through RevenueCat, but billing, cancellation, and refunds are handled by Apple or Google.
+                        <strong class="text-black">Billing.</strong> Payment is charged to your Apple ID or Google Play account at confirmation of purchase. Subscriptions are managed through RevenueCat, but billing, cancellation, and refunds are handled by Apple or Google.
                     </p>
                     <p>
-                        <strong class="text-black">Cancel or manage:</strong> Go to your Apple ID subscription settings or Google Play → Payments & subscriptions. Deleting the App or your Sloper account does not cancel your subscription.
+                        <strong class="text-black">Cancel or manage.</strong> Go to your Apple ID subscription settings or Google Play → Payments & subscriptions. Deleting the App or your Sloper account does <strong class="text-black">not</strong> cancel your subscription.
                     </p>
                     <p>
-                        <strong class="text-black">Restore purchases:</strong> Use the "Restore Purchases" button on the paywall to recover an existing subscription on a new device.
+                        <strong class="text-black">Restore purchases.</strong> Use the "Restore Purchases" button on the paywall to recover an existing subscription on a new device.
                     </p>
                     <p>
-                        <strong class="text-black">Refunds:</strong> Refund requests are governed by Apple's or Google's policies and applicable law. We cannot issue refunds for purchases made through their stores.
+                        <strong class="text-black">Refunds.</strong> Refund requests are governed by Apple's or Google's policies and applicable law. We cannot issue refunds for purchases made through their stores.
                     </p>
                     <p>
-                        <strong class="text-black">Price changes:</strong> If we change prices, we will give notice as required by the store and law. Changes apply at your next renewal, and you may cancel before then.
+                        <strong class="text-black">Price changes.</strong> If we change prices, we will give notice as required by the store and law. Changes apply at your next renewal, and you may cancel before then.
                     </p>
                 </div>
             </section>
@@ -226,13 +234,16 @@
                 <p>
                     The App, including its flashcards, content, design, games, badges, and branding, is owned by us or our licensors and protected by intellectual property laws. We grant you a limited, personal, non-exclusive, non-transferable, revocable license to use the App for your own non-commercial use while you have an active subscription.
                 </p>
+                <p class="pt-1 text-sm text-gray-600">
+                    Emoji graphics in the App are by Twemoji, © Twitter, Inc. and other contributors, licensed under CC-BY 4.0 (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" class="primary hover:underline font-semibold">https://creativecommons.org/licenses/by/4.0/</a>). The graphics may have been resized for display.
+                </p>
             </section>
 
             <!-- 8. Privacy -->
             <section class="space-y-3">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">8. Privacy</h2>
                 <p>
-                    Our <a href="/privacypolicy.html" class="primary hover:underline font-semibold">Privacy Policy</a> explains how we handle your data, including push notifications, analytics, and crash reporting.
+                    Our <a href="/privacypolicy" class="primary hover:underline font-semibold">Privacy Policy</a> explains how we handle your data, including optional usage analytics and notifications.
                 </p>
             </section>
 
@@ -287,10 +298,11 @@
             <!-- 15. Contact -->
             <section class="space-y-3">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">15. Contact</h2>
-                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl space-y-2">
                     <p class="font-bold text-black text-base">Gerardo Zenteno Gaeta</p>
                     <p class="text-gray-600">Mexico</p>
                     <p><a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a></p>
+                    <p class="text-xs text-gray-500 pt-3 border-t border-gray-200">These Terms are also available at <a href="https://thesloper.app/terms" class="primary hover:underline">https://thesloper.app/terms</a></p>
                 </div>
             </section>
 
@@ -308,8 +320,8 @@
             </div>
             
             <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
-                <a href="/privacypolicy.html" class="hover:text-black transition-colors">Privacy Policy</a>
-                <a href="/terms.html" class="primary font-bold text-black border-b-2 border-black pb-0.5">Terms of Service</a>
+                <a href="/privacypolicy" class="hover:text-black transition-colors">Privacy Policy</a>
+                <a href="/terms" class="primary font-bold text-black border-b-2 border-black pb-0.5">Terms of Service</a>
                 <a href="mailto:zega.apps.dev@gmail.com" class="hover:text-black transition-colors">Support</a>
                 <a href="#" class="hover:text-black transition-colors">Tiktok</a>
                 <a href="#" class="hover:text-black transition-colors">Instagram</a>

@@ -38,6 +38,8 @@
                         display: ['Montserrat', 'sans-serif'],
                         body: ['Roboto', 'sans-serif'],
                         fredoka: ['Fredoka', 'sans-serif'],
+                        lexend: ['Lexend', 'Ledenx', 'sans-serif'],
+                        ledenx: ['Lexend', 'Ledenx', 'sans-serif'],
                     }
                 },
             },
@@ -46,10 +48,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Grandstander:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Grandstander:wght@900&display=swap" rel="stylesheet">
     <!-- Google Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
+        @font-face {
+            font-family: 'Ledenx';
+            src: local('Lexend Bold'), local('Lexend-Bold'), local('Lexend'), url('https://fonts.gstatic.com/s/lexend/v22/wlptgwvFAVdoq2_F94zlCpf5tSkLhA.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
         .primary {
             color: #4583E2 !important;
         }
@@ -57,9 +65,9 @@
             background-color: #4583E2 !important;
             color: #FFFFFF !important;
         }
-        .font-grandstander, .titles {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
+        .titles, .header-cta-btn, .font-lexend, .font-ledenx {
+            font-family: 'Lexend', 'Ledenx', sans-serif !important;
+            font-weight: 700 !important;
         }
         .font-fredoka {
             font-family: 'Fredoka', sans-serif;
@@ -84,7 +92,7 @@
                 <a href="/#boost" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Gym</a>
                 
                 <!-- Download CTA -->
-                <a href="/#download" class="titles primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
+                <a href="/#download" class="titles header-cta-btn primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
                     Download
                 </a>
             </div>
@@ -102,7 +110,7 @@
             <a href="/#features" class="block text-sm font-medium text-gray-700 hover:text-black">Board</a>
             <a href="/#chests" class="block text-sm font-medium text-gray-700 hover:text-black">Route</a>
             <a href="/#boost" class="block text-sm font-medium text-gray-700 hover:text-black">Gym</a>
-            <a href="/#download" class="titles primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
+            <a href="/#download" class="titles header-cta-btn primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
         </div>
     </nav>
 
@@ -111,9 +119,9 @@
         <!-- Page Header Card -->
         <div class="bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 shadow-xs">
             <span class="text-xs font-bold uppercase tracking-widest primary">LEGAL DOCUMENTATION</span>
-            <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Privacy Policy</h1>
+            <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Sloper – Privacy Policy</h1>
             <p class="text-sm text-gray-500 mb-6">
-                Last updated: <span class="text-black font-semibold">October 2, 2026</span>
+                Last updated: <span class="text-black font-semibold">October 16, 2026</span>
             </p>
             <p class="text-gray-700 leading-relaxed text-base">
                 <strong class="text-black">Sloper</strong> ("Sloper", "we", "us") is a climbing-terminology learning app operated by Gerardo Zenteno Gaeta, an individual developer based in Mexico. This policy explains what personal data we collect, how we use it, and your choices. By using Sloper, you agree to this policy.
@@ -141,38 +149,57 @@
 
                 <div class="space-y-2 pt-3">
                     <h3 class="font-bold text-black text-lg">Onboarding information (provided by you)</h3>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>Your climbing level, lead climbing level, years of climbing experience, planned daily time in the app, and your selected goals.</li>
-                        <li>We use these answers to calculate a climber profile level, which is shown in your profile.</li>
-                    </ul>
+                    <p>
+                        Your climbing level, lead climbing level, years of climbing experience, planned daily time in the app, and your selected goals. We use these answers to calculate a climber profile level, which is shown in your profile.
+                    </p>
                 </div>
 
                 <div class="space-y-2 pt-3">
                     <h3 class="font-bold text-black text-lg">Learning and usage information</h3>
                     <ul class="list-disc pl-5 space-y-2">
                         <li>Progress through the Route, flashcard results and spaced-repetition data, Gym game results, category progress, streaks, badges, and most-practiced terms.</li>
-                        <li>Your language preference.</li>
+                        <li>Your language preference and your analytics and notification choices.</li>
                     </ul>
                 </div>
 
                 <div class="space-y-2 pt-3">
                     <h3 class="font-bold text-black text-lg">Subscription information</h3>
                     <p>
-                        Subscriptions are processed by Apple App Store or Google Play and managed through RevenueCat. We receive subscription status, product purchased, purchase and renewal dates, and an app user identifier. We do not receive or store your payment card details.
+                        Subscriptions are processed by the Apple App Store or Google Play and managed through RevenueCat. RevenueCat and we receive your subscription status, the product purchased, purchase and renewal dates, and an app user identifier. We do <strong class="text-black">not</strong> receive or store your payment card details.
+                    </p>
+                </div>
+
+                <div class="space-y-3 pt-3">
+                    <h3 class="font-bold text-black text-lg">Usage analytics (only if you consent)</h3>
+                    <p>
+                        When you first open the app, we ask whether you allow anonymous usage analytics. Nothing is sent to our analytics provider unless you choose "Allow".
+                    </p>
+                    <p>
+                        If you allow it, we use Mixpanel to record events such as onboarding steps viewed, screens viewed (e.g., sign-in screen, paywall), and purchase-flow actions (e.g., plan selected), with the time spent on a step.
+                    </p>
+                    <p>
+                        Before you create an account, events are linked to a random device-level identifier. After you sign in, they are linked to your account's user ID (a random identifier created by Firebase). We do not send your email address or name to Mixpanel.
+                    </p>
+                    <p>
+                        Mixpanel also receives device and app information, such as device model and manufacturer, operating system and version, screen size, app version, language, mobile carrier, and network connection type.
+                    </p>
+                    <p>
+                        We disable IP-based location, so we do not receive your city or country from analytics. Your IP address is necessarily used to deliver the data to Mixpanel's servers, which are located in the European Union.
+                    </p>
+                    <p>
+                        You can change your choice at any time in Settings → Privacy (available after you create an account). If you have not created an account, you can reset analytics by clearing the app's data or reinstalling the app.
                     </p>
                 </div>
 
                 <div class="space-y-2 pt-3">
-                    <h3 class="font-bold text-black text-lg">Technical information</h3>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Firebase Analytics:</strong> app interactions (e.g., screens viewed, features used), device type, operating system, app version, language, approximate location derived from IP address, and device or app-instance identifiers (such as the advertising ID where permitted by your device settings).</li>
-                        <li><strong>Firebase Crashlytics:</strong> crash reports and diagnostics (e.g., device model, OS version, app state at the time of a crash).</li>
-                        <li><strong>Push notifications:</strong> if you consent, we collect a device push token to send you a weekly reminder to do your daily training. You can disable notifications at any time in your device settings.</li>
-                    </ul>
+                    <h3 class="font-bold text-black text-lg">Reminders (local notifications)</h3>
+                    <p>
+                        If you give permission, the app schedules a weekly reminder on your device to do your daily training. These are local notifications generated on your device: we do not use a push notification server and we do not collect a push notification token. You can disable them at any time in your device settings.
+                    </p>
                 </div>
 
-                <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 font-medium">
-                    We do not knowingly collect precise location, contacts, photos, or health data.
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 font-medium mt-4">
+                    We do not collect precise location, contacts, photos, or health data.
                 </div>
             </section>
 
@@ -184,21 +211,21 @@
                     <li>To determine your climber level and personalize your learning path.</li>
                     <li>To provide the Route, Gym, Board, streaks, and badges, and to sync your progress.</li>
                     <li>To verify and manage your subscription and restore purchases.</li>
-                    <li>To send weekly training reminders by push notification, only if you have consented.</li>
-                    <li>To understand how the app is used, fix crashes, and improve it (Analytics and Crashlytics).</li>
-                    <li>To communicate with you about support requests or important service changes.</li>
+                    <li>To send weekly training reminders, only if you have allowed notifications.</li>
+                    <li>With your consent, to understand where users drop off in the onboarding and purchase flow, and to improve the app.</li>
+                    <li>To maintain, debug, and secure the app, and to answer support requests.</li>
                     <li>To comply with legal obligations.</li>
                 </ul>
-                <p class="pt-2 text-sm text-gray-600 italic">
-                    <strong>Legal bases (EEA/UK users):</strong> performance of our contract with you, our legitimate interests in operating and improving the app, compliance with legal obligations, and consent where required.
-                </p>
+                <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 text-sm">
+                    <strong>Legal bases (EEA/UK users):</strong> performance of our contract with you; your consent for usage analytics and notifications (which you can withdraw at any time); our legitimate interests in securing and maintaining the app; and compliance with legal obligations.
+                </div>
             </section>
 
             <!-- 3. Advertising and Sale of Data -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">3. Advertising and Sale of Data</h2>
                 <p>
-                    Sloper contains no third-party advertising and no ad mediation. We do not sell your personal data or share it for cross-context behavioral advertising.
+                    Sloper contains no advertising and no ad mediation. We do not sell your personal data or share it for cross-context behavioral advertising, and we do not track you across other companies' apps or websites.
                 </p>
             </section>
 
@@ -206,12 +233,13 @@
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">4. Service Providers</h2>
                 <p>
-                    We share data only with providers needed to run the app, under their own privacy terms:
+                    We share data only with providers needed to run the app, under their own terms and privacy policies:
                 </p>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Google Firebase</strong> (Authentication, Firestore, Analytics, Crashlytics, Cloud Messaging) – authentication, data storage, usage analytics, crash reporting, and push notifications.</li>
+                    <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions) – authentication, database, and server-side functions (for example, to delete your account).</li>
+                    <li><strong>Mixpanel</strong> – usage analytics, only if you consent. Data is stored in the EU.</li>
                     <li><strong>RevenueCat</strong> – subscription management and entitlement verification.</li>
-                    <li><strong>Apple and Google</strong> – sign-in and payment processing.</li>
+                    <li><strong>Apple and Google</strong> – sign-in, app distribution, and payment processing.</li>
                 </ul>
                 <p>
                     We may also disclose information if required by law or to protect rights, safety, or security.
@@ -226,30 +254,35 @@
                 </p>
             </section>
 
-            <!-- 6. Data Retention -->
+            <!-- 6. Data Retention and Deletion -->
             <section class="space-y-4">
-                <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">6. Data Retention</h2>
+                <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">6. Data Retention and Deletion</h2>
                 <p>
-                    We keep your account data (email, onboarding answers, and learning progress) for as long as your account is active, as it is needed to provide the service. When you delete your account, we delete this data from our database. Analytics and crash data are retained according to Firebase's standard retention settings and are not linked to your deleted account beyond those periods. Subscription records held by Apple, Google, or RevenueCat are subject to their own retention policies.
+                    We keep your account data (email, onboarding answers, and learning progress) while your account is active. When you delete your account:
                 </p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>We delete your profile, onboarding data, and learning progress from our database, and your account from Firebase Authentication.</li>
+                    <li>We send a deletion request to Mixpanel for the analytics data linked to your account ID. Mixpanel may take several weeks to complete it.</li>
+                    <li>Analytics collected before you created an account are linked only to a random device identifier and cannot be linked back to you.</li>
+                    <li>Subscription and purchase records held by Apple, Google, and RevenueCat are subject to their own retention policies and legal obligations.</li>
+                </ul>
             </section>
 
             <!-- 7. Your Rights and Choices -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">7. Your Rights and Choices</h2>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Delete your account:</strong> in the app, go to Profile → Danger Zone → Delete Account.</li>
+                    <li><strong>Delete your account:</strong> in the app, go to Settings → Danger Zone → Delete Account, or follow <a href="/delete-account" class="primary hover:underline font-semibold">https://thesloper.app/delete-account</a>.</li>
+                    <li><strong>Analytics:</strong> change your choice in Settings → Privacy, or decline when first asked.</li>
+                    <li><strong>Notifications:</strong> disable them in your device settings.</li>
                     <li><strong>EEA, UK, and similar jurisdictions:</strong> you may have the right to access, correct, delete, export, or restrict the use of your data, to object to processing, and to withdraw consent at any time. You may also complain to your local data protection authority.</li>
                     <li><strong>California and other US states:</strong> you may have the right to know what personal data we collect, to request access, correction, or deletion, and not to be discriminated against for exercising these rights. We do not "sell" or "share" personal data as defined by the CCPA/CPRA.</li>
                     <li><strong>Mexico:</strong> you may exercise your ARCO rights (access, rectification, cancellation, and opposition) under applicable Mexican data protection law.</li>
-                    <li><strong>Notifications and analytics:</strong> you can turn off push notifications in your device settings and reset or limit your advertising identifier in your device settings.</li>
+                    <li><strong>Subscriptions:</strong> manage or cancel them in your Apple ID or Google Play settings. Deleting your account does not cancel your subscription.</li>
                 </ul>
                 <p>
-                    To exercise any of these rights, contact us at <a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a>. We will respond within the time required by applicable law.
+                    To exercise any right, contact us at <a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a>. We will respond within the time required by applicable law.
                 </p>
-                <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-700">
-                    <strong>Subscriptions:</strong> manage or cancel in your Apple ID or Google Play settings. Deleting your account does not cancel your subscription.
-                </div>
             </section>
 
             <!-- 8. Security -->
@@ -279,10 +312,11 @@
             <!-- 11. Contact -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3">11. Contact</h2>
-                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl space-y-2">
                     <p class="font-bold text-black text-base">Gerardo Zenteno Gaeta</p>
                     <p class="text-gray-600">Mexico</p>
                     <p><a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a></p>
+                    <p class="text-xs text-gray-500 pt-3 border-t border-gray-200">This policy is also available at <a href="https://thesloper.app/privacypolicy" class="primary hover:underline">https://thesloper.app/privacypolicy</a></p>
                 </div>
             </section>
 
@@ -300,8 +334,8 @@
             </div>
             
             <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
-                <a href="/privacypolicy.html" class="primary font-bold text-black border-b-2 border-black pb-0.5">Privacy Policy</a>
-                <a href="/terms.html" class="hover:text-black transition-colors">Terms of Service</a>
+                <a href="/privacypolicy" class="primary font-bold text-black border-b-2 border-black pb-0.5">Privacy Policy</a>
+                <a href="/terms" class="hover:text-black transition-colors">Terms of Service</a>
                 <a href="mailto:zega.apps.dev@gmail.com" class="hover:text-black transition-colors">Support</a>
                 <a href="#" class="hover:text-black transition-colors">Tiktok</a>
                 <a href="#" class="hover:text-black transition-colors">Instagram</a>
