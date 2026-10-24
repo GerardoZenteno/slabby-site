@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="yOOQZjE8nDoLtipAbgrgL6-SUVaB5cKC2weXthgr2H4" />
-    <title>Sloper</title>
+    <title>Slabby</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -38,7 +38,9 @@
                         sans: ['Montserrat', 'Roboto', 'sans-serif'],
                         display: ['Montserrat', 'sans-serif'],
                         body: ['Roboto', 'sans-serif'],
-                        fredoka: ['Fredoka', 'sans-serif'],
+                        cherrybomb: ['"Cherry Bomb One"', 'cursive', 'sans-serif'],
+                        fredoka: ['"Cherry Bomb One"', 'cursive', 'sans-serif'],
+                        schibsted: ['"Schibsted Grotesk"', 'sans-serif'],
                         lexend: ['Lexend', 'Ledenx', 'sans-serif'],
                         ledenx: ['Lexend', 'Ledenx', 'sans-serif'],
                     }
@@ -49,9 +51,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Grandstander:wght@900&display=swap" rel="stylesheet">
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Schibsted+Grotesk:wght@800&family=Grandstander:wght@900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @font-face {
             font-family: 'Ledenx';
@@ -81,13 +83,16 @@
             border: 1px solid #E5E7EB;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
-        .titles, .header-cta-btn, .font-lexend, .font-ledenx {
+        .titles, .font-lexend, .font-ledenx {
             font-family: 'Lexend', 'Ledenx', sans-serif !important;
             font-weight: 700 !important;
         }
-        .font-fredoka {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
+        .font-schibsted, .header-cta-btn {
+            font-family: 'Schibsted Grotesk', sans-serif !important;
+            font-weight: 800 !important;
+        }
+        .font-cherry-bomb, .font-fredoka {
+            font-family: 'Cherry Bomb One', cursive, sans-serif !important;
         }
         .gradient-text {
             color: #000000;
@@ -102,6 +107,29 @@
             overflow: hidden;
             background: #FFFFFF;
         }
+
+        /* Scroll & Entrance Cascade Animation (Fade + Top-to-Bottom Displacement) */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(-28px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-item.is-visible,
+        .is-visible .reveal-item,
+        .is-visible.reveal-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cascading Delay Utility Classes */
+        .delay-0 { transition-delay: 0ms; }
+        .delay-100 { transition-delay: 140ms; }
+        .delay-200 { transition-delay: 280ms; }
+        .delay-300 { transition-delay: 420ms; }
+        .delay-400 { transition-delay: 560ms; }
+        .delay-500 { transition-delay: 700ms; }
+        .delay-600 { transition-delay: 840ms; }
     </style>
 </head>
 <body class="bg-[#F6F6F6] text-[#111827] font-body selection:bg-black selection:text-white antialiased">
@@ -110,8 +138,8 @@
     <nav class="sticky top-0 z-50 bg-[#F6F6F6]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <!-- Brand Logo -->
-            <a href="/" class="font-fredoka font-bold text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
-                SLOPER
+            <a href="/" class="font-cherry-bomb text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
+                SLABBY
             </a>
 
             <!-- Desktop Nav Menu -->
@@ -120,28 +148,31 @@
                 <a href="#chests" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Route</a>
                 <a href="#boost" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Gym</a>
                 
-                <!-- Language Selector -->
+                <!-- Language Selector (Temporarily commented out)
                 <button id="lang-btn" class="flex items-center gap-1.5 text-xs font-medium text-gray-700 bg-white rounded-full px-3 py-1.5 border border-gray-200 hover:border-black/50 transition-colors shadow-xs">
-                    <span class="material-symbols-outlined primary text-base">language</span>
+                    <i class="fa-solid fa-globe primary text-sm"></i>
                     <span id="lang-text">English</span>
-                    <span class="material-symbols-outlined primary text-base">expand_more</span>
+                    <i class="fa-solid fa-chevron-down primary text-xs"></i>
                 </button>
+                -->
 
                 <!-- Download CTA -->
-                <a href="#download" class="titles header-cta-btn primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
+                <a href="#download" class="header-cta-btn font-schibsted primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
                     Download
                 </a>
             </div>
 
             <!-- Mobile Controls -->
             <div class="flex md:hidden items-center gap-3">
+                <!-- Language Selector Mobile (Temporarily commented out)
                 <button id="lang-btn-mobile" class="flex items-center gap-1 text-xs font-medium text-gray-700 bg-white rounded-full px-3 py-1 border border-gray-200 shadow-xs">
-                    <span class="material-symbols-outlined primary text-base">language</span>
+                    <i class="fa-solid fa-globe primary text-sm"></i>
                     <span>English</span>
-                    <span class="material-symbols-outlined primary text-base">expand_more</span>
+                    <i class="fa-solid fa-chevron-down primary text-xs"></i>
                 </button>
-                <button id="mobile-menu-btn" class="bg-white text-primary rounded-xl p-2 border border-gray-200 shadow-xs flex items-center justify-center hover:bg-gray-50 focus:outline-none transition-colors" aria-label="Menu">
-                    <span class="material-symbols-outlined primary text-2xl">menu</span>
+                -->
+                <button id="mobile-menu-btn" class="p-2 text-black hover:opacity-75 focus:outline-none transition-opacity flex items-center justify-center" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
@@ -151,7 +182,7 @@
             <a href="#features" class="block text-sm font-medium text-gray-700 hover:text-black">Board</a>
             <a href="#chests" class="block text-sm font-medium text-gray-700 hover:text-black">Route</a>
             <a href="#boost" class="block text-sm font-medium text-gray-700 hover:text-black">Gym</a>
-            <a href="#download" class="titles header-cta-btn primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
+            <a href="#download" class="header-cta-btn font-schibsted primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
         </div>
     </nav>
 
@@ -165,19 +196,25 @@
         <!-- ========================================== -->
         <section class="hidden lg:grid max-w-[1050px] mx-auto px-6 py-16 lg:grid-cols-[1fr_auto] gap-12 xl:gap-14 items-center min-h-[calc(100vh-4rem)]">
             <div class="space-y-6">
-                <h1 class="titles text-5xl xl:text-6xl tracking-tight text-black leading-[1.15]">
+                <span class="reveal-item hero-reveal delay-0 font-schibsted inline-block py-1.5 px-4 rounded-full bg-black/5 border border-black/10 text-black text-xs tracking-widest uppercase mb-2">
+                    Your Climbing Coach
+                </span>
+                <h1 class="reveal-item hero-reveal delay-100 titles text-5xl xl:text-6xl tracking-tight text-black leading-[1.15]">
                     Master Climbing with Total Confidence
                 </h1>
-                <p class="text-gray-600 text-lg leading-relaxed">
+                <p class="reveal-item hero-reveal delay-200 text-gray-600 text-lg leading-relaxed">
                     Learn essential climbing terminology, master gym beta with ease, and build unshakeable confidence every time you step into the climbing gym.
                 </p>
-                <div class="pt-4 flex items-center gap-4">
+                <div class="reveal-item hero-reveal delay-300 pt-4 flex flex-wrap items-center gap-4">
+                    <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105 active:scale-95">
+                        <img src="./app-store-badge.png" alt="Download on the App Store" class="h-14 w-auto shadow-md rounded-lg">
+                    </a>
                     <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105 active:scale-95">
                         <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-14 w-auto shadow-md rounded-lg">
                     </a>
                 </div>
             </div>
-            <div class="relative flex justify-center lg:justify-end items-center">
+            <div class="reveal-item hero-reveal delay-400 relative flex justify-center lg:justify-end items-center">
                 <div class="absolute w-[320px] h-[320px] bg-black/5 blur-[90px] rounded-full -z-10"></div>
                 <div class="phone-frame w-[300px] max-w-full animate-float">
                     <img src="./mockup_1.png" alt="App Screen" class="w-full h-auto object-cover">
@@ -190,19 +227,24 @@
         <!-- ========================================== -->
         <section class="lg:hidden pt-10 pb-16 px-6 text-center flex flex-col items-center relative">
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] aspect-square bg-black/5 rounded-full blur-[80px] -z-10"></div>
-            <span class="inline-block py-1.5 px-4 rounded-full bg-black/5 border border-black/10 text-black font-bold text-xs tracking-widest uppercase mb-4">
+            <span class="reveal-item hero-reveal delay-0 font-schibsted inline-block py-1.5 px-4 rounded-full bg-black/5 border border-black/10 text-black text-xs tracking-widest uppercase mb-4">
                 Your Climbing Coach
             </span>
-            <h1 class="titles text-3xl sm:text-4xl text-black leading-tight mb-4">
+            <h1 class="reveal-item hero-reveal delay-100 titles text-3xl sm:text-4xl text-black leading-tight mb-4">
                 Master Climbing with Total Confidence
             </h1>
-            <p class="text-gray-600 text-base leading-relaxed max-w-md mx-auto mb-6">
+            <p class="reveal-item hero-reveal delay-200 text-gray-600 text-base leading-relaxed max-w-md mx-auto mb-6">
                 Master climbing vocabulary, understand gym beta effortlessly, and feel more confident on the wall every day.
             </p>
-            <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform active:scale-95 mb-8">
-                <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-14 w-auto mx-auto shadow-md">
-            </a>
-            <div class="relative w-full max-w-[280px] mx-auto animate-float">
+            <div class="reveal-item hero-reveal delay-300 flex flex-wrap items-center justify-center gap-3 mb-8">
+                <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform active:scale-95">
+                    <img src="./app-store-badge.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform active:scale-95">
+                    <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
+                </a>
+            </div>
+            <div class="reveal-item hero-reveal delay-400 relative w-full max-w-[280px] mx-auto animate-float">
                 <div class="phone-frame w-full">
                     <img src="./mockup_1.png" alt="App Screen" class="w-full h-auto object-cover">
                 </div>
@@ -212,23 +254,23 @@
         <!-- ========================================== -->
         <!-- STATS BANNER - DESKTOP VIEW (lg:block) -->
         <!-- ========================================== -->
-        <section class="hidden lg:block py-12 bg-white border-y border-gray-200">
+        <section class="hidden lg:block py-12 bg-white border-y border-gray-200 scroll-reveal">
             <div class="max-w-[1050px] mx-auto px-6 text-center space-y-8">
-                <h2 class="titles text-3xl text-black">Join +300,000 downloads</h2>
+                <h2 class="reveal-item delay-0 titles text-3xl text-black">Join +300,000 downloads</h2>
                 <div class="grid grid-cols-4 gap-8">
-                    <div class="p-6 rounded-2xl glass-panel">
+                    <div class="reveal-item delay-100 p-6 rounded-2xl glass-panel">
                         <div class="titles text-4xl text-black">100+</div>
                         <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-2">TERMS</div>
                     </div>
-                    <div class="p-6 rounded-2xl glass-panel">
+                    <div class="reveal-item delay-200 p-6 rounded-2xl glass-panel">
                         <div class="titles text-4xl text-black">5+</div>
                         <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-2">LEARNING GAMES</div>
                     </div>
-                    <div class="p-6 rounded-2xl glass-panel">
+                    <div class="reveal-item delay-300 p-6 rounded-2xl glass-panel">
                         <div class="titles text-4xl text-black">500+</div>
                         <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-2">5-STAR REVIEWS</div>
                     </div>
-                    <div class="p-6 rounded-2xl glass-panel">
+                    <div class="reveal-item delay-400 p-6 rounded-2xl glass-panel">
                         <div class="titles text-4xl text-black">24/7</div>
                         <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-2">ACTIVE SUPPORT</div>
                     </div>
@@ -239,21 +281,21 @@
         <!-- ========================================== -->
         <!-- STATS GRID - MOBILE VIEW (lg:hidden) -->
         <!-- ========================================== -->
-        <section class="lg:hidden py-8 px-6 bg-white border-y border-gray-200">
+        <section class="lg:hidden py-8 px-6 bg-white border-y border-gray-200 scroll-reveal">
             <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
-                <div class="text-center p-4 rounded-xl glass-panel">
+                <div class="reveal-item delay-0 text-center p-4 rounded-xl glass-panel">
                     <div class="titles text-2xl text-black">300k</div>
                     <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">DOWNLOADS</div>
                 </div>
-                <div class="text-center p-4 rounded-xl glass-panel">
+                <div class="reveal-item delay-100 text-center p-4 rounded-xl glass-panel">
                     <div class="titles text-2xl text-black">100+</div>
                     <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">TERMS</div>
                 </div>
-                <div class="text-center p-4 rounded-xl glass-panel">
+                <div class="reveal-item delay-200 text-center p-4 rounded-xl glass-panel">
                     <div class="titles text-2xl text-black">5+</div>
                     <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">LEARNING GAMES</div>
                 </div>
-                <div class="text-center p-4 rounded-xl glass-panel">
+                <div class="reveal-item delay-300 text-center p-4 rounded-xl glass-panel">
                     <div class="titles text-2xl text-black">5★</div>
                     <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">RATING</div>
                 </div>
@@ -265,26 +307,28 @@
         <!-- ========================================== -->
         <section id="features" class="py-20 px-6 max-w-[1050px] mx-auto">
             <!-- Desktop Grid -->
-            <div class="hidden lg:grid lg:grid-cols-[auto_1fr] gap-12 xl:gap-14 items-center">
-                <div class="flex justify-center lg:justify-start">
+            <div class="hidden lg:grid lg:grid-cols-[auto_1fr] gap-12 xl:gap-14 items-center scroll-reveal">
+                <div class="reveal-item delay-0 flex justify-center lg:justify-start">
                     <div class="phone-frame w-[320px]">
                         <img src="./mockup_2.png" alt="Detected Items Screen" class="w-full h-auto object-cover">
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">PROGRESSION BOARD</span>
-                    <h2 class="titles text-4xl text-black">Track Your Progress</h2>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        Monitor your learning curve with real-time category percentages, examine comprehensive performance tables, and jump straight into segmented daily training sessions tailored for you.
-                    </p>
+                    <div class="reveal-item delay-100 space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-500">PROGRESSION BOARD</span>
+                        <h2 class="titles text-4xl text-black">Track Your Progress</h2>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            Monitor your learning curve with real-time category percentages, examine comprehensive performance tables, and jump straight into segmented daily training sessions tailored for you.
+                        </p>
+                    </div>
                     <div class="grid grid-cols-2 gap-4 pt-4">
-                        <div class="p-5 rounded-xl glass-panel space-y-2">
-                            <span class="material-symbols-outlined primary text-3xl">insights</span>
+                        <div class="reveal-item delay-200 p-5 rounded-xl glass-panel space-y-2">
+                            <i class="fa-solid fa-chart-line primary text-3xl"></i>
                             <h3 class="titles text-lg text-black">Category Mastery</h3>
                             <p class="text-xs text-gray-500 leading-normal">Follow your learning evolution with clear completion percentages per category.</p>
                         </div>
-                        <div class="p-5 rounded-xl glass-panel space-y-2">
-                            <span class="material-symbols-outlined primary text-3xl">fitness_center</span>
+                        <div class="reveal-item delay-300 p-5 rounded-xl glass-panel space-y-2">
+                            <i class="fa-solid fa-dumbbell primary text-3xl"></i>
                             <h3 class="titles text-lg text-black">Segmented Training</h3>
                             <p class="text-xs text-gray-500 leading-normal">Analyze detailed performance tables and launch targeted daily workouts.</p>
                         </div>
@@ -293,17 +337,17 @@
             </div>
 
             <!-- Mobile Layout -->
-            <div class="lg:hidden max-w-md mx-auto text-center space-y-8">
-                <div class="space-y-3">
+            <div class="lg:hidden max-w-md mx-auto text-center space-y-8 scroll-reveal">
+                <div class="reveal-item delay-0 space-y-3">
                     <div class="flex justify-center">
-                        <span class="material-symbols-outlined primary text-4xl" style="font-variation-settings: 'FILL' 1;">table_chart</span>
+                        <i class="fa-solid fa-grip primary text-4xl"></i>
                     </div>
                     <h2 class="titles text-2xl text-black">Track Your Progress</h2>
                     <p class="text-gray-600 text-sm leading-relaxed px-2">
                         Track your learning evolution across every category, review detailed performance tables, and start segmented daily workouts on demand.
                     </p>
                 </div>
-                <div class="relative w-full max-w-[280px] mx-auto">
+                <div class="reveal-item delay-200 relative w-full max-w-[280px] mx-auto">
                     <div class="phone-frame w-full">
                         <img src="./mockup_2.png" alt="Detected Items Mobile" class="w-full h-auto object-cover">
                     </div>
@@ -317,27 +361,29 @@
         <section id="chests" class="py-20 px-6 bg-white border-y border-gray-200">
             <div class="max-w-[1050px] mx-auto">
                 <!-- Desktop Grid -->
-                <div class="hidden lg:grid lg:grid-cols-[1fr_auto] gap-12 xl:gap-14 items-center">
+                <div class="hidden lg:grid lg:grid-cols-[1fr_auto] gap-12 xl:gap-14 items-center scroll-reveal">
                     <div class="space-y-6">
-                        <span class="text-xs font-bold uppercase tracking-widest text-gray-500">LEARNING ROUTE</span>
-                        <h2 class="titles text-4xl text-black">Level-Based Climbing Route</h2>
-                        <p class="text-gray-600 text-base leading-relaxed">
-                            Explore step-by-step climbing workouts organized by difficulty levels. Review terminology with rich flashcards featuring clear definitions, beta tips, example context, and native audio pronunciation.
-                        </p>
+                        <div class="reveal-item delay-0 space-y-2">
+                            <span class="text-xs font-bold uppercase tracking-widest text-gray-500">LEARNING ROUTE</span>
+                            <h2 class="titles text-4xl text-black">Level-Based Climbing Route</h2>
+                            <p class="text-gray-600 text-base leading-relaxed">
+                                Explore step-by-step climbing workouts organized by difficulty levels. Review terminology with rich flashcards featuring clear definitions, beta tips, example context, and native audio pronunciation.
+                            </p>
+                        </div>
                         <div class="grid grid-cols-2 gap-4 pt-4">
-                            <div class="p-5 rounded-xl glass-panel space-y-2">
-                                <span class="material-symbols-outlined primary text-3xl">style</span>
+                            <div class="reveal-item delay-100 p-5 rounded-xl glass-panel space-y-2">
+                                <i class="fa-solid fa-layer-group primary text-3xl"></i>
                                 <h3 class="titles text-lg text-black">Interactive Flashcards</h3>
                                 <p class="text-xs text-gray-500 leading-normal">Definitions, beta tips, sample phrases, and audio pronunciation at your fingertips.</p>
                             </div>
-                            <div class="p-5 rounded-xl glass-panel space-y-2">
-                                <span class="material-symbols-outlined primary text-3xl">route</span>
+                            <div class="reveal-item delay-200 p-5 rounded-xl glass-panel space-y-2">
+                                <i class="fa-solid fa-route primary text-3xl"></i>
                                 <h3 class="titles text-lg text-black">Level Progression</h3>
                                 <p class="text-xs text-gray-500 leading-normal">Advance through structured difficulty tiers as you conquer each set of climbing terms.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center lg:justify-end">
+                    <div class="reveal-item delay-300 flex justify-center lg:justify-end">
                         <div class="phone-frame w-[320px]">
                             <img src="./mockup_3.png" alt="Chests & Daily Rewards Screen" class="w-full h-auto object-cover">
                         </div>
@@ -345,17 +391,17 @@
                 </div>
 
                 <!-- Mobile Layout -->
-                <div class="lg:hidden max-w-md mx-auto text-center space-y-8">
-                    <div class="space-y-3">
+                <div class="lg:hidden max-w-md mx-auto text-center space-y-8 scroll-reveal">
+                    <div class="reveal-item delay-0 space-y-3">
                         <div class="flex justify-center">
-                            <span class="material-symbols-outlined primary text-4xl" style="font-variation-settings: 'FILL' 1;">route</span>
+                            <i class="fa-solid fa-route primary text-4xl"></i>
                         </div>
                         <h2 class="titles text-2xl text-black">Level-Based Climbing Route</h2>
                         <p class="text-gray-600 text-sm leading-relaxed px-2">
                             Advance through level-based routes. Master climbing terms with interactive flashcards, example usage, and native audio pronunciation.
                         </p>
                     </div>
-                    <div class="relative w-full max-w-[280px] mx-auto">
+                    <div class="reveal-item delay-200 relative w-full max-w-[280px] mx-auto">
                         <div class="phone-frame w-full">
                             <img src="./mockup_3.png" alt="Chests & Daily Rewards Mobile" class="w-full h-auto object-cover">
                         </div>
@@ -369,26 +415,28 @@
         <!-- ========================================== -->
         <section id="boost" class="py-20 px-6 max-w-[1050px] mx-auto">
             <!-- Desktop Grid -->
-            <div class="hidden lg:grid lg:grid-cols-[auto_1fr] gap-12 xl:gap-14 items-center">
-                <div class="flex justify-center lg:justify-start">
+            <div class="hidden lg:grid lg:grid-cols-[auto_1fr] gap-12 xl:gap-14 items-center scroll-reveal">
+                <div class="reveal-item delay-0 flex justify-center lg:justify-start">
                     <div class="phone-frame w-[320px]">
                         <img src="./mockup_4.png" alt="Boost & Leaderboard Screen" class="w-full h-auto object-cover">
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">PRACTICE GYM</span>
-                    <h2 class="titles text-4xl text-black">Climbing Memory & Quizzes</h2>
-                    <p class="text-gray-600 text-base leading-relaxed">
-                        Strengthen your climbing knowledge through interactive memory games and rapid-fire quizzes. Make studying terminology engaging, monitor your accuracy stats, and climb the high-score leaderboard.
-                    </p>
+                    <div class="reveal-item delay-100 space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-500">PRACTICE GYM</span>
+                        <h2 class="titles text-4xl text-black">Climbing Memory & Quizzes</h2>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            Strengthen your climbing knowledge through interactive memory games and rapid-fire quizzes. Make studying terminology engaging, monitor your accuracy stats, and climb the high-score leaderboard.
+                        </p>
+                    </div>
                     <div class="grid grid-cols-2 gap-4 pt-4">
-                        <div class="p-5 rounded-xl glass-panel space-y-2">
-                            <span class="material-symbols-outlined primary text-3xl">psychology</span>
+                        <div class="reveal-item delay-200 p-5 rounded-xl glass-panel space-y-2">
+                            <i class="fa-solid fa-brain primary text-3xl"></i>
                             <h3 class="titles text-lg text-black">Memory & Quizzes</h3>
                             <p class="text-xs text-gray-500 leading-normal">Boost terminology retention with entertaining card matching and quick knowledge checks.</p>
                         </div>
-                        <div class="p-5 rounded-xl glass-panel space-y-2">
-                            <span class="material-symbols-outlined primary text-3xl">military_tech</span>
+                        <div class="reveal-item delay-300 p-5 rounded-xl glass-panel space-y-2">
+                            <i class="fa-solid fa-trophy primary text-3xl"></i>
                             <h3 class="titles text-lg text-black">High Scores & Records</h3>
                             <p class="text-xs text-gray-500 leading-normal">Track your personal records and accuracy across every training game.</p>
                         </div>
@@ -397,17 +445,17 @@
             </div>
 
             <!-- Mobile Layout -->
-            <div class="lg:hidden max-w-md mx-auto text-center space-y-8">
-                <div class="space-y-3">
+            <div class="lg:hidden max-w-md mx-auto text-center space-y-8 scroll-reveal">
+                <div class="reveal-item delay-0 space-y-3">
                     <div class="flex justify-center">
-                        <span class="material-symbols-outlined primary text-4xl" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+                        <i class="fa-solid fa-dumbbell primary text-4xl"></i>
                     </div>
                     <h2 class="titles text-2xl text-black">Climbing Memory & Quizzes</h2>
                     <p class="text-gray-600 text-sm leading-relaxed px-2">
                         Strengthen term retention through fun memory games, quick quizzes, and high-score accuracy tracking.
                     </p>
                 </div>
-                <div class="relative w-full max-w-[280px] mx-auto">
+                <div class="reveal-item delay-200 relative w-full max-w-[280px] mx-auto">
                     <div class="phone-frame w-full">
                         <img src="./mockup_4.png" alt="Boost Mobile" class="w-full h-auto object-cover">
                     </div>
@@ -421,18 +469,18 @@
     <footer class="bg-white border-t border-gray-200 py-12 mt-12">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="space-y-2 text-center md:text-left">
-                <a href="/" class="font-fredoka font-bold text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLOPER</a>
+                <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLABBY</a>
                 <p class="text-xs text-gray-500">
-                    © 2024 <span class="primary font-semibold">Sloper</span>. Not affiliated with any climbing corporation.
+                    © 2024 <span class="primary font-semibold">Slabby</span>. Not affiliated with any climbing corporation.
                 </p>
             </div>
             
-            <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
+            <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500 items-center">
                 <a href="/privacypolicy" class="hover:text-black transition-colors">Privacy Policy</a>
                 <a href="/terms" class="hover:text-black transition-colors">Terms of Service</a>
-                <a href="mailto:zega.apps.dev@gmail.com" class="hover:text-black transition-colors">Support</a>
-                <a href="#" class="hover:text-black transition-colors">Tiktok</a>
-                <a href="#" class="hover:text-black transition-colors">Instagram</a>
+                <a href="mailto:support@slabby.co" class="hover:text-black transition-colors">Support</a>
+                <a href="#" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-tiktok text-sm"></i> TikTok</a>
+                <a href="#" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-instagram text-sm"></i> Instagram</a>
             </div>
         </div>
     </footer>
@@ -440,25 +488,25 @@
     <!-- Mobile Fixed Bottom Navigation Bar (< md) -->
     <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2.5 px-4 bg-white/95 backdrop-blur-xl border-t border-gray-200 md:hidden shadow-lg">
         <a href="#features" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#4583E2] active:scale-95 transition-all">
-            <span class="material-symbols-outlined primary text-2xl">table_chart</span>
-            <span class="text-[10px] font-medium mt-0.5">Board</span>
+            <i class="fa-solid fa-grip primary text-xl"></i>
+            <span class="text-[10px] font-medium mt-1">Board</span>
         </a>
         <a href="#chests" class="flex flex-col items-center justify-center primary font-bold active:scale-95 transition-all">
             <div class="primary bg-[#4583E2]/10 px-4 py-1 rounded-full mb-0.5 border border-[#4583E2]/20">
-                <span class="material-symbols-outlined primary text-2xl" style="font-variation-settings: 'FILL' 1;">route</span>
+                <i class="fa-solid fa-route primary text-xl"></i>
             </div>
             <span class="text-[10px] tracking-wide primary">Route</span>
         </a>
         <a href="#boost" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#4583E2] active:scale-95 transition-all">
-            <span class="material-symbols-outlined primary text-2xl">fitness_center</span>
-            <span class="text-[10px] font-medium mt-0.5">Gym</span>
+            <i class="fa-solid fa-dumbbell primary text-xl"></i>
+            <span class="text-[10px] font-medium mt-1">Gym</span>
         </a>
     </nav>
 
     <!-- Spacer for Mobile Bottom Nav -->
     <div class="h-20 md:hidden"></div>
 
-    <!-- Micro-Interactions JavaScript -->
+    <!-- Micro-Interactions & Scroll Reveal JavaScript -->
     <script>
         // Toggle Mobile Navigation Drawer
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -470,7 +518,7 @@
             });
         }
 
-        // Toggle Language selector text
+        // Toggle Language selector text (if active)
         const langBtns = [document.getElementById('lang-btn'), document.getElementById('lang-btn-mobile')];
         langBtns.forEach(btn => {
             if (btn) {
@@ -480,6 +528,37 @@
                         textSpan.innerText = textSpan.innerText === 'English' ? 'Español' : 'English';
                     }
                 });
+            }
+        });
+
+        // Entrance & Scroll Cascade Animations (Fade + Top-to-Bottom Displacement)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger Hero entrance immediately with staggered sequence
+            const heroElements = document.querySelectorAll('.hero-reveal');
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    heroElements.forEach(el => el.classList.add('is-visible'));
+                }, 60);
+            });
+
+            // Trigger below-the-fold elements as they scroll into view
+            const scrollSections = document.querySelectorAll('.scroll-reveal');
+            if ('IntersectionObserver' in window) {
+                const scrollObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                scrollSections.forEach(section => scrollObserver.observe(section));
+            } else {
+                scrollSections.forEach(section => section.classList.add('is-visible'));
             }
         });
     </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Your Sloper Account | Sloper</title>
+    <title>Delete Your Slabby Account | Slabby</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -23,7 +23,8 @@
                         sans: ['Montserrat', 'Roboto', 'sans-serif'],
                         display: ['Montserrat', 'sans-serif'],
                         body: ['Roboto', 'sans-serif'],
-                        fredoka: ['Fredoka', 'sans-serif'],
+                        cherrybomb: ['"Cherry Bomb One"', 'cursive', 'sans-serif'],
+                        fredoka: ['"Cherry Bomb One"', 'cursive', 'sans-serif'],
                         lexend: ['Lexend', 'Ledenx', 'sans-serif'],
                         ledenx: ['Lexend', 'Ledenx', 'sans-serif'],
                     }
@@ -34,9 +35,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Schibsted+Grotesk:wght@800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @font-face {
             font-family: 'Ledenx';
@@ -54,13 +55,16 @@
             background-color: #4583E2 !important;
             color: #FFFFFF !important;
         }
-        .titles, .header-cta-btn, .font-lexend, .font-ledenx {
+        .titles, .font-lexend, .font-ledenx {
             font-family: 'Lexend', 'Ledenx', sans-serif !important;
             font-weight: 700 !important;
         }
-        .font-fredoka {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
+        .font-schibsted, .header-cta-btn {
+            font-family: 'Schibsted Grotesk', sans-serif !important;
+            font-weight: 800 !important;
+        }
+        .font-cherry-bomb, .font-fredoka {
+            font-family: 'Cherry Bomb One', cursive, sans-serif !important;
         }
     </style>
 </head>
@@ -70,8 +74,8 @@
     <nav class="sticky top-0 z-50 bg-[#F6F6F6]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <!-- Brand Logo -->
-            <a href="/" class="font-fredoka font-bold text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
-                SLOPER
+            <a href="/" class="font-cherry-bomb text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
+                SLABBY
             </a>
 
             <!-- Desktop Nav Menu -->
@@ -88,8 +92,8 @@
 
             <!-- Mobile Controls -->
             <div class="flex md:hidden items-center gap-3">
-                <button id="mobile-menu-btn" class="bg-white text-primary rounded-xl p-2 border border-gray-200 shadow-xs flex items-center justify-center hover:bg-gray-50 focus:outline-none transition-colors" aria-label="Menu">
-                    <span class="material-symbols-outlined primary text-2xl">menu</span>
+                <button id="mobile-menu-btn" class="p-2 text-black hover:opacity-75 focus:outline-none transition-opacity flex items-center justify-center" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
@@ -104,33 +108,30 @@
     </nav>
 
     <!-- Content Shell -->
-    <main class="max-w-[1050px] mx-auto px-6 py-12 flex-1 w-full space-y-8">
-        <!-- Page Header Card -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 shadow-xs">
-            <span class="text-xs font-bold uppercase tracking-widest primary">ACCOUNT MANAGEMENT</span>
-            <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Delete your Sloper account</h1>
-            <p class="text-gray-700 leading-relaxed text-base">
-                Sloper is operated by Gerardo Zenteno Gaeta.
-            </p>
-            <div class="mt-6 pt-6 border-t border-gray-100 flex items-center gap-2 text-sm text-gray-600">
-                <span class="font-medium text-black">Contact:</span>
-                <a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a>
-            </div>
-        </div>
-
-        <!-- Document Body Card -->
+    <main class="max-w-[1050px] mx-auto px-6 py-12 flex-1 w-full">
+        <!-- Unified Account Deletion Card -->
         <div class="bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 shadow-xs space-y-10 text-gray-700 leading-relaxed text-sm sm:text-base">
+
+            <!-- Page Header Section -->
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest primary">ACCOUNT MANAGEMENT</span>
+                <h1 class="titles text-4xl sm:text-5xl text-black mt-2 mb-3">Delete your Slabby account</h1>
+                <div class="mt-6 pt-6 border-t border-gray-100 flex items-center gap-2 text-sm text-gray-600">
+                    <span class="font-medium text-black">Contact:</span>
+                    <a href="mailto:support@slabby.co" class="primary hover:underline font-semibold">support@slabby.co</a>
+                </div>
+            </div>
 
             <!-- How to delete your account in the app -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined primary">smartphone</span>
+                    <i class="fa-solid fa-mobile-screen primary text-xl"></i>
                     How to delete your account in the app
                 </h2>
                 <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl space-y-3">
                     <ol class="list-decimal list-inside space-y-2 text-gray-700">
-                        <li>Open <strong class="text-black">Sloper</strong> and sign in.</li>
-                        <li>Go to <strong class="text-black">Settings → Danger Zone → Delete Account</strong>.</li>
+                        <li>Open <strong class="text-black">Slabby</strong> and sign in.</li>
+                        <li>Go to <strong class="text-black">Profile → Account → Delete Account</strong>.</li>
                         <li>Confirm the deletion.</li>
                     </ol>
                 </div>
@@ -139,12 +140,12 @@
             <!-- If you cannot access the app -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined primary">mail</span>
+                    <i class="fa-solid fa-envelope primary text-xl"></i>
                     If you cannot access the app
                 </h2>
                 <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl space-y-3">
                     <p>
-                        Email <a href="mailto:zega.apps.dev@gmail.com" class="primary hover:underline font-semibold">zega.apps.dev@gmail.com</a> from the email address linked to your account with the subject <strong class="text-black">"Delete my account"</strong>. We will process your request within 30 days.
+                        Email <a href="mailto:support@slabby.co" class="primary hover:underline font-semibold">support@slabby.co</a> from the email address linked to your account with the subject <strong class="text-black">"Delete my account"</strong>. We will process your request within 30 days.
                     </p>
                 </div>
             </section>
@@ -152,7 +153,7 @@
             <!-- What is deleted -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined primary">delete_forever</span>
+                    <i class="fa-solid fa-trash-can primary text-xl"></i>
                     What is deleted
                 </h2>
                 <p>
@@ -163,7 +164,7 @@
             <!-- What is kept -->
             <section class="space-y-4">
                 <h2 class="titles text-2xl text-black border-b border-gray-100 pb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined primary">shield</span>
+                    <i class="fa-solid fa-shield-halved primary text-xl"></i>
                     What is kept
                 </h2>
                 <ul class="list-disc pl-5 space-y-2 text-gray-700">
@@ -179,7 +180,7 @@
             <!-- Privacy Policy Reference -->
             <section class="pt-4 border-t border-gray-100 flex items-center gap-2 text-sm">
                 <span class="font-medium text-black">Privacy Policy:</span>
-                <a href="/privacypolicy" class="primary hover:underline font-semibold">https://thesloper.app/privacypolicy</a>
+                <a href="/privacypolicy" class="primary hover:underline font-semibold">https://slabby.co/privacypolicy</a>
             </section>
 
         </div>
@@ -189,16 +190,16 @@
     <footer class="bg-white border-t border-gray-200 py-12 mt-12">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="space-y-2 text-center md:text-left">
-                <a href="/" class="font-fredoka font-bold text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLOPER</a>
+                <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLABBY</a>
                 <p class="text-xs text-gray-500">
-                    © 2024 <span class="primary font-semibold">Sloper</span>. Not affiliated with any climbing corporation.
+                    © 2024 <span class="primary font-semibold">Slabby</span>. Not affiliated with any climbing corporation.
                 </p>
             </div>
             
             <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
                 <a href="/privacypolicy" class="hover:text-black transition-colors">Privacy Policy</a>
                 <a href="/terms" class="hover:text-black transition-colors">Terms of Service</a>
-                <a href="mailto:zega.apps.dev@gmail.com" class="hover:text-black transition-colors">Support</a>
+                <a href="mailto:support@slabby.co" class="hover:text-black transition-colors">Support</a>
                 <a href="#" class="hover:text-black transition-colors">Tiktok</a>
                 <a href="#" class="hover:text-black transition-colors">Instagram</a>
             </div>
