@@ -1,3 +1,6 @@
+---
+# Front matter for Jekyll / GitHub Pages Liquid processing
+---
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -108,10 +111,10 @@
             background: #FFFFFF;
         }
 
-        /* Scroll & Entrance Cascade Animation (Fade + Top-to-Bottom Displacement) */
+        /* Scroll & Entrance Cascade Animation (Fade + Bottom-to-Top Displacement) */
         .reveal-item {
             opacity: 0;
-            transform: translateY(-28px);
+            transform: translateY(28px);
             transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
@@ -130,61 +133,18 @@
         .delay-400 { transition-delay: 560ms; }
         .delay-500 { transition-delay: 700ms; }
         .delay-600 { transition-delay: 840ms; }
+
+        /* Interactive Navigation Buttons Hover Rule */
+        .nav-btn,
+        .nav-item {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-[#F6F6F6] text-[#111827] font-body selection:bg-black selection:text-white antialiased">
 
     <!-- Top Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-[#F6F6F6]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <!-- Brand Logo -->
-            <a href="/" class="font-cherry-bomb text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
-                SLABBY
-            </a>
-
-            <!-- Desktop Nav Menu -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#features" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Board</a>
-                <a href="#chests" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Route</a>
-                <a href="#boost" class="text-sm font-medium text-gray-600 hover:text-black transition-colors">Gym</a>
-                
-                <!-- Language Selector (Temporarily commented out)
-                <button id="lang-btn" class="flex items-center gap-1.5 text-xs font-medium text-gray-700 bg-white rounded-full px-3 py-1.5 border border-gray-200 hover:border-black/50 transition-colors shadow-xs">
-                    <i class="fa-solid fa-globe primary text-sm"></i>
-                    <span id="lang-text">English</span>
-                    <i class="fa-solid fa-chevron-down primary text-xs"></i>
-                </button>
-                -->
-
-                <!-- Download CTA -->
-                <a href="#download" class="header-cta-btn font-schibsted primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md">
-                    Download
-                </a>
-            </div>
-
-            <!-- Mobile Controls -->
-            <div class="flex md:hidden items-center gap-3">
-                <!-- Language Selector Mobile (Temporarily commented out)
-                <button id="lang-btn-mobile" class="flex items-center gap-1 text-xs font-medium text-gray-700 bg-white rounded-full px-3 py-1 border border-gray-200 shadow-xs">
-                    <i class="fa-solid fa-globe primary text-sm"></i>
-                    <span>English</span>
-                    <i class="fa-solid fa-chevron-down primary text-xs"></i>
-                </button>
-                -->
-                <button id="mobile-menu-btn" class="p-2 text-black hover:opacity-75 focus:outline-none transition-opacity flex items-center justify-center" aria-label="Menu">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
-            <a href="#features" class="block text-sm font-medium text-gray-700 hover:text-black">Board</a>
-            <a href="#chests" class="block text-sm font-medium text-gray-700 hover:text-black">Route</a>
-            <a href="#boost" class="block text-sm font-medium text-gray-700 hover:text-black">Gym</a>
-            <a href="#download" class="header-cta-btn font-schibsted primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">Download App</a>
-        </div>
-    </nav>
+    {% include header.html %}
 
     <!-- Main Content Shell -->
     <main class="relative overflow-hidden">
@@ -377,7 +337,7 @@
                                 <p class="text-xs text-gray-500 leading-normal">Definitions, beta tips, sample phrases, and audio pronunciation at your fingertips.</p>
                             </div>
                             <div class="reveal-item delay-200 p-5 rounded-xl glass-panel space-y-2">
-                                <i class="fa-solid fa-route primary text-3xl"></i>
+                                <i class="fa-solid fa-map-location-dot primary text-3xl"></i>
                                 <h3 class="titles text-lg text-black">Level Progression</h3>
                                 <p class="text-xs text-gray-500 leading-normal">Advance through structured difficulty tiers as you conquer each set of climbing terms.</p>
                             </div>
@@ -394,7 +354,7 @@
                 <div class="lg:hidden max-w-md mx-auto text-center space-y-8 scroll-reveal">
                     <div class="reveal-item delay-0 space-y-3">
                         <div class="flex justify-center">
-                            <i class="fa-solid fa-route primary text-4xl"></i>
+                            <i class="fa-solid fa-map-location-dot primary text-4xl"></i>
                         </div>
                         <h2 class="titles text-2xl text-black">Level-Based Climbing Route</h2>
                         <p class="text-gray-600 text-sm leading-relaxed px-2">
@@ -465,102 +425,10 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-12 mt-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="space-y-2 text-center md:text-left">
-                <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLABBY</a>
-                <p class="text-xs text-gray-500">
-                    © 2024 <span class="primary font-semibold">Slabby</span>. Not affiliated with any climbing corporation.
-                </p>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500 items-center">
-                <a href="/privacypolicy" class="hover:text-black transition-colors">Privacy Policy</a>
-                <a href="/terms" class="hover:text-black transition-colors">Terms of Service</a>
-                <a href="mailto:support@slabby.co" class="hover:text-black transition-colors">Support</a>
-                <a href="#" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-tiktok text-sm"></i> TikTok</a>
-                <a href="#" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-instagram text-sm"></i> Instagram</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer & Mobile Bottom Navigation Bar -->
+    {% include footer.html %}
 
-    <!-- Mobile Fixed Bottom Navigation Bar (< md) -->
-    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2.5 px-4 bg-white/95 backdrop-blur-xl border-t border-gray-200 md:hidden shadow-lg">
-        <a href="#features" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#4583E2] active:scale-95 transition-all">
-            <i class="fa-solid fa-grip primary text-xl"></i>
-            <span class="text-[10px] font-medium mt-1">Board</span>
-        </a>
-        <a href="#chests" class="flex flex-col items-center justify-center primary font-bold active:scale-95 transition-all">
-            <div class="primary bg-[#4583E2]/10 px-4 py-1 rounded-full mb-0.5 border border-[#4583E2]/20">
-                <i class="fa-solid fa-route primary text-xl"></i>
-            </div>
-            <span class="text-[10px] tracking-wide primary">Route</span>
-        </a>
-        <a href="#boost" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#4583E2] active:scale-95 transition-all">
-            <i class="fa-solid fa-dumbbell primary text-xl"></i>
-            <span class="text-[10px] font-medium mt-1">Gym</span>
-        </a>
-    </nav>
-
-    <!-- Spacer for Mobile Bottom Nav -->
-    <div class="h-20 md:hidden"></div>
-
-    <!-- Micro-Interactions & Scroll Reveal JavaScript -->
-    <script>
-        // Toggle Mobile Navigation Drawer
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (menuBtn && mobileMenu) {
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Toggle Language selector text (if active)
-        const langBtns = [document.getElementById('lang-btn'), document.getElementById('lang-btn-mobile')];
-        langBtns.forEach(btn => {
-            if (btn) {
-                btn.addEventListener('click', () => {
-                    const textSpan = btn.querySelector('span:nth-child(2)');
-                    if (textSpan) {
-                        textSpan.innerText = textSpan.innerText === 'English' ? 'Español' : 'English';
-                    }
-                });
-            }
-        });
-
-        // Entrance & Scroll Cascade Animations (Fade + Top-to-Bottom Displacement)
-        document.addEventListener('DOMContentLoaded', () => {
-            // Trigger Hero entrance immediately with staggered sequence
-            const heroElements = document.querySelectorAll('.hero-reveal');
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    heroElements.forEach(el => el.classList.add('is-visible'));
-                }, 60);
-            });
-
-            // Trigger below-the-fold elements as they scroll into view
-            const scrollSections = document.querySelectorAll('.scroll-reveal');
-            if ('IntersectionObserver' in window) {
-                const scrollObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.15,
-                    rootMargin: '0px 0px -40px 0px'
-                });
-
-                scrollSections.forEach(section => scrollObserver.observe(section));
-            } else {
-                scrollSections.forEach(section => section.classList.add('is-visible'));
-            }
-        });
-    </script>
+    <!-- External JavaScript: Micro-Interactions, Smooth Scroll & Scroll Reveal -->
+    <script src="./acciones.js"></script>
 </body>
 </html>

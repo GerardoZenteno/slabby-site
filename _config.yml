@@ -1,0 +1,8 @@
+title: "Slabby - Climbing Terminology & Coach"
+email: "support@slabby.co"
+description: "Master climbing vocabulary, gym beta, and climbing terminology with Slabby."
+url: "https://slabby.co"
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
