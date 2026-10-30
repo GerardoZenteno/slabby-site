@@ -1,0 +1,46 @@
+<!-- Top Navigation Bar (Shared Component) -->
+<nav class="sticky top-0 z-50 bg-[#F6F6F6]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+        <!-- Brand Logo -->
+        <a href="/" class="font-cherry-bomb text-2xl tracking-tight !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">
+            SLABBY
+        </a>
+
+        <!-- Desktop Nav Menu -->
+        <div class="hidden md:flex items-center gap-8">
+            <button type="button" id="nav-btn-board" data-target="features" class="nav-btn nav-item text-sm font-medium text-gray-600 hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Board</button>
+            <button type="button" id="nav-btn-route" data-target="chests" class="nav-btn nav-item text-sm font-medium text-gray-600 hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Route</button>
+            <button type="button" id="nav-btn-gym" data-target="boost" class="nav-btn nav-item text-sm font-medium text-gray-600 hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Gym</button>
+
+            <!-- Download CTA -->
+            <a href="#download" class="header-cta-btn font-schibsted primary bg-primary text-white text-sm px-5 py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md inline-flex items-center">
+                <i class="fa-solid fa-download mr-2 text-sm"></i>
+                Download
+            </a>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="flex md:hidden items-center gap-2.5">
+            <!-- Mobile Download Button -->
+            <a href="#download" class="header-cta-btn font-schibsted primary bg-primary text-white text-xs sm:text-sm px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg hover:bg-neutral-800 transition-all shadow-md inline-flex items-center">
+                <i class="fa-solid fa-download mr-1.5 text-xs"></i>
+                Download
+            </a>
+            
+            <!-- Circular Blue Hamburger Menu Button with White Icon -->
+            <button id="mobile-menu-btn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#4583E2] text-white hover:opacity-90 active:scale-95 focus:outline-none transition-all flex items-center justify-center shadow-md cursor-pointer" aria-label="Menu">
+                <i class="fa-solid fa-bars text-white text-base sm:text-lg" style="color: #FFFFFF !important;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
+        <button type="button" data-target="features" class="nav-btn nav-item block w-full text-left text-sm font-medium text-gray-700 hover:text-black cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Board</button>
+        <button type="button" data-target="chests" class="nav-btn nav-item block w-full text-left text-sm font-medium text-gray-700 hover:text-black cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Route</button>
+        <button type="button" data-target="boost" class="nav-btn nav-item block w-full text-left text-sm font-medium text-gray-700 hover:text-black cursor-pointer bg-transparent border-0 p-0 focus:outline-none">Gym</button>
+        <a href="#download" class="header-cta-btn font-schibsted primary block text-center bg-primary text-white text-sm px-4 py-2.5 rounded-lg shadow-sm">
+            <i class="fa-solid fa-download mr-2 text-sm"></i>Download App
+        </a>
+    </div>
+</nav>
