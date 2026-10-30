@@ -75,66 +75,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 4. Scroll Spy para la barra de navegación inferior en móviles
+    // 4. Scroll Spy para la barra de navegación inferior en móviles (Solo Home)
     // =========================================================================
-    const navItems = {
-        features: document.getElementById('nav-item-features'),
-        chests: document.getElementById('nav-item-chests'),
-        boost: document.getElementById('nav-item-boost')
-    };
+    const mobileBottomNav = document.getElementById('mobile-bottom-nav');
+    if (mobileBottomNav) {
+        const navItems = {
+            features: document.getElementById('nav-item-features'),
+            chests: document.getElementById('nav-item-chests'),
+            boost: document.getElementById('nav-item-boost')
+        };
 
-    const trackedSections = [
-        { id: 'features', el: document.getElementById('features') },
-        { id: 'chests', el: document.getElementById('chests') },
-        { id: 'boost', el: document.getElementById('boost') }
-    ];
+        const trackedSections = [
+            { id: 'features', el: document.getElementById('features') },
+            { id: 'chests', el: document.getElementById('chests') },
+            { id: 'boost', el: document.getElementById('boost') }
+        ];
 
-    function setActiveBottomNav(activeId) {
-        Object.entries(navItems).forEach(([id, item]) => {
-            if (!item) return;
-            const textSpan = item.querySelector('span');
-            if (id === activeId) {
-                item.classList.remove('text-[#374151]');
-                item.classList.add('text-[#4583E2]');
-                if (textSpan) {
-                    textSpan.classList.remove('font-medium');
-                    textSpan.classList.add('font-bold');
+        function setActiveBottomNav(activeId) {
+            Object.entries(navItems).forEach(([id, item]) => {
+                if (!item) return;
+                const textSpan = item.querySelector('span');
+                if (id === activeId) {
+                    item.classList.remove('text-[#374151]');
+                    item.classList.add('text-[#4583E2]');
+                    if (textSpan) {
+                        textSpan.classList.remove('font-medium');
+                        textSpan.classList.add('font-bold');
+                    }
+                } else {
+                    item.classList.remove('text-[#4583E2]');
+                    item.classList.add('text-[#374151]');
+                    if (textSpan) {
+                        textSpan.classList.remove('font-bold');
+                        textSpan.classList.add('font-medium');
+                    }
                 }
-            } else {
-                item.classList.remove('text-[#4583E2]');
-                item.classList.add('text-[#374151]');
-                if (textSpan) {
-                    textSpan.classList.remove('font-bold');
-                    textSpan.classList.add('font-medium');
-                }
-            }
-        });
-    }
-
-    function updateScrollSpy() {
-        const scrollPos = window.scrollY + window.innerHeight * 0.35;
-        let activeId = null;
-
-        trackedSections.forEach((sec) => {
-            if (sec.el) {
-                const top = sec.el.offsetTop;
-                const height = sec.el.offsetHeight;
-                if (scrollPos >= top && scrollPos < top + height) {
-                    activeId = sec.id;
-                }
-            }
-        });
-
-        // Al llegar al final de la página resaltar la última sección (Gym)
-        if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
-            activeId = 'boost';
+            });
         }
 
-        setActiveBottomNav(activeId);
-    }
+        function updateScrollSpy() {
+            const scrollPos = window.scrollY + window.innerHeight * 0.35;
+            let activeId = null;
 
-    window.addEventListener('scroll', updateScrollSpy, { passive: true });
-    updateScrollSpy();
+            trackedSections.forEach((sec) => {
+                if (sec.el) {
+                    const top = sec.el.offsetTop;
+                    const height = sec.el.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        activeId = sec.id;
+                    }
+                }
+            });
+
+            // Al llegar al final de la página resaltar la última sección (Gym)
+            if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+                activeId = 'boost';
+            }
+
+            setActiveBottomNav(activeId);
+        }
+
+        window.addEventListener('scroll', updateScrollSpy, { passive: true });
+        updateScrollSpy();
+    }
 
     // =========================================================================
     // 5. Selector de idioma (si está habilitado)
