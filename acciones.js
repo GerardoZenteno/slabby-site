@@ -1,8 +1,34 @@
 /**
- * acciones.js - Lógica interactiva y navegación suave para Slabby
+ * acciones.js - Lógica interactiva, navegación suave y detección de tienda para Slabby
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // =========================================================================
+    // 0. Detección de OS móvil/tablet para redirección directa a la tienda
+    // =========================================================================
+    function getMobileStoreUrl() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+        const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        const isAndroid = /android/i.test(ua);
+
+        if (isIOS) {
+            return 'https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177';
+        } else if (isAndroid) {
+            return 'https://play.google.com/store/apps/details?id=com.zega.sloper';
+        } else {
+            // Predeterminado en caso de dispositivo móvil no identificado
+            return 'https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177';
+        }
+    }
+
+    const storeRedirectButtons = document.querySelectorAll('.mobile-store-redirect-btn');
+    storeRedirectButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = getMobileStoreUrl();
+        });
+    });
+
     // =========================================================================
     // 1. Navegación interna con desplazamiento suave (smooth scroll)
     // =========================================================================
@@ -36,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
-    // 2. Control del menú móvil (hamburguesa)
+    // 2. Control del menú móvil (hamburguesa) y submenú Resources móvil
     // =========================================================================
     const menuBtn = document.getElementById('mobile-menu-btn');
     if (menuBtn && mobileMenu) {
@@ -45,8 +71,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const mobileResToggle = document.getElementById('mobile-resources-toggle');
+    const mobileResMenu = document.getElementById('mobile-resources-menu');
+    const mobileResChevron = document.getElementById('mobile-resources-chevron');
+    if (mobileResToggle && mobileResMenu) {
+        mobileResToggle.addEventListener('click', () => {
+            mobileResMenu.classList.toggle('hidden');
+            if (mobileResChevron) {
+                mobileResChevron.classList.toggle('rotate-180');
+            }
+        });
+    }
+
     // =========================================================================
-    // 3. Animaciones de entrada Hero y Scroll Reveal en cascada
+    // 3. Regla: "Board, Route y Gym" solo visibles en la pantalla Home
+    // =========================================================================
+    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '';
+    if (!isHomePage) {
+        document.querySelectorAll('.home-only-nav, [data-home-only]').forEach((el) => el.remove());
+    }
+
+    // =========================================================================
+    // 4. Animaciones de entrada Hero y Scroll Reveal en cascada
     // =========================================================================
     const heroElements = document.querySelectorAll('.hero-reveal');
     requestAnimationFrame(() => {
@@ -75,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 4. Scroll Spy para la barra de navegación inferior en móviles (Solo Home)
+    // 5. Scroll Spy para la barra de navegación inferior en móviles (Solo Home)
     // =========================================================================
     const mobileBottomNav = document.getElementById('mobile-bottom-nav');
     if (mobileBottomNav) {
@@ -140,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 5. Selector de idioma (si está habilitado)
+    // 6. Selector de idioma (si está habilitado)
     // =========================================================================
     const langBtns = [document.getElementById('lang-btn'), document.getElementById('lang-btn-mobile')];
     langBtns.forEach((btn) => {
