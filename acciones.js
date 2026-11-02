@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 3. Regla: "Board, Route y Gym" solo visibles en la pantalla Home
     // =========================================================================
-    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '';
+    const cleanPath = window.location.pathname.replace(/\/+$/, '');
+    const isHomePage = cleanPath === '' || cleanPath === '/' || cleanPath === '/index.html';
     if (!isHomePage) {
         document.querySelectorAll('.home-only-nav, [data-home-only]').forEach((el) => el.remove());
     }
@@ -186,17 +187,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 6. Selector de idioma (si está habilitado)
+    // 7. Interactive 3D Flip Cards (Slabby Flashcards)
     // =========================================================================
-    const langBtns = [document.getElementById('lang-btn'), document.getElementById('lang-btn-mobile')];
-    langBtns.forEach((btn) => {
-        if (btn) {
-            btn.addEventListener('click', () => {
-                const textSpan = btn.querySelector('span:nth-child(2)');
-                if (textSpan) {
-                    textSpan.innerText = textSpan.innerText === 'English' ? 'Español' : 'English';
-                }
-            });
-        }
+    const flipCards = document.querySelectorAll('.slabby-card-container, .slabby-card-wrapper');
+    flipCards.forEach((cardEl) => {
+        const toggleCard = (e) => {
+            if (e.target.closest('a') || e.target.closest('.speaker-btn')) return;
+            const inner = cardEl.querySelector('.slabby-card') || cardEl.querySelector('.slabby-card-inner') || cardEl;
+            inner.classList.toggle('is-flipped');
+        };
+        cardEl.addEventListener('click', toggleCard);
+        cardEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleCard(e);
+            }
+        });
     });
 });
+
