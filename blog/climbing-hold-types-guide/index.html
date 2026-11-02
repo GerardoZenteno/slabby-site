@@ -86,7 +86,7 @@ permalink: /blog/climbing-hold-types-guide
             "url": "https://slabby.co",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://slabby.co/favicon-32x32.png"
+              "url": "https://slabby.co/icon.png"
             }
           },
           "publisher": {
@@ -279,15 +279,16 @@ permalink: /blog/climbing-hold-types-guide
 
         /* 3D Flip Card Component (Matching Slabby App Design) */
         .slabby-card-container {
-            perspective: 1200px;
-            -webkit-perspective: 1200px;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
             width: 100%;
-            max-width: 360px;
-            height: 500px;
+            max-width: 350px;
+            height: 490px;
             margin: 2rem auto 2.5rem auto;
             cursor: pointer;
             user-select: none;
             outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
         .slabby-card {
             position: relative;
@@ -295,8 +296,9 @@ permalink: /blog/climbing-hold-types-guide
             height: 100%;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            transition: transform 0.65s cubic-bezier(0.2, 0.85, 0.25, 1);
+            transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.25, 1);
             border-radius: 2rem;
+            will-change: transform;
         }
         .slabby-card.is-flipped {
             transform: rotateY(180deg);
@@ -316,30 +318,27 @@ permalink: /blog/climbing-hold-types-guide
             box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 2.2rem 1.6rem 1.6rem 1.6rem;
             box-sizing: border-box;
-            overflow: hidden;
         }
         .slabby-card-front {
-            transform: rotateY(0deg);
-            -webkit-transform: rotateY(0deg);
-            z-index: 2;
+            transform: rotateY(0deg) translateZ(1px);
+            -webkit-transform: rotateY(0deg) translateZ(1px);
         }
         .slabby-card-back {
-            transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
-            z-index: 1;
+            transform: rotateY(180deg) translateZ(1px);
+            -webkit-transform: rotateY(180deg) translateZ(1px);
         }
         .slabby-card.is-flipped .slabby-card-front {
-            z-index: 1;
             pointer-events: none;
         }
-        .slabby-card.is-flipped .slabby-card-back {
-            z-index: 3;
-            pointer-events: auto;
+        .slabby-card:not(.is-flipped) .slabby-card-back {
+            pointer-events: none;
         }
 
         /* Category Header (Coral-red from Slabby app) */
@@ -359,17 +358,19 @@ permalink: /blog/climbing-hold-types-guide
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 0;
+            padding: 0.5rem 0;
+            overflow: hidden;
         }
         .slabby-card-img {
-            max-height: 195px;
-            max-width: 82%;
+            max-height: 120px;
+            max-width: 60%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+            transition: none !important;
+            transform: none !important;
         }
-        .slabby-card-container:hover .slabby-card-img {
-            transform: scale(1.05);
+        .slabby-card-img:hover {
+            transform: none !important;
         }
 
         /* Term Title */
@@ -590,10 +591,10 @@ permalink: /blog/climbing-hold-types-guide
             <h1>Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip</h1>
 
             <!-- Author, Publication Date & Reading Time -->
-            <div class="flex items-center gap-3.5 pb-6 mb-8 border-b border-gray-100" itemscope itemtype="https://schema.org/Person" itemprop="author">
-                <img src="/favicon-32x32.png" alt="Slabby Team" class="w-11 h-11 rounded-full object-cover border border-gray-200/80 bg-white p-0.5 shadow-xs" itemprop="image" />
+            <div class="flex items-center gap-4 pb-6 mb-8 border-b border-gray-100" itemscope itemtype="https://schema.org/Person" itemprop="author">
+                <img src="/icon.png" alt="Slabby Team" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-0 p-0 shadow-none outline-none flex-shrink-0" itemprop="image" />
                 <div class="flex flex-col justify-center">
-                    <span class="font-bold text-gray-900 text-sm sm:text-base leading-tight" itemprop="name">Slabby Team</span>
+                    <span class="font-bold text-[#111827] text-base sm:text-lg leading-tight" itemprop="name">Slabby Team</span>
                     <div class="text-xs sm:text-sm text-gray-500 mt-1 flex items-center gap-1.5 font-normal">
                         <time datetime="2026-10-31T12:00:00+00:00" itemprop="datePublished">1 day ago</time>
                         <span class="text-gray-400">•</span>
@@ -633,7 +634,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="jug-holds">1. Jug Climbing Holds: The Climber's Best Friend</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Jug hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Jug hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -687,7 +688,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="crimp-holds">2. Crimp Holds: Mastering Tiny Edges Safely</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Crimp hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Crimp hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -741,7 +742,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="edge-holds">3. Edge Climbing Holds: The Foundation of Technical Footwork and Finger Strength</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Edge hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Edge hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -795,7 +796,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="sloper-holds">4. Sloper Holds: How to Trust Friction and Body Positioning</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Sloper hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Sloper hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -849,7 +850,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="pinch-holds">5. Pinch Climbing Holds: Building Crushing Thumb Opposition</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Pinch hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Pinch hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -911,7 +912,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="pocket-holds">6. Pocket Holds: Precision Pulling for One to Three Fingers</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Pocket hold">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Pocket hold">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -965,7 +966,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="climbing-volumes">7. Climbing Volumes: 3D Architecture on the Bouldering Wall</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Volume feature">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Volume feature">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -1019,7 +1020,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="gaston-move">8. Gaston: Mastering the Outward-Pushing Shoulder Move</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Gaston grip">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Gaston grip">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -1073,7 +1074,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="undercling-holds">9. Undercling Holds: Generating Upward Power Through Body Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Undercling grip">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Undercling grip">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -1127,7 +1128,7 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="sidepull-holds">10. Sidepull Holds: Leaning Away to Create Opposing Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Sidepull grip">
+            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Sidepull grip">
                 <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
@@ -1232,20 +1233,8 @@ permalink: /blog/climbing-hold-types-guide
     <!-- Footer (Shared Component) -->
     {% include footer.html %}
 
-    <!-- Dedicated Flashcard Flip & Pronunciation Logic -->
+    <!-- Native Pronunciation Logic -->
     <script>
-        function toggleSlabbyCard(cardWrapper, event) {
-            if (event) {
-                if (event.target.closest('button.slabby-speaker-btn') || event.target.closest('a')) {
-                    return;
-                }
-            }
-            const innerCard = cardWrapper.querySelector('.slabby-card');
-            if (innerCard) {
-                innerCard.classList.toggle('is-flipped');
-            }
-        }
-
         function playPronunciation(word, event) {
             if (event) {
                 event.stopPropagation();
