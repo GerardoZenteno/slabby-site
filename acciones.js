@@ -191,11 +191,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     const flipCards = document.querySelectorAll('.slabby-card-container, .slabby-card-wrapper');
     flipCards.forEach((cardEl) => {
+        if (cardEl.dataset.flipInit) return;
+        cardEl.dataset.flipInit = 'true';
+
         const toggleCard = (e) => {
-            if (e.target.closest('a') || e.target.closest('.speaker-btn')) return;
-            const inner = cardEl.querySelector('.slabby-card') || cardEl.querySelector('.slabby-card-inner') || cardEl;
-            inner.classList.toggle('is-flipped');
+            // Ignore click if user clicked audio button or link
+            if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.slabby-speaker-btn') || e.target.closest('.speaker-btn')) {
+                return;
+            }
+            const inner = cardEl.querySelector('.slabby-card') || cardEl.querySelector('.slabby-card-inner');
+            if (inner) {
+                inner.classList.toggle('is-flipped');
+            }
         };
+
         cardEl.addEventListener('click', toggleCard);
         cardEl.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
