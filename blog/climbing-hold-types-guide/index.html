@@ -18,8 +18,10 @@ permalink: /blog/climbing-hold-types-guide
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://slabby.co/blog/climbing-hold-types-guide">
     <meta property="og:title" content="Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip">
-    <meta property="og:description" content="Master all 10 rock climbing hold types—from jugs and crimps to slopers, volumes, and gastons. Includes Slabby flashcards, real gym photos, and grip biomechanics.">
     <meta property="og:image" content="https://slabby.co/assets/blog/climbing-hold-types-cover.webp">
+    <meta property="article:published_time" content="2026-10-31T12:00:00+00:00">
+    <meta property="article:modified_time" content="2026-11-01T12:00:00+00:00">
+    <meta property="article:author" content="Slabby Team">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -76,10 +78,16 @@ permalink: /blog/climbing-hold-types-guide
           "headline": "Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip",
           "description": "Master all 10 rock climbing hold types—from jugs and crimps to slopers, volumes, and gastons. Includes Slabby flashcards, real gym photos, and grip biomechanics.",
           "image": "https://slabby.co/assets/blog/climbing-hold-types-cover.webp",
+          "datePublished": "2026-10-31T12:00:00+00:00",
+          "dateModified": "2026-11-01T12:00:00+00:00",
           "author": {
             "@type": "Organization",
-            "name": "Slabby",
-            "url": "https://slabby.co"
+            "name": "Slabby Team",
+            "url": "https://slabby.co",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://slabby.co/favicon-32x32.png"
+            }
           },
           "publisher": {
             "@type": "Organization",
@@ -269,192 +277,193 @@ permalink: /blog/climbing-hold-types-guide
             transform: translateX(4px);
         }
 
-        /* 3D Flip Card Component */
-        .slabby-card-wrapper {
+        /* 3D Flip Card Component (Matching Slabby App Design) */
+        .slabby-card-container {
             perspective: 1200px;
+            -webkit-perspective: 1200px;
             width: 100%;
-            max-width: 440px;
-            height: 380px;
-            margin: 1.75rem auto 2.25rem auto;
+            max-width: 360px;
+            height: 500px;
+            margin: 2rem auto 2.5rem auto;
             cursor: pointer;
-            outline: none;
             user-select: none;
+            outline: none;
         }
-        .slabby-card-inner {
+        .slabby-card {
             position: relative;
             width: 100%;
             height: 100%;
-            text-align: left;
-            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            -webkit-transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.2, 0.85, 0.25, 1);
+            border-radius: 2rem;
         }
-        .slabby-card-wrapper.is-flipped .slabby-card-inner {
+        .slabby-card.is-flipped {
             transform: rotateY(180deg);
-        }
-        .slabby-card-wrapper:focus-visible .slabby-card-inner {
-            ring: 3px solid #4583E2;
+            -webkit-transform: rotateY(180deg);
         }
         .slabby-card-face {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden;
+            border-radius: 2rem;
+            background-color: #ffffff;
+            background-image: radial-gradient(#d1d5db 1.25px, transparent 1.25px);
+            background-size: 24px 24px;
+            background-position: center;
+            border: 1px solid rgba(226, 232, 240, 0.85);
+            box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
             backface-visibility: hidden;
-            border-radius: 1.25rem;
-            padding: 1.5rem;
+            -webkit-backface-visibility: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+            box-sizing: border-box;
             overflow: hidden;
         }
-        /* Front Face */
         .slabby-card-front {
-            background-color: #0f172a;
-            background-image: radial-gradient(#334155 1px, transparent 1px);
-            background-size: 16px 16px;
-            border: 1px solid #1e293b;
-            color: #ffffff;
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+            z-index: 2;
         }
-        /* Back Face */
         .slabby-card-back {
-            background-color: #0b1329;
-            background-image: radial-gradient(#25334d 1px, transparent 1px);
-            background-size: 16px 16px;
-            border: 1px solid #334155;
-            color: #f1f5f9;
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            z-index: 1;
         }
-        .slabby-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .slabby-card.is-flipped .slabby-card-front {
+            z-index: 1;
+            pointer-events: none;
         }
+        .slabby-card.is-flipped .slabby-card-back {
+            z-index: 3;
+            pointer-events: auto;
+        }
+
+        /* Category Header (Coral-red from Slabby app) */
         .slabby-card-category {
             font-family: 'Lexend', sans-serif;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            background-color: rgba(69, 131, 226, 0.2);
-            color: #60a5fa;
-            border: 1px solid rgba(69, 131, 226, 0.4);
-            padding: 0.2rem 0.6rem;
-            border-radius: 9999px;
-        }
-        .slabby-card-brand {
-            font-family: 'Cherry Bomb One', cursive;
             font-size: 1rem;
-            color: #64748b;
-            letter-spacing: 0.05em;
-        }
-        .slabby-card-image-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            padding: 0.5rem 0;
-        }
-        .slabby-hold-img {
-            max-height: 180px;
-            max-width: 80%;
-            object-fit: contain;
-            filter: drop-shadow(0 12px 20px rgba(69, 131, 226, 0.25));
-            transition: transform 0.3s ease;
-        }
-        .slabby-card-wrapper:hover .slabby-hold-img {
-            transform: scale(1.06);
-        }
-        .slabby-card-title-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-top: 1px solid #1e293b;
-            padding-top: 0.75rem;
-        }
-        .slabby-card-term {
-            font-family: 'Lexend', sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin: 0;
+            color: #FF5C4D;
+            letter-spacing: -0.01em;
+            text-align: center;
+            display: block;
         }
-        .slabby-flip-hint {
-            display: inline-flex;
+
+        /* Image Area (Front) */
+        .slabby-card-img-wrap {
+            flex: 1;
+            display: flex;
             align-items: center;
-            gap: 0.35rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #94a3b8;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.25rem 0.6rem;
+            justify-content: center;
+            padding: 0.75rem 0;
+        }
+        .slabby-card-img {
+            max-height: 195px;
+            max-width: 82%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.09));
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .slabby-card-container:hover .slabby-card-img {
+            transform: scale(1.05);
+        }
+
+        /* Term Title */
+        .slabby-card-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 800;
+            font-size: 1.9rem;
+            color: #1E293B;
+            text-align: center;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        /* Front Tap Hint */
+        .slabby-card-hint {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            font-size: 0.85rem;
+            color: #94A3B8;
+            font-weight: 500;
+            margin-top: 0.85rem;
+        }
+
+        /* Back Content */
+        .slabby-speaker-btn {
+            position: absolute;
+            top: 1.4rem;
+            right: 1.4rem;
+            color: #FF5C4D;
+            font-size: 1.4rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 9999px;
-            transition: all 0.2s ease;
+            transition: transform 0.15s ease, color 0.15s ease;
+            z-index: 10;
         }
-        .slabby-card-wrapper:hover .slabby-flip-hint {
-            color: #ffffff;
-            background: #4583E2;
+        .slabby-speaker-btn:hover {
+            transform: scale(1.15);
+            color: #e04434;
         }
-        .slabby-card-back-body {
+        .slabby-speaker-btn:active {
+            transform: scale(0.95);
+        }
+
+        .slabby-back-body {
             flex: 1;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            padding: 0.5rem 0;
-            overflow-y: auto;
+            text-align: center;
+            padding: 1.5rem 0.5rem 0.75rem 0.5rem;
         }
-        .slabby-card-back-term {
-            font-family: 'Lexend', sans-serif;
-            font-weight: 700;
-            font-size: 1.35rem;
-            color: #60a5fa;
-            margin-bottom: 0.5rem;
+        .slabby-card-definition {
+            font-size: 0.96rem;
+            line-height: 1.55;
+            color: #64748B;
+            font-weight: 400;
+            margin: 0.75rem 0 0 0;
+            max-width: 295px;
+            text-align: center;
         }
-        .slabby-card-def {
-            font-size: 0.9375rem;
-            line-height: 1.5;
-            color: #e2e8f0;
-            margin-bottom: 0.75rem;
-        }
-        .slabby-card-def strong {
-            color: #ffffff;
-        }
-        .slabby-card-examples {
-            background: rgba(0, 0, 0, 0.25);
-            border-left: 3px solid #4583E2;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.375rem;
-        }
-        .slabby-examples-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #94a3b8;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .slabby-card-examples ul {
-            list-style-type: disc;
-            padding-left: 1.15rem;
-            margin: 0;
-            font-size: 0.84rem;
-            color: #cbd5e1;
-            line-height: 1.45;
-        }
-        .slabby-card-examples ul li {
-            margin-bottom: 0.25rem;
-        }
-        .slabby-card-examples ul li em {
-            color: #f8fafc;
-        }
-        .slabby-card-footer {
+
+        /* Coral Example Bubble Box */
+        .slabby-example-box {
+            background-color: #FF7B6E;
+            border-radius: 1.25rem;
+            padding: 1rem 1.15rem;
             display: flex;
-            justify-content: flex-end;
-            padding-top: 0.5rem;
-            border-top: 1px solid #1e293b;
+            align-items: center;
+            gap: 0.85rem;
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(255, 123, 110, 0.28);
+            margin-top: auto;
+        }
+        .slabby-speech-icon {
+            font-size: 1.15rem;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+        .slabby-example-phrase {
+            color: #ffffff;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            font-weight: 500;
+            margin: 0;
+            text-align: left;
         }
 
         /* Real Photos Gallery Component */
@@ -580,18 +589,17 @@ permalink: /blog/climbing-hold-types-guide
 
             <h1>Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip</h1>
 
-            <!-- Article Meta -->
-            <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-500 pb-6 mb-8 border-b border-gray-100">
-                <span class="inline-flex items-center gap-1.5 font-medium text-gray-800">
-                    <i class="fa-solid fa-user-circle text-primary text-base"></i> By Slabby Team
-                </span>
-                <span>•</span>
-                <span><i class="fa-regular fa-clock mr-1"></i> 8 min read</span>
-                <span>•</span>
-                <span><i class="fa-regular fa-calendar mr-1"></i> Published November 2026</span>
-                <span class="ml-auto inline-flex items-center gap-1 text-emerald-600 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded-full text-xs">
-                    <i class="fa-solid fa-check"></i> Verified by Coaches
-                </span>
+            <!-- Author, Publication Date & Reading Time -->
+            <div class="flex items-center gap-3.5 pb-6 mb-8 border-b border-gray-100" itemscope itemtype="https://schema.org/Person" itemprop="author">
+                <img src="/favicon-32x32.png" alt="Slabby Team" class="w-11 h-11 rounded-full object-cover border border-gray-200/80 bg-white p-0.5 shadow-xs" itemprop="image" />
+                <div class="flex flex-col justify-center">
+                    <span class="font-bold text-gray-900 text-sm sm:text-base leading-tight" itemprop="name">Slabby Team</span>
+                    <div class="text-xs sm:text-sm text-gray-500 mt-1 flex items-center gap-1.5 font-normal">
+                        <time datetime="2026-10-31T12:00:00+00:00" itemprop="datePublished">1 day ago</time>
+                        <span class="text-gray-400">•</span>
+                        <span>8 min read</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Intro Paragraphs -->
@@ -625,41 +633,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="jug-holds">1. Jug Climbing Holds: The Climber's Best Friend</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Jug hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Jug hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/jug_hold.webp" alt="Jug climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/jug_hold.webp" alt="Slabby Flashcard showing a Jug climbing hold illustration" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Jug</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Jug</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Jug', event)" aria-label="Listen to pronunciation of Jug" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Jug</h4>
+                            <p class="slabby-card-definition">A large, deep hold that is easy to grip with the whole hand.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Jug</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A large, deep hold that is easy to grip with the whole hand.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Thank goodness the last hold on this route is a massive jug."</em></li>
-                                    <li><em>"Rest your arms when you reach the jugs on the overhang."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Thank goodness the last hold on this route is a massive jug."</p>
                         </div>
                     </div>
                 </div>
@@ -685,40 +687,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="crimp-holds">2. Crimp Holds: Mastering Tiny Edges Safely</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Crimp hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Crimp hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/crimp_hold.webp" alt="Crimp climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/crimp_hold.webp" alt="Slabby Flashcard showing a Crimp climbing hold illustration" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Crimp</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Crimp</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Crimp', event)" aria-label="Listen to pronunciation of Crimp" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Crimp</h4>
+                            <p class="slabby-card-definition">A very small edge that accommodates only the fingertips. Can be gripped in a "full crimp" or "half crimp".</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Crimp</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A very small edge that accommodates only the fingertips. Can be gripped in a "full crimp" (thumb wrapped over index finger) or "half crimp".</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"The crux move involves pulling hard on a tiny crimp."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"The crux move involves pulling hard on a tiny crimp."</p>
                         </div>
                     </div>
                 </div>
@@ -744,40 +741,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="edge-holds">3. Edge Climbing Holds: The Foundation of Technical Footwork and Finger Strength</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Edge hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Edge hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/edge_hold.webp" alt="Edge climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/edge_hold.webp" alt="Slabby Flashcard explaining an Edge hold in rock climbing" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Edge</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Edge</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Edge', event)" aria-label="Listen to pronunciation of Edge" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Edge</h4>
+                            <p class="slabby-card-definition">A flat, positive hold that is wider than a crimp.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Edge</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A flat, positive hold that is wider than a crimp.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Stand up tall on that sharp edge."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Stand up tall on that sharp edge."</p>
                         </div>
                     </div>
                 </div>
@@ -803,40 +795,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="sloper-holds">4. Sloper Holds: How to Trust Friction and Body Positioning</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Sloper hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Sloper hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/sloper_hold.webp" alt="Sloper climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/sloper_hold.webp" alt="Slabby Flashcard illustrating a Sloper climbing hold" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Sloper</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Sloper</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Sloper', event)" aria-label="Listen to pronunciation of Sloper" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Sloper</h4>
+                            <p class="slabby-card-definition">A rounded hold with no positive edge, requiring an open-hand grip and reliance on friction and body positioning.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Sloper</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A rounded hold with no positive edge, requiring an open-hand grip and reliance on friction and body positioning.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Keep your center of gravity low to stay on the sloper."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Keep your center of gravity low to stay on the sloper."</p>
                         </div>
                     </div>
                 </div>
@@ -862,40 +849,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="pinch-holds">5. Pinch Climbing Holds: Building Crushing Thumb Opposition</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Pinch hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Pinch hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/pinch_hold.webp" alt="Pinch climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/pinch_hold.webp" alt="Slabby Flashcard showing a Pinch climbing hold and thumb grip" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Pinch</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Pinch</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Pinch', event)" aria-label="Listen to pronunciation of Pinch" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Pinch</h4>
+                            <p class="slabby-card-definition">A hold that must be squeezed between the thumb and fingers, resembling a pinching motion.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Pinch</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A hold that must be squeezed between the thumb and fingers, resembling a pinching motion.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"You need strong thumbs to hold onto that vertical pinch."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"You need strong thumbs to hold onto that vertical pinch."</p>
                         </div>
                     </div>
                 </div>
@@ -929,40 +911,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="pocket-holds">6. Pocket Holds: Precision Pulling for One to Three Fingers</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Pocket hold">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Pocket hold">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/pocket_hold.webp" alt="Pocket climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/pocket_hold.webp" alt="Slabby Flashcard illustrating a Pocket climbing hold" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Pocket</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Pocket</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">HOLD TYPE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Pocket', event)" aria-label="Listen to pronunciation of Pocket" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Pocket</h4>
+                            <p class="slabby-card-definition">A hole or depression in the rock or wall that can fit one to a few fingers (e.g., mono, two-finger pocket).</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Pocket</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A hole or depression in the rock or wall that can fit one to a few fingers (e.g., mono, two-finger pocket).</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Careful not to strain a tendon on that mono pocket."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Careful not to strain a tendon on that mono pocket."</p>
                         </div>
                     </div>
                 </div>
@@ -988,41 +965,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="climbing-volumes">7. Climbing Volumes: 3D Architecture on the Bouldering Wall</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Volume feature">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Volume feature">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">WALL FEATURE</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/volume.webp" alt="Volume in indoor climbing illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/volume.webp" alt="Slabby Flashcard defining a Volume in indoor climbing" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Volume</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Volume</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">WALL FEATURE</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Volume', event)" aria-label="Listen to pronunciation of Volume" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Volume</h4>
+                            <p class="slabby-card-definition">A large geometric structure bolted to the wall, often with holds attached, used to change the wall's shape.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Volume</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A large geometric structure bolted to the wall, often with holds attached, used to change the wall's shape.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Use the side of the volume to stem across the corner."</em></li>
-                                    <li><em>"Watch out, that volume is super slippery."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Use the side of the volume to stem across the corner."</p>
                         </div>
                     </div>
                 </div>
@@ -1048,41 +1019,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="gaston-move">8. Gaston: Mastering the Outward-Pushing Shoulder Move</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Gaston grip">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Gaston grip">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/gaston.webp" alt="Gaston climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/gaston.webp" alt="Slabby Flashcard demonstrating a Gaston climbing hold and thumb-down arm position" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Gaston</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Gaston</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Gaston', event)" aria-label="Listen to pronunciation of Gaston" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Gaston</h4>
+                            <p class="slabby-card-definition">A hold gripped with the thumb down and elbow out, pulling sideways away from the body.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Gaston</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A hold gripped with the thumb down and elbow out, pulling sideways away from the body.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"You have to gaston with your left hand to reach the next crimp."</em></li>
-                                    <li><em>"That gaston move puts a lot of strain on your shoulders."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"You have to gaston with your left hand to reach the next crimp."</p>
                         </div>
                     </div>
                 </div>
@@ -1108,41 +1073,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="undercling-holds">9. Undercling Holds: Generating Upward Power Through Body Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Undercling grip">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Undercling grip">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/undercling.webp" alt="Undercling hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/undercling.webp" alt="Slabby Flashcard showing an Undercling hold and upward pulling body position" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Undercling</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Undercling</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Undercling', event)" aria-label="Listen to pronunciation of Undercling" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Undercling</h4>
+                            <p class="slabby-card-definition">A hold gripped from underneath, pulling upward while leaning back.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Undercling</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A hold gripped from underneath, pulling upward while leaning back.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Get your feet high before you pull on the undercling."</em></li>
-                                    <li><em>"The crux is a powerful undercling move."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Get your feet high before you pull on the undercling."</p>
                         </div>
                     </div>
                 </div>
@@ -1168,41 +1127,35 @@ permalink: /blog/climbing-hold-types-guide
             <h2 id="sidepull-holds">10. Sidepull Holds: Leaning Away to Create Opposing Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-wrapper" tabindex="0" role="button" aria-label="Flip card for Sidepull grip">
-                <div class="slabby-card-inner">
+            <div class="slabby-card-container" onclick="toggleSlabbyCard(this, event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSlabbyCard(this, event);}" tabindex="0" role="button" aria-label="Flip card for Sidepull grip">
+                <div class="slabby-card">
                     <!-- Front -->
                     <div class="slabby-card-face slabby-card-front">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">Slabby</span>
+                        <span class="slabby-card-category">Hold Types</span>
+                        <div class="slabby-card-img-wrap">
+                            <img src="/assets/holds/sidepull.webp" alt="Sidepull climbing hold illustration" loading="lazy" class="slabby-card-img" />
                         </div>
-                        <div class="slabby-card-image-box">
-                            <img src="/assets/holds/sidepull.webp" alt="Slabby Flashcard explaining a Sidepull climbing hold and opposing body tension" loading="lazy" class="slabby-hold-img" />
-                        </div>
-                        <div class="slabby-card-title-box">
-                            <h4 class="slabby-card-term">Sidepull</h4>
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div>
+                            <h4 class="slabby-card-title">Sidepull</h4>
+                            <div class="slabby-card-hint">
+                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
+                                <span>Tap card to reveal definition</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Back -->
                     <div class="slabby-card-face slabby-card-back">
-                        <div class="slabby-card-header">
-                            <span class="slabby-card-category">DIRECTIONAL GRIP</span>
-                            <span class="slabby-card-brand">slabby.co</span>
+                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Sidepull', event)" aria-label="Listen to pronunciation of Sidepull" title="Listen pronunciation">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="slabby-back-body">
+                            <span class="slabby-card-category">Hold Types</span>
+                            <h4 class="slabby-card-title mt-2 mb-2">Sidepull</h4>
+                            <p class="slabby-card-definition">A vertically-oriented hold gripped from the side, requiring opposing body tension to use.</p>
                         </div>
-                        <div class="slabby-card-back-body">
-                            <h4 class="slabby-card-back-term">Sidepull</h4>
-                            <p class="slabby-card-def"><strong>Definition:</strong> A vertically-oriented hold gripped from the side, requiring opposing body tension to use.</p>
-                            <div class="slabby-card-examples">
-                                <span class="slabby-examples-title">Examples:</span>
-                                <ul>
-                                    <li><em>"Lean your body weight away from the sidepull to generate tension."</em></li>
-                                    <li><em>"Use the sidepull on the right to reach the jug on the left."</em></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="slabby-card-footer">
-                            <span class="slabby-flip-hint"><i class="fa-solid fa-arrows-rotate"></i> Tap to flip</span>
+                        <div class="slabby-example-box">
+                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
+                            <p class="slabby-example-phrase">"Lean your body weight away from the sidepull to generate tension."</p>
                         </div>
                     </div>
                 </div>
@@ -1279,7 +1232,34 @@ permalink: /blog/climbing-hold-types-guide
     <!-- Footer (Shared Component) -->
     {% include footer.html %}
 
-    <!-- External JavaScript: Micro-Interactions, Smooth Scroll & 3D Cards -->
+    <!-- Dedicated Flashcard Flip & Pronunciation Logic -->
+    <script>
+        function toggleSlabbyCard(cardWrapper, event) {
+            if (event) {
+                if (event.target.closest('button.slabby-speaker-btn') || event.target.closest('a')) {
+                    return;
+                }
+            }
+            const innerCard = cardWrapper.querySelector('.slabby-card');
+            if (innerCard) {
+                innerCard.classList.toggle('is-flipped');
+            }
+        }
+
+        function playPronunciation(word, event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.92;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    </script>
     <script src="/acciones.js"></script>
 </body>
 </html>
