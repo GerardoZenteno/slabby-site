@@ -9,21 +9,25 @@
             </a>
 
             <!-- Resources Dropdown Menu (Desktop only, justified left next to logo) -->
-            <div class="relative group hidden md:block" id="resources-dropdown-container">
+            <div class="relative group hidden md:flex h-16 items-center" id="resources-dropdown-container">
                 <button type="button" id="resources-menu-btn" class="flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0 focus:outline-none" aria-expanded="false">
                     <span>Resources</span>
                     <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180" id="resources-chevron"></i>
                 </button>
-                <!-- Desktop Dropdown Submenu -->
-                <div class="absolute left-0 top-full pt-2 w-44 hidden group-hover:block hover:block z-50 transition-all duration-150">
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-lg py-1.5 px-1 divide-y divide-gray-100">
-                        <a href="/blog/" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-colors">
-                            <i class="fa-solid fa-newspaper text-xs text-[#4583E2]"></i>
-                            <span>Blog</span>
+                <!-- Desktop Dropdown Submenu (Positioned right below header edge) -->
+                <div class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block hover:block z-50 transition-all duration-150">
+                    <div class="bg-white border border-gray-200/90 rounded-2xl shadow-xl p-2 space-y-1">
+                        <a href="/blog/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group/item">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(69, 131, 226, 0.14);">
+                                <i class="fa-solid fa-newspaper text-lg text-[#4583E2]"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-800 group-hover/item:text-[#4583E2] transition-colors">Blog</span>
                         </a>
-                        <a href="https://slabby.co/reviews/" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-colors">
-                            <i class="fa-solid fa-star text-xs text-amber-500"></i>
-                            <span>Reviews</span>
+                        <a href="/reviews/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors group/item">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(69, 131, 226, 0.14);">
+                                <i class="fa-solid fa-star text-lg text-[#4583E2]"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-800 group-hover/item:text-[#4583E2] transition-colors">Reviews</span>
                         </a>
                     </div>
                 </div>
@@ -70,13 +74,17 @@
                 <span>Resources</span>
                 <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 text-gray-500" id="mobile-resources-chevron"></i>
             </button>
-            <div id="mobile-resources-menu" class="hidden pl-2 pt-2.5 space-y-2">
-                <a href="/blog/" class="flex items-center gap-2.5 py-1 text-sm font-medium text-gray-600 hover:text-black">
-                    <i class="fa-solid fa-newspaper text-xs text-[#4583E2]"></i>
+            <div id="mobile-resources-menu" class="hidden pl-1 pt-2 space-y-1.5">
+                <a href="/blog/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(69, 131, 226, 0.14);">
+                        <i class="fa-solid fa-newspaper text-base text-[#4583E2]"></i>
+                    </div>
                     <span>Blog</span>
                 </a>
-                <a href="https://slabby.co/reviews/" class="flex items-center gap-2.5 py-1 text-sm font-medium text-gray-600 hover:text-black">
-                    <i class="fa-solid fa-star text-xs text-amber-500"></i>
+                <a href="/reviews/" class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(69, 131, 226, 0.14);">
+                        <i class="fa-solid fa-star text-base text-[#4583E2]"></i>
+                    </div>
                     <span>Reviews</span>
                 </a>
             </div>
