@@ -1,0 +1,510 @@
+---
+layout: null
+is_home: false
+title: "Slabby Blog — Climbing Guides, Beta, Terminology & Gym Tips"
+description: "Explore the official Slabby climbing blog. Master rock climbing hold types, grip biomechanics, gym vocabulary, interactive flashcards, and beta to crush your climbing projects."
+permalink: /blog/
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slabby Blog — Climbing Guides, Beta, Terminology & Gym Tips</title>
+    <meta name="description" content="Explore the official Slabby climbing blog. Master rock climbing hold types, grip biomechanics, gym vocabulary, interactive flashcards, and beta to crush your climbing projects.">
+    <link rel="canonical" href="https://slabby.co/blog/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://slabby.co/blog/">
+    <meta property="og:title" content="Slabby Blog — Climbing Guides, Beta, Terminology & Gym Tips">
+    <meta property="og:description" content="Master rock climbing hold types, gym beta, interactive flashcards, and technique with Slabby guides.">
+    <meta property="og:image" content="https://slabby.co/assets/blog/climbing-hold-types-cover.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://slabby.co/blog/">
+    <meta property="twitter:title" content="Slabby Blog — Climbing Guides, Beta, Terminology & Gym Tips">
+    <meta property="twitter:description" content="Master rock climbing hold types, gym beta, interactive flashcards, and technique with Slabby guides.">
+    <meta property="twitter:image" content="https://slabby.co/assets/blog/climbing-hold-types-cover.webp">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Tailwind CSS v3 CDN with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4583E2",
+                        "primary-blue": "#4583E2",
+                        "on-surface": "#111827",
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Roboto', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        body: ['Roboto', 'sans-serif'],
+                        cherrybomb: ['"Cherry Bomb One"', 'cursive', 'sans-serif'],
+                        lexend: ['Lexend', 'Ledenx', 'sans-serif'],
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Schibsted+Grotesk:wght@800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Schema.org JSON-LD (CollectionPage & Blog Structured Data) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Blog",
+          "@id": "https://slabby.co/blog/#blog",
+          "name": "Slabby Climbing Blog",
+          "url": "https://slabby.co/blog/",
+          "description": "Master climbing vocabulary, hold types, gym beta, and climbing flashcards with Slabby.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Slabby",
+            "url": "https://slabby.co",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://slabby.co/icon.png"
+            }
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://slabby.co/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://slabby.co/blog/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        .primary {
+            color: #4583E2 !important;
+        }
+        button.primary, a.primary {
+            background-color: #4583E2 !important;
+            color: #FFFFFF !important;
+        }
+        .titles, .font-lexend {
+            font-family: 'Lexend', sans-serif !important;
+        }
+        .font-schibsted, .header-cta-btn {
+            font-family: 'Schibsted Grotesk', sans-serif !important;
+            font-weight: 800 !important;
+        }
+        .font-cherry-bomb {
+            font-family: 'Cherry Bomb One', cursive, sans-serif !important;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Slabby Elevation Card Shadow */
+        .slabby-blog-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.85);
+            border-radius: 1.5rem;
+            box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .slabby-blog-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(69, 131, 226, 0.35);
+            box-shadow: 0 20px 42px -10px rgba(69, 131, 226, 0.12), 0 6px 16px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Filter Tab Buttons */
+        .filter-tab {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .filter-tab.active {
+            background-color: #111827;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
+        }
+
+        /* Cover Image Aspect Ratio & Shimmer */
+        .card-cover-container {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        .card-cover-img {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slabby-blog-card:hover .card-cover-img {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-[#F6F6F6] text-[#111827] font-body selection:bg-black selection:text-white antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar (Shared Component) -->
+    {% include header.html %}
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-16 flex-1 w-full">
+        
+        <!-- ========================================================
+             1. BLOG HEADER & HERO INTRO
+             ======================================================== -->
+        <header class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center justify-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-5">
+                <a href="/" class="hover:text-black transition-colors">Home</a>
+                <span>/</span>
+                <span class="text-gray-400">Blog</span>
+            </nav>
+
+            <span class="font-schibsted inline-flex items-center gap-1.5 py-1.5 px-4 rounded-full bg-blue-50 border border-blue-100 text-[#4583E2] text-xs tracking-wider uppercase mb-4">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Official Climbing Guides
+            </span>
+
+            <h1 class="titles text-3xl sm:text-5xl text-black font-extrabold tracking-tight leading-tight mb-4">
+                Climbing Guides, Beta &amp; Terminology
+            </h1>
+            <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+                Master rock climbing hold types, understand route setting beta effortlessly, and build confidence for your next gym session or crag trip.
+            </p>
+
+            <!-- Search Bar & Filters -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="blog-search-input" 
+                        placeholder="Search holds, terms, technique..." 
+                        class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4583E2] focus:border-transparent transition-all shadow-xs"
+                    />
+                </div>
+            </div>
+
+            <!-- Category Pills Filter -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-5" id="category-filters">
+                <button type="button" class="filter-tab active text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="all">
+                    All Guides
+                </button>
+                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Hold Types & Grips">
+                    Hold Types &amp; Grips
+                </button>
+                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Technique & Biomechanics">
+                    Technique &amp; Biomechanics
+                </button>
+                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Gym Beta & Tips">
+                    Gym Beta &amp; Tips
+                </button>
+            </div>
+        </header>
+
+        <!-- ========================================================
+             2. FEATURED POST HIGHLIGHT (HERO CARD)
+             ======================================================== -->
+        <section id="featured-post-container" class="mb-14 sm:mb-20">
+            <!-- Dynamically populated or Pre-rendered -->
+            <div class="slabby-blog-card p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-gray-200">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#FF5C4D] border border-orange-100">
+                            <i class="fa-solid fa-fire text-xs"></i>
+                            Featured Guide
+                        </span>
+                        <span class="text-xs font-medium text-gray-400">•</span>
+                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Hold Types &amp; Grips</span>
+                    </div>
+
+                    <h2 class="titles text-2xl sm:text-3xl font-extrabold text-black leading-snug">
+                        <a href="/blog/climbing-hold-types-guide" class="hover:text-[#4583E2] transition-colors">
+                            Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip
+                        </a>
+                    </h2>
+
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Master all 10 rock climbing hold types—from jugs and crimps to slopers, volumes, and gastons. Includes Slabby interactive 3D flashcards, real gym photos, and grip biomechanics.
+                    </p>
+
+                    <!-- Author & Read Time -->
+                    <div class="flex items-center gap-3.5 pt-3">
+                        <img src="/icon.png" alt="Slabby Team" class="w-12 h-12 rounded-full object-cover border-0 p-0 shadow-none flex-shrink-0" />
+                        <div>
+                            <div class="font-bold text-gray-900 text-sm">Slabby Team</div>
+                            <div class="text-xs text-gray-500 flex items-center gap-1.5">
+                                <time datetime="2026-10-31T12:00:00+00:00">1 day ago</time>
+                                <span>•</span>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="/blog/climbing-hold-types-guide" class="inline-flex items-center gap-2 font-schibsted primary bg-primary text-white text-sm px-5 py-2.5 rounded-xl hover:bg-neutral-800 transition-all shadow-md">
+                            <span>Read Full Guide</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 order-first lg:order-last">
+                    <a href="/blog/climbing-hold-types-guide" class="block rounded-2xl overflow-hidden card-cover-container border border-gray-200/80 aspect-[16/10] group">
+                        <img 
+                            src="/assets/blog/climbing-hold-types-cover.webp" 
+                            alt="Climbing Hold Types Visual Guide Cover" 
+                            class="w-full h-full object-cover card-cover-img"
+                            onerror="this.onerror=null; this.src='/assets/holds/hold_types.webp'; this.className='w-full h-full object-contain p-8 card-cover-img bg-slate-900';"
+                        />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             3. LATEST POSTS FEED (AUTOMATICALLY SORTED BY DATE)
+             ======================================================== -->
+        <section>
+            <div class="flex items-center justify-between pb-6 mb-8 border-b border-gray-200">
+                <div>
+                    <h3 class="titles text-2xl text-black font-extrabold">All Articles &amp; Beta Guides</h3>
+                    <p class="text-sm text-gray-500 mt-1">Sorted by most recent upload</p>
+                </div>
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider" id="posts-count-indicator">
+                    Showing 1 article
+                </div>
+            </div>
+
+            <!-- Grid of Cards (Rendered with pure responsive cards) -->
+            <div id="blog-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Articles injected automatically or pre-rendered for SEO -->
+            </div>
+
+            <!-- Empty State (When search returns 0 results) -->
+            <div id="no-results-state" class="hidden text-center py-16 bg-white border border-gray-200 rounded-3xl p-8 max-w-md mx-auto shadow-xs">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
+                <h4 class="titles text-lg text-black font-bold mb-1">No articles found</h4>
+                <p class="text-sm text-gray-500 mb-4">Try searching for other terms like "crimp", "sloper", or "jug".</p>
+                <button type="button" id="clear-search-btn" class="text-xs font-bold text-[#4583E2] hover:underline cursor-pointer">
+                    Clear search filter
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             4. BOTTOM SLABBY APP BANNER
+             ======================================================== -->
+        <section class="mt-20 pt-10 border-t border-gray-200">
+            <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+                <div class="space-y-3 max-w-xl text-center md:text-left">
+                    <span class="font-schibsted inline-block py-1 px-3 rounded-full bg-white/10 text-xs font-bold uppercase tracking-wider text-blue-300">
+                        Practice On The Go
+                    </span>
+                    <h3 class="titles text-2xl sm:text-3xl font-extrabold text-white">
+                        Learn 70+ Climbing Terms with Slabby
+                    </h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Test your knowledge before hitting the climbing gym. Study flashcards, hear native English pronunciations, and play interactive terminology quizzes.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-3.5 flex-shrink-0">
+                    <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener" class="hover:opacity-90 transition-opacity">
+                        <img src="/app-store-badge.png" alt="Download on the App Store" class="h-11 w-auto" />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener" class="hover:opacity-90 transition-opacity">
+                        <img src="/google-play-badge.png" alt="Get it on Google Play" class="h-11 w-auto" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Shared Component) -->
+    {% include footer.html %}
+
+    <!-- ========================================================
+         5. AUTOMATIC POSTS REGISTRY & REAL-TIME SORTING SCRIPT
+         ======================================================== -->
+    <script>
+        // Centralized Blog Posts Registry: Sorted automatically by recent upload date
+        const BLOG_POSTS = [
+            {
+                id: "climbing-hold-types-guide",
+                title: "Climbing Hold Types: The Ultimate Visual Guide to Every Rock Climbing Grip",
+                slug: "/blog/climbing-hold-types-guide",
+                date: "2026-10-31T12:00:00Z",
+                dateDisplay: "Oct 31, 2026",
+                timeAgo: "1 day ago",
+                readTime: "8 min read",
+                category: "Hold Types & Grips",
+                categoryColor: "#FF5C4D",
+                excerpt: "Master all 10 rock climbing hold types—from jugs and crimps to slopers, volumes, and gastons. Includes Slabby flashcards, real gym photos, and grip biomechanics.",
+                coverImage: "/assets/blog/climbing-hold-types-cover.webp",
+                fallbackImage: "/assets/holds/hold_types.webp",
+                author: {
+                    name: "Slabby Team",
+                    avatar: "/icon.png"
+                },
+                tags: ["Holds", "Bouldering", "Gym Beta"]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const gridContainer = document.getElementById('blog-posts-grid');
+            const searchInput = document.getElementById('blog-search-input');
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const noResultsState = document.getElementById('no-results-state');
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            const countIndicator = document.getElementById('posts-count-indicator');
+
+            let currentCategory = 'all';
+            let currentQuery = '';
+
+            // Automatic sorting by most recent date first (Newest -> Oldest)
+            const sortedPosts = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            function renderCards() {
+                const filtered = sortedPosts.filter(post => {
+                    const matchesCategory = currentCategory === 'all' || post.category.toLowerCase().includes(currentCategory.toLowerCase()) || currentCategory.toLowerCase().includes(post.category.toLowerCase());
+                    const matchesQuery = !currentQuery || 
+                        post.title.toLowerCase().includes(currentQuery) || 
+                        post.excerpt.toLowerCase().includes(currentQuery) ||
+                        post.category.toLowerCase().includes(currentQuery) ||
+                        (post.tags && post.tags.some(tag => tag.toLowerCase().includes(currentQuery)));
+
+                    return matchesCategory && matchesQuery;
+                });
+
+                if (countIndicator) {
+                    countIndicator.textContent = `Showing ${filtered.length} ${filtered.length === 1 ? 'article' : 'articles'}`;
+                }
+
+                if (filtered.length === 0) {
+                    gridContainer.innerHTML = '';
+                    noResultsState.classList.remove('hidden');
+                    return;
+                }
+
+                noResultsState.classList.add('hidden');
+
+                gridContainer.innerHTML = filtered.map(post => `
+                    <article class="slabby-blog-card flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <!-- Cover Thumbnail -->
+                            <a href="${post.slug}" class="block card-cover-container aspect-[16/10] overflow-hidden rounded-t-[1.4rem]">
+                                <img 
+                                    src="${post.coverImage}" 
+                                    alt="${post.title}" 
+                                    loading="lazy"
+                                    class="w-full h-full object-cover card-cover-img"
+                                    onerror="this.onerror=null; this.src='${post.fallbackImage}'; this.className='w-full h-full object-contain p-6 card-cover-img bg-slate-900';"
+                                />
+                            </a>
+
+                            <!-- Card Body -->
+                            <div class="p-6">
+                                <div class="flex items-center justify-between gap-2 mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-[#FF5C4D]">
+                                        ${post.category}
+                                    </span>
+                                    <span class="text-xs text-gray-400 font-medium">
+                                        ${post.readTime}
+                                    </span>
+                                </div>
+
+                                <h3 class="titles text-lg sm:text-xl font-bold text-gray-900 leading-snug mb-2.5">
+                                    <a href="${post.slug}" class="hover:text-[#4583E2] transition-colors">
+                                        ${post.title}
+                                    </a>
+                                </h3>
+
+                                <p class="text-sm text-gray-600 line-clamp-3 leading-relaxed mb-4">
+                                    ${post.excerpt}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer (Author & Date) -->
+                        <div class="px-6 pb-6 pt-0 border-t border-gray-100 flex items-center justify-between mt-auto">
+                            <div class="flex items-center gap-3 pt-4">
+                                <img src="${post.author.avatar}" alt="${post.author.name}" class="w-10 h-10 rounded-full object-cover border-0 p-0 shadow-none" />
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">${post.author.name}</div>
+                                    <div class="text-xs text-gray-400">${post.timeAgo}</div>
+                                </div>
+                            </div>
+                            <a href="${post.slug}" class="pt-4 text-[#4583E2] hover:text-blue-700 font-bold text-xs inline-flex items-center gap-1" aria-label="Read ${post.title}">
+                                <span>Read</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            // Initial render
+            renderCards();
+
+            // Search filter handler
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    currentQuery = e.target.value.trim().toLowerCase();
+                    renderCards();
+                });
+            }
+
+            // Category tabs handler
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentCategory = tab.getAttribute('data-category');
+                    renderCards();
+                });
+            });
+
+            // Clear search button
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+                    currentQuery = '';
+                    currentCategory = 'all';
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    if (filterTabs[0]) filterTabs[0].classList.add('active');
+                    renderCards();
+                });
+            }
+        });
+    </script>
+    <script src="/acciones.js"></script>
+</body>
+</html>
