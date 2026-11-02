@@ -29,6 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Detección de página Home
+    const cleanPath = window.location.pathname.replace(/\/+$/, '');
+    const isHomePage = cleanPath === '' || cleanPath === '/' || cleanPath === '/index.html';
+
+    // Animación de rebote (bounce) y zoom para los botones de las tiendas (App Store y Google Play)
+    function triggerStoreBadgesBounce() {
+        const badges = document.querySelectorAll('.store-badge, a[href*="apple.com"], a[href*="google.com"]');
+        badges.forEach((badge) => {
+            badge.classList.remove('store-badge-bounce');
+            void badge.offsetWidth; // Forzar reflow para reiniciar la animación CSS
+            badge.classList.add('store-badge-bounce');
+            setTimeout(() => {
+                badge.classList.remove('store-badge-bounce');
+            }, 900);
+        });
+    }
+
     // =========================================================================
     // 1. Navegación interna con desplazamiento suave (smooth scroll)
     // =========================================================================
@@ -40,6 +57,44 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const targetId = btn.getAttribute('data-target');
+            const isGetStarted = btn.id === 'desktop-cta-btn' || targetId === 'download';
+
+            // Caso A: Fuera del Home (en cualquier subpágina como /terms, /blog/..., etc.)
+            if (!isHomePage) {
+                if (isGetStarted) {
+                    // En laptop o cualquier vista, "Get Started" va a "/" limpio (sin #download)
+                    window.location.href = '/';
+                    return;
+                }
+                // Si es otro botón con ancla
+                if (targetId) {
+                    window.location.href = `/#${targetId}`;
+                } else {
+                    window.location.href = '/';
+                }
+                return;
+            }
+
+            // Caso B: Dentro del Home
+            if (isGetStarted) {
+                // Scroll fluido hacia la parte superior (hero / download)
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+                // Reacción visual con animación bounce y zoom en los botones de App Store y Google Play
+                triggerStoreBadgesBounce();
+                if (window.scrollY > 40) {
+                    setTimeout(triggerStoreBadgesBounce, 420);
+                }
+
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                return;
+            }
+
             if (!targetId) return;
 
             const targetSection = document.getElementById(targetId);
@@ -54,9 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
-            } else {
-                // Si estamos en una subpágina (/terms, /privacypolicy, etc.), redirigir al home
-                window.location.href = `/#${targetId}`;
             }
         });
     });
@@ -76,9 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileResChevron = document.getElementById('mobile-resources-chevron');
     if (mobileResToggle && mobileResMenu) {
         mobileResToggle.addEventListener('click', () => {
-            mobileResMenu.classList.toggle('hidden');
+            const isNowHidden = mobileResMenu.classList.toggle('hidden');
+            mobileResToggle.setAttribute('aria-expanded', (!isNowHidden).toString());
             if (mobileResChevron) {
-                mobileResChevron.classList.toggle('rotate-180');
+                if (isNowHidden) {
+                    // Contraída: chevron hacia abajo (sin rotar)
+                    mobileResChevron.classList.remove('rotate-180');
+                } else {
+                    // Expandida: chevron hacia arriba (rotado 180deg)
+                    mobileResChevron.classList.add('rotate-180');
+                }
             }
         });
     }
@@ -86,8 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 3. Regla: "Board, Route y Gym" solo visibles en la pantalla Home
     // =========================================================================
-    const cleanPath = window.location.pathname.replace(/\/+$/, '');
-    const isHomePage = cleanPath === '' || cleanPath === '/' || cleanPath === '/index.html';
     if (!isHomePage) {
         document.querySelectorAll('.home-only-nav, [data-home-only]').forEach((el) => el.remove());
     }

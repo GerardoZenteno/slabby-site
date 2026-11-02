@@ -140,6 +140,35 @@ is_home: true
         .nav-item {
             cursor: pointer;
         }
+
+        /* Store Badges Bounce & Zoom Reaction (Home Get Started Click) */
+        @keyframes storeBadgeBounceZoom {
+            0% {
+                transform: scale(1) translateY(0);
+            }
+            20% {
+                transform: scale(1.16) translateY(-8px);
+                filter: drop-shadow(0 12px 22px rgba(69, 131, 226, 0.45));
+            }
+            45% {
+                transform: scale(0.96) translateY(2px);
+            }
+            70% {
+                transform: scale(1.08) translateY(-4px);
+                filter: drop-shadow(0 6px 14px rgba(69, 131, 226, 0.3));
+            }
+            85% {
+                transform: scale(0.99) translateY(0);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                filter: none;
+            }
+        }
+        .store-badge-bounce {
+            animation: storeBadgeBounceZoom 0.85s cubic-bezier(0.28, 0.84, 0.42, 1) !important;
+            will-change: transform;
+        }
     </style>
 </head>
 <body class="bg-[#F6F6F6] text-[#111827] font-body selection:bg-black selection:text-white antialiased">
@@ -167,10 +196,10 @@ is_home: true
                     Learn essential climbing terminology, master gym beta with ease, and build unshakeable confidence every time you step into the climbing gym.
                 </p>
                 <div class="reveal-item hero-reveal delay-300 pt-4 flex flex-wrap items-center gap-4">
-                    <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105 active:scale-95">
+                    <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform hover:scale-105 active:scale-95">
                         <img src="./app-store-badge.png" alt="Download on the App Store" class="h-14 w-auto shadow-md rounded-lg">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105 active:scale-95">
+                    <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform hover:scale-105 active:scale-95">
                         <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-14 w-auto shadow-md rounded-lg">
                     </a>
                 </div>
@@ -198,10 +227,10 @@ is_home: true
                 Master climbing vocabulary, understand gym beta effortlessly, and feel more confident on the wall every day.
             </p>
             <div class="reveal-item hero-reveal delay-300 flex flex-wrap items-center justify-center gap-3 mb-8">
-                <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform active:scale-95">
+                <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform active:scale-95">
                     <img src="./app-store-badge.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform active:scale-95">
+                <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform active:scale-95">
                     <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
                 </a>
             </div>
