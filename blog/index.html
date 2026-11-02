@@ -144,15 +144,6 @@ permalink: /blog/
             box-shadow: 0 20px 42px -10px rgba(69, 131, 226, 0.12), 0 6px 16px rgba(15, 23, 42, 0.04);
         }
 
-        /* Filter Tab Buttons */
-        .filter-tab {
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .filter-tab.active {
-            background-color: #111827;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
-        }
 
         /* Cover Image Aspect Ratio & Shimmer */
         .card-cover-container {
@@ -187,46 +178,12 @@ permalink: /blog/
                 <span class="text-gray-400">Blog</span>
             </nav>
 
-            <span class="font-schibsted inline-flex items-center gap-1.5 py-1.5 px-4 rounded-full bg-blue-50 border border-blue-100 text-[#4583E2] text-xs tracking-wider uppercase mb-4">
-                <i class="fa-solid fa-graduation-cap"></i>
-                Official Climbing Guides
-            </span>
-
             <h1 class="titles text-3xl sm:text-5xl text-black font-extrabold tracking-tight leading-tight mb-4">
                 Climbing Guides, Beta &amp; Terminology
             </h1>
             <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
                 Master rock climbing hold types, understand route setting beta effortlessly, and build confidence for your next gym session or crag trip.
             </p>
-
-            <!-- Search Bar & Filters -->
-            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
-                <div class="relative w-full">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input 
-                        type="text" 
-                        id="blog-search-input" 
-                        placeholder="Search holds, terms, technique..." 
-                        class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4583E2] focus:border-transparent transition-all shadow-xs"
-                    />
-                </div>
-            </div>
-
-            <!-- Category Pills Filter -->
-            <div class="flex flex-wrap items-center justify-center gap-2 pt-5" id="category-filters">
-                <button type="button" class="filter-tab active text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="all">
-                    All Guides
-                </button>
-                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Hold Types & Grips">
-                    Hold Types &amp; Grips
-                </button>
-                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Technique & Biomechanics">
-                    Technique &amp; Biomechanics
-                </button>
-                <button type="button" class="filter-tab text-xs font-semibold px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 hover:text-black cursor-pointer" data-category="Gym Beta & Tips">
-                    Gym Beta &amp; Tips
-                </button>
-            </div>
         </header>
 
         <!-- ========================================================
@@ -307,16 +264,6 @@ permalink: /blog/
             <div id="blog-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Articles injected automatically or pre-rendered for SEO -->
             </div>
-
-            <!-- Empty State (When search returns 0 results) -->
-            <div id="no-results-state" class="hidden text-center py-16 bg-white border border-gray-200 rounded-3xl p-8 max-w-md mx-auto shadow-xs">
-                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-4"></i>
-                <h4 class="titles text-lg text-black font-bold mb-1">No articles found</h4>
-                <p class="text-sm text-gray-500 mb-4">Try searching for other terms like "crimp", "sloper", or "jug".</p>
-                <button type="button" id="clear-search-btn" class="text-xs font-bold text-[#4583E2] hover:underline cursor-pointer">
-                    Clear search filter
-                </button>
-            </div>
         </section>
 
         <!-- ========================================================
@@ -329,7 +276,7 @@ permalink: /blog/
                         Practice On The Go
                     </span>
                     <h3 class="titles text-2xl sm:text-3xl font-extrabold text-white">
-                        Learn 70+ Climbing Terms with Slabby
+                        Learn 100+ Climbing Terms with Slabby
                     </h3>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                         Test your knowledge before hitting the climbing gym. Study flashcards, hear native English pronunciations, and play interactive terminology quizzes.
@@ -380,43 +327,17 @@ permalink: /blog/
 
         document.addEventListener('DOMContentLoaded', () => {
             const gridContainer = document.getElementById('blog-posts-grid');
-            const searchInput = document.getElementById('blog-search-input');
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            const noResultsState = document.getElementById('no-results-state');
-            const clearSearchBtn = document.getElementById('clear-search-btn');
             const countIndicator = document.getElementById('posts-count-indicator');
-
-            let currentCategory = 'all';
-            let currentQuery = '';
 
             // Automatic sorting by most recent date first (Newest -> Oldest)
             const sortedPosts = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            function renderCards() {
-                const filtered = sortedPosts.filter(post => {
-                    const matchesCategory = currentCategory === 'all' || post.category.toLowerCase().includes(currentCategory.toLowerCase()) || currentCategory.toLowerCase().includes(post.category.toLowerCase());
-                    const matchesQuery = !currentQuery || 
-                        post.title.toLowerCase().includes(currentQuery) || 
-                        post.excerpt.toLowerCase().includes(currentQuery) ||
-                        post.category.toLowerCase().includes(currentQuery) ||
-                        (post.tags && post.tags.some(tag => tag.toLowerCase().includes(currentQuery)));
+            if (countIndicator) {
+                countIndicator.textContent = `Showing ${sortedPosts.length} ${sortedPosts.length === 1 ? 'article' : 'articles'}`;
+            }
 
-                    return matchesCategory && matchesQuery;
-                });
-
-                if (countIndicator) {
-                    countIndicator.textContent = `Showing ${filtered.length} ${filtered.length === 1 ? 'article' : 'articles'}`;
-                }
-
-                if (filtered.length === 0) {
-                    gridContainer.innerHTML = '';
-                    noResultsState.classList.remove('hidden');
-                    return;
-                }
-
-                noResultsState.classList.add('hidden');
-
-                gridContainer.innerHTML = filtered.map(post => `
+            if (gridContainer) {
+                gridContainer.innerHTML = sortedPosts.map(post => `
                     <article class="slabby-blog-card flex flex-col justify-between overflow-hidden">
                         <div>
                             <!-- Cover Thumbnail -->
@@ -469,39 +390,6 @@ permalink: /blog/
                         </div>
                     </article>
                 `).join('');
-            }
-
-            // Initial render
-            renderCards();
-
-            // Search filter handler
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    currentQuery = e.target.value.trim().toLowerCase();
-                    renderCards();
-                });
-            }
-
-            // Category tabs handler
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    currentCategory = tab.getAttribute('data-category');
-                    renderCards();
-                });
-            });
-
-            // Clear search button
-            if (clearSearchBtn) {
-                clearSearchBtn.addEventListener('click', () => {
-                    if (searchInput) searchInput.value = '';
-                    currentQuery = '';
-                    currentCategory = 'all';
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    if (filterTabs[0]) filterTabs[0].classList.add('active');
-                    renderCards();
-                });
             }
         });
     </script>
