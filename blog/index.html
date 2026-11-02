@@ -171,11 +171,19 @@ permalink: /blog/
              1. BLOG HEADER & HERO INTRO
              ======================================================== -->
         <header class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <!-- Breadcrumbs -->
-            <nav class="flex items-center justify-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-5">
-                <a href="/" class="hover:text-black transition-colors">Home</a>
-                <span>/</span>
-                <span class="text-gray-400">Blog</span>
+            <!-- Breadcrumbs (Matches Reviews Page Style) -->
+            <nav aria-label="Breadcrumb" class="text-center mb-6">
+                <ol class="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-gray-500">
+                    <li>
+                        <a href="/" class="hover:text-black transition-colors">Home</a>
+                    </li>
+                    <li>
+                        <span class="text-gray-400">/</span>
+                    </li>
+                    <li class="text-black" aria-current="page">
+                        Blog
+                    </li>
+                </ol>
             </nav>
 
             <h1 class="titles text-3xl sm:text-5xl text-black font-extrabold tracking-tight leading-tight mb-4">
