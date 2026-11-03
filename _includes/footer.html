@@ -1,28 +1,28 @@
 <!-- Mascot Asset Centered Peaking Above Footer with Interactive Speech Bubble -->
-<div class="max-w-7xl mx-auto px-6 flex justify-center items-center mt-20 sm:mt-24 -mb-9 sm:-mb-11 relative z-20 pointer-events-auto">
+<div class="max-w-7xl mx-auto px-6 flex justify-center items-center mt-20 sm:mt-24 -mb-10 sm:-mb-12 relative z-20 pointer-events-auto">
     <div id="slabby-mascot-container" class="relative group cursor-pointer select-none inline-flex flex-col items-center" title="Click or hover me!">
-        <!-- Speech Bubble (Positioned at top-left of mascot) -->
-        <div id="slabby-speech-bubble" class="absolute bottom-full left-1/2 -translate-x-[78%] sm:-translate-x-[84%] mb-2 sm:mb-2.5 z-30 pointer-events-auto transition-transform duration-200 ease-out origin-bottom-right">
-            <div class="relative bg-white border border-gray-200/90 rounded-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] px-3.5 py-2 sm:px-4 sm:py-2.5 max-w-[220px] sm:max-w-[270px]">
-                <p id="slabby-mascot-text" class="text-xs sm:text-[13px] font-semibold text-gray-800 leading-snug transition-all duration-150 select-none">
+        <!-- Speech Bubble (Anchored at top-left of mascot, fixed width to keep tail completely stable, reduced on mobile) -->
+        <div id="slabby-speech-bubble" class="absolute bottom-full left-1/2 -translate-x-[70%] sm:-translate-x-[78%] mb-3 sm:mb-4 z-30 pointer-events-auto">
+            <div id="slabby-bubble-card" class="relative bg-white border border-gray-200/90 rounded-2xl sm:rounded-3xl shadow-[0_10px_28px_rgba(15,23,42,0.14)] p-3 sm:px-4 sm:py-3 w-[205px] sm:w-[310px] text-left transition-transform duration-150">
+                <p id="slabby-mascot-text" class="text-xs sm:text-[13px] font-semibold text-gray-800 leading-snug transition-opacity duration-150 select-none">
                     👋 Hi down here! I'm Slabby!
                 </p>
-                <!-- Bubble Tail Pointer toward mascot -->
-                <div class="absolute -bottom-1.5 left-[75%] sm:left-[80%] -translate-x-1/2 w-3 h-3 bg-white border-b border-r border-gray-200/90 transform rotate-45"></div>
+                <!-- Bubble Tail Pointer toward mascot (Fixed position, never moves across messages) -->
+                <div class="absolute -bottom-2 right-6 sm:right-8 w-3.5 h-3.5 bg-white border-b border-r border-gray-200/90 transform rotate-45"></div>
             </div>
         </div>
 
-        <!-- Mascot Image with subtle bounce on hover/click -->
+        <!-- Mascot Image (Enlarged and positioned gracefully lower) -->
         <img id="slabby-mascot-img" 
              src="/slabby_footer.webp" 
              alt="Slabby Mascot" 
-             class="h-20 sm:h-24 w-auto object-contain drop-shadow-md select-none transition-transform duration-200 ease-out group-hover:scale-105 active:scale-95" 
+             class="h-28 sm:h-36 w-auto object-contain drop-shadow-md select-none transition-transform duration-200 ease-out group-hover:scale-105 active:scale-95" 
              onerror="this.onerror=null; this.src='/icon_foreground.png';" />
     </div>
 </div>
 
-<!-- Footer (Shared Component) -->
-<footer class="bg-white border-t border-gray-200 pt-16 pb-12 mt-4 relative">
+<!-- Footer (Shared Component with generous top padding to give mascot breathing room) -->
+<footer class="bg-white border-t border-gray-200 pt-24 sm:pt-28 lg:pt-32 pb-14 mt-4 relative">
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
             
@@ -31,143 +31,170 @@
                 <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity inline-block" style="color: #000000 !important;">
                     SLABBY
                 </a>
-                <p class="text-xs sm:text-sm font-semibold text-gray-900 leading-snug">
-                    Making better climbers since 2026.
+                <p class="titles text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                    Making Better Climbers Since 2026
                 </p>
                 <p class="text-xs text-gray-500 leading-relaxed max-w-sm mx-auto md:mx-0 font-normal">
                     Master gym beta effortlessly, learn rock climbing terminology with native pronunciation, and build confidence on every wall.
                 </p>
             </div>
 
-            <!-- Right Columns Container: Resources, Stay up to date, Ask AI about Slabby -->
-            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
+            <!-- Right Columns Container: Centered on mobile, left-aligned on sm/desktop -->
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
                 
-                <!-- Column 1: Resources -->
-                <div>
-                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                <!-- Column 1: Resources (Centered on mobile) -->
+                <div class="flex flex-col items-center sm:items-start">
+                    <h4 class="titles text-sm sm:text-base font-bold text-gray-900 mb-4 text-center sm:text-left">
                         Resources
                     </h4>
-                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
+                    <ul class="space-y-3 text-xs sm:text-[13px] font-medium text-gray-600 flex flex-col items-center sm:items-start">
                         <li>
-                            <a href="/reviews/" rel="nofollow" class="hover:text-black transition-colors block">Reviews</a>
+                            <a href="/reviews/" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-star text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
+                                <span>Reviews</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="/blog/" rel="nofollow" class="hover:text-black transition-colors block">Blog</a>
+                            <a href="/blog/" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-newspaper text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
+                                <span>Blog</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="/privacypolicy/" rel="nofollow" class="hover:text-black transition-colors block">Privacy Policy</a>
+                            <a href="/privacypolicy/" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-shield-halved text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
+                                <span>Privacy Policy</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="/terms/" rel="nofollow" class="hover:text-black transition-colors block">Terms of Service</a>
+                            <a href="/terms/" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-file-contract text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
+                                <span>Terms of Service</span>
+                            </a>
                         </li>
                         <li>
-                            <a href="/delete-account/" rel="nofollow" class="hover:text-black transition-colors block">Delete account</a>
+                            <a href="/delete-account/" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-user-xmark text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
+                                <span>Delete account</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Column 2: Stay up to date (List with Icon + Text) -->
-                <div>
-                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                <!-- Column 2: Stay up to date (Centered on mobile) -->
+                <div class="flex flex-col items-center sm:items-start">
+                    <h4 class="titles text-sm sm:text-base font-bold text-gray-900 mb-4 text-center sm:text-left">
                         Stay up to date
                     </h4>
-                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
+                    <ul class="space-y-3 text-xs sm:text-[13px] font-medium text-gray-600 flex flex-col items-center sm:items-start">
                         <!-- Email Link -->
                         <li>
                             <a href="mailto:hello@slabby.co" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <i class="fa-solid fa-envelope text-[11px]"></i>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-solid fa-envelope text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
                                 <span>Email</span>
                             </a>
                         </li>
                         <!-- Instagram Link -->
                         <li>
                             <a href="https://www.instagram.com/slabby.climb/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <i class="fa-brands fa-instagram text-[11px]"></i>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-brands fa-instagram text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
                                 <span>Instagram</span>
                             </a>
                         </li>
                         <!-- YouTube Link -->
                         <li>
                             <a href="https://www.youtube.com/@slabby-climb" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <i class="fa-brands fa-youtube text-[11px]"></i>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-brands fa-youtube text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
                                 <span>YouTube</span>
                             </a>
                         </li>
                         <!-- Facebook Link -->
                         <li>
                             <a href="https://www.facebook.com/slabby.climb/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <i class="fa-brands fa-facebook text-[11px]"></i>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-brands fa-facebook text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
                                 <span>Facebook</span>
                             </a>
                         </li>
                         <!-- Discord Link -->
                         <li>
                             <a href="https://discord.gg/weG4a5eak" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <i class="fa-brands fa-discord text-[11px]"></i>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <i class="fa-brands fa-discord text-xs sm:text-sm text-[#4583E2]"></i>
+                                </div>
                                 <span>Discord</span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Column 3: Ask AI about Slabby (List with Icon + Text) -->
-                <div>
-                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                <!-- Column 3: Ask AI about Slabby (Centered on mobile) -->
+                <div class="flex flex-col items-center sm:items-start">
+                    <h4 class="titles text-sm sm:text-base font-bold text-gray-900 mb-4 text-center sm:text-left">
                         Ask AI about Slabby
                     </h4>
-                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
-                        <!-- ChatGPT -->
+                    <ul class="space-y-3 text-xs sm:text-[13px] font-medium text-gray-600 flex flex-col items-center sm:items-start">
+                        <!-- ChatGPT (Official OpenAI Vector Mark) -->
                         <li>
                             <a href="https://chatgpt.com/?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M22.28 9.87a5.98 5.98 0 0 0-.52-4.9 6.05 6.05 0 0 0-6.51-2.88A6 6 0 0 0 10.7.35a6.05 6.05 0 0 0-5.74 3.98 5.98 5.98 0 0 0-4.04 2.93 6.05 6.05 0 0 0 .77 7.07 5.98 5.98 0 0 0 .52 4.9 6.05 6.05 0 0 0 6.51 2.88A6 6 0 0 0 13.3 23.65a6.05 6.05 0 0 0 5.74-3.98 5.98 5.98 0 0 0 4.04-2.93 6.05 6.05 0 0 0-.8-6.87zM13.3 22.18c-1.28 0-2.49-.46-3.44-1.24l.17-.1 4.54-2.62a1.05 1.05 0 0 0 .53-.91v-6.42l2.03 1.17v6.18a4.57 4.57 0 0 1-3.83 3.94zm-8.8-3.77a4.52 4.52 0 0 1-.58-3.97l.17.1 4.54 2.62a1.06 1.06 0 0 0 1.06 0l5.56-3.21v2.34l-5.35 3.09a4.57 4.57 0 0 1-5.4-.97zm-1.83-8.89a4.55 4.55 0 0 1 3.26-2.73v.2l4.54 2.62a1.05 1.05 0 0 0 .53.92v6.42l-2.03-1.17V9.58a4.57 4.57 0 0 1-6.3-3.83zm13.6 1.63-5.56 3.21v-2.35l5.35-3.09a4.57 4.57 0 0 1 5.4.97 4.52 4.52 0 0 1 .58 3.97l-.17-.1-4.54-2.62a1.06 1.06 0 0 0-1.06 0zm2.36-2.77-.17-.1-4.54-2.62a1.05 1.05 0 0 0-.53-.92V1.82a4.57 4.57 0 0 1 6.3 3.83 4.55 4.55 0 0 1-1.06 2.73zm-7.93-4.56a4.57 4.57 0 0 1 3.83-1.01l-.17.1-4.54 2.62a1.06 1.06 0 0 0-.53.91v6.42l-2.03-1.17V4.81c.95-.78 2.16-1.24 3.44-1.24zm-.7 7.64 2.7-1.56 2.7 1.56v3.12l-2.7 1.56-2.7-1.56z"/></svg>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#4583E2]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.28 9.87a5.98 5.98 0 0 0-.52-4.9 6.05 6.05 0 0 0-6.51-2.88A6 6 0 0 0 10.7.35a6.05 6.05 0 0 0-5.74 3.98 5.98 5.98 0 0 0-4.04 2.93 6.05 6.05 0 0 0 .77 7.07 5.98 5.98 0 0 0 .52 4.9 6.05 6.05 0 0 0 6.51 2.88A6 6 0 0 0 13.3 23.65a6.05 6.05 0 0 0 5.74-3.98 5.98 5.98 0 0 0 4.04-2.93 6.05 6.05 0 0 0-.8-6.87zM13.3 22.18c-1.28 0-2.49-.46-3.44-1.24l.17-.1 4.54-2.62a1.05 1.05 0 0 0 .53-.91v-6.42l2.03 1.17v6.18a4.57 4.57 0 0 1-3.83 3.94zm-8.8-3.77a4.52 4.52 0 0 1-.58-3.97l.17.1 4.54 2.62a1.06 1.06 0 0 0 1.06 0l5.56-3.21v2.34l-5.35 3.09a4.57 4.57 0 0 1-5.4-.97zm-1.83-8.89a4.55 4.55 0 0 1 3.26-2.73v.2l4.54 2.62a1.05 1.05 0 0 0 .53.92v6.42l-2.03-1.17V9.58a4.57 4.57 0 0 1-6.3-3.83zm13.6 1.63-5.56 3.21v-2.35l5.35-3.09a4.57 4.57 0 0 1 5.4.97 4.52 4.52 0 0 1 .58 3.97l-.17-.1-4.54-2.62a1.06 1.06 0 0 0-1.06 0zm2.36-2.77-.17-.1-4.54-2.62a1.05 1.05 0 0 0-.53-.92V1.82a4.57 4.57 0 0 1 6.3 3.83 4.55 4.55 0 0 1-1.06 2.73zm-7.93-4.56a4.57 4.57 0 0 1 3.83-1.01l-.17.1-4.54 2.62a1.06 1.06 0 0 0-.53.91v6.42l-2.03-1.17V4.81c.95-.78 2.16-1.24 3.44-1.24zm-.7 7.64 2.7-1.56 2.7 1.56v3.12l-2.7 1.56-2.7-1.56z"/>
+                                    </svg>
+                                </div>
                                 <span>ChatGPT</span>
                             </a>
                         </li>
-                        <!-- Claude -->
+                        <!-- Claude (Official Anthropic / Claude Vector Mark) -->
                         <li>
                             <a href="https://claude.ai/new?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M13.6 2.5a1.5 1.5 0 0 0-3.2 0l-1 5.4a1.5 1.5 0 0 1-.9 1.1L3.2 11.2a1.5 1.5 0 0 0 0 2.8l5.3 2.2a1.5 1.5 0 0 1 .9 1.1l1 5.4a1.5 1.5 0 0 0 3.2 0l1-5.4a1.5 1.5 0 0 1 .9-1.1l5.3-2.2a1.5 1.5 0 0 0 0-2.8l-5.3-2.2a1.5 1.5 0 0 1-.9-1.1l-1-5.4z"/></svg>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#4583E2]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>
+                                </div>
                                 <span>Claude</span>
                             </a>
                         </li>
-                        <!-- Gemini -->
+                        <!-- Gemini (Official Google Gemini Vector Mark) -->
                         <li>
                             <a href="https://gemini.google.com/app?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 0c.3 6 4.8 10.5 10.8 10.8.3 0 .3.4 0 .4-6 .3-10.5 4.8-10.8 10.8 0 .3-.4.3-.4 0C11.3 16 6.8 11.5.8 11.2c-.3 0-.3-.4 0-.4 6-.3 10.5-4.8 10.8-10.8 0-.3.4-.3.4 0z"/></svg>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#4583E2]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>
+                                </div>
                                 <span>Gemini</span>
                             </a>
                         </li>
-                        <!-- Perplexity -->
+                        <!-- Perplexity (Official Perplexity Vector Mark) -->
                         <li>
                             <a href="https://www.perplexity.ai/search?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2a1 1 0 0 1 1 1v4.06l3.54-3.54a1 1 0 0 1 1.41 1.41L14.41 8.5H19a1 1 0 1 1 0 2h-4v3h4a1 1 0 1 1 0 2h-4.59l3.54 3.54a1 1 0 0 1-1.41 1.41L13 16.94V21a1 1 0 1 1-2 0v-4.06l-3.54 3.54a1 1 0 0 1-1.41-1.41L9.59 15.5H5a1 1 0 1 1 0-2h4v-3H5a1 1 0 1 1 0-2h4.59L6.05 4.93a1 1 0 0 1 1.41-1.41L11 7.06V3a1 1 0 0 1 1-1z"/></svg>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#4583E2]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></svg>
+                                </div>
                                 <span>Perplexity</span>
                             </a>
                         </li>
-                        <!-- Grok -->
+                        <!-- Grok (Official xAI / Grok Vector Mark) -->
                         <li>
                             <a href="https://grok.com/?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
-                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
-                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                </span>
+                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105" style="background-color: rgba(69, 131, 226, 0.14);">
+                                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#4583E2]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+                                </div>
                                 <span>Grok</span>
                             </a>
                         </li>
@@ -186,7 +213,7 @@
     function initSlabbyMascot() {
         var container = document.getElementById('slabby-mascot-container');
         var textEl = document.getElementById('slabby-mascot-text');
-        var bubble = document.getElementById('slabby-speech-bubble');
+        var cardEl = document.getElementById('slabby-bubble-card');
         if (!container || !textEl || container.dataset.initialized === 'true') return;
         container.dataset.initialized = 'true';
 
@@ -214,17 +241,15 @@
             currentIndex = (currentIndex + 1) % messages.length;
 
             textEl.style.opacity = '0';
-            textEl.style.transform = 'scale(0.96)';
-            if (bubble) {
-                bubble.style.transform = 'scale(1.05)';
+            if (cardEl) {
+                cardEl.style.transform = 'scale(1.03)';
             }
 
             setTimeout(function() {
                 textEl.textContent = messages[currentIndex];
                 textEl.style.opacity = '1';
-                textEl.style.transform = 'scale(1)';
-                if (bubble) {
-                    bubble.style.transform = 'scale(1)';
+                if (cardEl) {
+                    cardEl.style.transform = 'scale(1)';
                 }
             }, 120);
         }
