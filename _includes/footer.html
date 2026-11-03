@@ -1,19 +1,248 @@
-<!-- Footer (Shared Component) -->
-<footer class="bg-white border-t border-gray-200 py-12 mt-12">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="space-y-2 text-center md:text-left">
-            <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity" style="color: #000000 !important;">SLABBY</a>
-            <p class="text-xs text-gray-500">
-                © 2024 <span class="primary font-semibold">Slabby</span>. Not affiliated with any climbing corporation.
-            </p>
+<!-- Mascot Asset Centered Peaking Above Footer with Interactive Speech Bubble -->
+<div class="max-w-7xl mx-auto px-6 flex justify-center items-center mt-20 sm:mt-24 -mb-9 sm:-mb-11 relative z-20 pointer-events-auto">
+    <div id="slabby-mascot-container" class="relative group cursor-pointer select-none inline-flex flex-col items-center" title="Click or hover me!">
+        <!-- Speech Bubble (Positioned at top-left of mascot) -->
+        <div id="slabby-speech-bubble" class="absolute bottom-full left-1/2 -translate-x-[78%] sm:-translate-x-[84%] mb-2 sm:mb-2.5 z-30 pointer-events-auto transition-transform duration-200 ease-out origin-bottom-right">
+            <div class="relative bg-white border border-gray-200/90 rounded-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] px-3.5 py-2 sm:px-4 sm:py-2.5 max-w-[220px] sm:max-w-[270px]">
+                <p id="slabby-mascot-text" class="text-xs sm:text-[13px] font-semibold text-gray-800 leading-snug transition-all duration-150 select-none">
+                    👋 Hi down here! I'm Slabby!
+                </p>
+                <!-- Bubble Tail Pointer toward mascot -->
+                <div class="absolute -bottom-1.5 left-[75%] sm:left-[80%] -translate-x-1/2 w-3 h-3 bg-white border-b border-r border-gray-200/90 transform rotate-45"></div>
+            </div>
         </div>
-        
-        <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500 items-center">
-            <a href="/privacypolicy/" class="hover:text-black transition-colors">Privacy Policy</a>
-            <a href="/terms/" class="hover:text-black transition-colors">Terms of Service</a>
-            <a href="mailto:support@slabby.co" class="hover:text-black transition-colors">Support</a>
-            <a href="#" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-tiktok text-sm"></i> TikTok</a>
-            <a href="https://www.instagram.com/slabby.climb/" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors inline-flex items-center gap-1.5"><i class="fa-brands fa-instagram text-sm"></i> Instagram</a>
+
+        <!-- Mascot Image with subtle bounce on hover/click -->
+        <img id="slabby-mascot-img" 
+             src="/slabby_footer.webp" 
+             alt="Slabby Mascot" 
+             class="h-20 sm:h-24 w-auto object-contain drop-shadow-md select-none transition-transform duration-200 ease-out group-hover:scale-105 active:scale-95" 
+             onerror="this.onerror=null; this.src='/icon_foreground.png';" />
+    </div>
+</div>
+
+<!-- Footer (Shared Component) -->
+<footer class="bg-white border-t border-gray-200 pt-16 pb-12 mt-4 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
+            
+            <!-- Left Column: Brand Logo & Copywriting (No copyright) -->
+            <div class="md:col-span-4 space-y-3 text-center md:text-left">
+                <a href="/" class="font-cherry-bomb text-2xl !text-black hover:opacity-90 transition-opacity inline-block" style="color: #000000 !important;">
+                    SLABBY
+                </a>
+                <p class="text-xs sm:text-sm font-semibold text-gray-900 leading-snug">
+                    Making better climbers since 2026.
+                </p>
+                <p class="text-xs text-gray-500 leading-relaxed max-w-sm mx-auto md:mx-0 font-normal">
+                    Master gym beta effortlessly, learn rock climbing terminology with native pronunciation, and build confidence on every wall.
+                </p>
+            </div>
+
+            <!-- Right Columns Container: Resources, Stay up to date, Ask AI about Slabby -->
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
+                
+                <!-- Column 1: Resources -->
+                <div>
+                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                        Resources
+                    </h4>
+                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
+                        <li>
+                            <a href="/reviews/" rel="nofollow" class="hover:text-black transition-colors block">Reviews</a>
+                        </li>
+                        <li>
+                            <a href="/blog/" rel="nofollow" class="hover:text-black transition-colors block">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/privacypolicy/" rel="nofollow" class="hover:text-black transition-colors block">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="/terms/" rel="nofollow" class="hover:text-black transition-colors block">Terms of Service</a>
+                        </li>
+                        <li>
+                            <a href="/delete-account/" rel="nofollow" class="hover:text-black transition-colors block">Delete account</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Stay up to date (List with Icon + Text) -->
+                <div>
+                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                        Stay up to date
+                    </h4>
+                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
+                        <!-- Email Link -->
+                        <li>
+                            <a href="mailto:hello@slabby.co" rel="nofollow" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-[11px]"></i>
+                                </span>
+                                <span>Email</span>
+                            </a>
+                        </li>
+                        <!-- Instagram Link -->
+                        <li>
+                            <a href="https://www.instagram.com/slabby.climb/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <i class="fa-brands fa-instagram text-[11px]"></i>
+                                </span>
+                                <span>Instagram</span>
+                            </a>
+                        </li>
+                        <!-- YouTube Link -->
+                        <li>
+                            <a href="https://www.youtube.com/@slabby-climb" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <i class="fa-brands fa-youtube text-[11px]"></i>
+                                </span>
+                                <span>YouTube</span>
+                            </a>
+                        </li>
+                        <!-- Facebook Link -->
+                        <li>
+                            <a href="https://www.facebook.com/slabby.climb/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <i class="fa-brands fa-facebook text-[11px]"></i>
+                                </span>
+                                <span>Facebook</span>
+                            </a>
+                        </li>
+                        <!-- Discord Link -->
+                        <li>
+                            <a href="https://discord.gg/weG4a5eak" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <i class="fa-brands fa-discord text-[11px]"></i>
+                                </span>
+                                <span>Discord</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Ask AI about Slabby (List with Icon + Text) -->
+                <div>
+                    <h4 class="text-xs font-semibold text-gray-900 tracking-wider uppercase mb-3.5">
+                        Ask AI about Slabby
+                    </h4>
+                    <ul class="space-y-2.5 text-xs font-medium text-gray-600">
+                        <!-- ChatGPT -->
+                        <li>
+                            <a href="https://chatgpt.com/?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M22.28 9.87a5.98 5.98 0 0 0-.52-4.9 6.05 6.05 0 0 0-6.51-2.88A6 6 0 0 0 10.7.35a6.05 6.05 0 0 0-5.74 3.98 5.98 5.98 0 0 0-4.04 2.93 6.05 6.05 0 0 0 .77 7.07 5.98 5.98 0 0 0 .52 4.9 6.05 6.05 0 0 0 6.51 2.88A6 6 0 0 0 13.3 23.65a6.05 6.05 0 0 0 5.74-3.98 5.98 5.98 0 0 0 4.04-2.93 6.05 6.05 0 0 0-.8-6.87zM13.3 22.18c-1.28 0-2.49-.46-3.44-1.24l.17-.1 4.54-2.62a1.05 1.05 0 0 0 .53-.91v-6.42l2.03 1.17v6.18a4.57 4.57 0 0 1-3.83 3.94zm-8.8-3.77a4.52 4.52 0 0 1-.58-3.97l.17.1 4.54 2.62a1.06 1.06 0 0 0 1.06 0l5.56-3.21v2.34l-5.35 3.09a4.57 4.57 0 0 1-5.4-.97zm-1.83-8.89a4.55 4.55 0 0 1 3.26-2.73v.2l4.54 2.62a1.05 1.05 0 0 0 .53.92v6.42l-2.03-1.17V9.58a4.57 4.57 0 0 1-6.3-3.83zm13.6 1.63-5.56 3.21v-2.35l5.35-3.09a4.57 4.57 0 0 1 5.4.97 4.52 4.52 0 0 1 .58 3.97l-.17-.1-4.54-2.62a1.06 1.06 0 0 0-1.06 0zm2.36-2.77-.17-.1-4.54-2.62a1.05 1.05 0 0 0-.53-.92V1.82a4.57 4.57 0 0 1 6.3 3.83 4.55 4.55 0 0 1-1.06 2.73zm-7.93-4.56a4.57 4.57 0 0 1 3.83-1.01l-.17.1-4.54 2.62a1.06 1.06 0 0 0-.53.91v6.42l-2.03-1.17V4.81c.95-.78 2.16-1.24 3.44-1.24zm-.7 7.64 2.7-1.56 2.7 1.56v3.12l-2.7 1.56-2.7-1.56z"/></svg>
+                                </span>
+                                <span>ChatGPT</span>
+                            </a>
+                        </li>
+                        <!-- Claude -->
+                        <li>
+                            <a href="https://claude.ai/new?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M13.6 2.5a1.5 1.5 0 0 0-3.2 0l-1 5.4a1.5 1.5 0 0 1-.9 1.1L3.2 11.2a1.5 1.5 0 0 0 0 2.8l5.3 2.2a1.5 1.5 0 0 1 .9 1.1l1 5.4a1.5 1.5 0 0 0 3.2 0l1-5.4a1.5 1.5 0 0 1 .9-1.1l5.3-2.2a1.5 1.5 0 0 0 0-2.8l-5.3-2.2a1.5 1.5 0 0 1-.9-1.1l-1-5.4z"/></svg>
+                                </span>
+                                <span>Claude</span>
+                            </a>
+                        </li>
+                        <!-- Gemini -->
+                        <li>
+                            <a href="https://gemini.google.com/app?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 0c.3 6 4.8 10.5 10.8 10.8.3 0 .3.4 0 .4-6 .3-10.5 4.8-10.8 10.8 0 .3-.4.3-.4 0C11.3 16 6.8 11.5.8 11.2c-.3 0-.3-.4 0-.4 6-.3 10.5-4.8 10.8-10.8 0-.3.4-.3.4 0z"/></svg>
+                                </span>
+                                <span>Gemini</span>
+                            </a>
+                        </li>
+                        <!-- Perplexity -->
+                        <li>
+                            <a href="https://www.perplexity.ai/search?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2a1 1 0 0 1 1 1v4.06l3.54-3.54a1 1 0 0 1 1.41 1.41L14.41 8.5H19a1 1 0 1 1 0 2h-4v3h4a1 1 0 1 1 0 2h-4.59l3.54 3.54a1 1 0 0 1-1.41 1.41L13 16.94V21a1 1 0 1 1-2 0v-4.06l-3.54 3.54a1 1 0 0 1-1.41-1.41L9.59 15.5H5a1 1 0 1 1 0-2h4v-3H5a1 1 0 1 1 0-2h4.59L6.05 4.93a1 1 0 0 1 1.41-1.41L11 7.06V3a1 1 0 0 1 1-1z"/></svg>
+                                </span>
+                                <span>Perplexity</span>
+                            </a>
+                        </li>
+                        <!-- Grok -->
+                        <li>
+                            <a href="https://grok.com/?q=Explain%20Slabby%20(slabby.co)%20for%20rock%20climbers%3A%20what%20it%20is%2C%20key%20features%20(hold%20types%2C%20audio%20pronunciation%2C%20flashcards%2C%20quizzes)%2C%20and%20how%20climbing%20terms%20knowledge%20improves%20actual%20performance%20and%20gym%20beta%20reading." target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2.5 hover:text-black transition-colors group">
+                                <span class="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-[#4583E2]/15 flex items-center justify-center text-gray-500 group-hover:text-[#4583E2] transition-colors flex-shrink-0">
+                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </span>
+                                <span>Grok</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </footer>
+
+<!-- Interactive Mascot Speech Script -->
+<script>
+(function() {
+    function initSlabbyMascot() {
+        var container = document.getElementById('slabby-mascot-container');
+        var textEl = document.getElementById('slabby-mascot-text');
+        var bubble = document.getElementById('slabby-speech-bubble');
+        if (!container || !textEl || container.dataset.initialized === 'true') return;
+        container.dataset.initialized = 'true';
+
+        var messages = [
+            "👋 Hi down here! I'm Slabby!",
+            "📜 Whoa, you scrolled all the way down here?! Impressive endurance!",
+            "🧗 Looking for beta down in the abyss? Remember: trust your feet!",
+            "🧠 Master hold types and read gym beta like a seasoned route setter!",
+            "👀 Almost nobody visits me down here... thanks for saying hi!",
+            "💪 Chalk up those hands! Today is the day you send your project!",
+            "❤️ Made with love by climbers, for climbers who want to grow.",
+            "🧗‍♂️ From crimps and slopers to dynos and heel hooks, I got you covered!",
+            "☕ Rest those forearms a minute before you hop back on the wall!",
+            "🔄 Click me again to flash this route from the very beginning!"
+        ];
+
+        var currentIndex = 0;
+        var lastTriggerTime = 0;
+
+        function advanceMessage() {
+            var now = Date.now();
+            if (now - lastTriggerTime < 280) return; // Prevent erratic rapid firing
+            lastTriggerTime = now;
+
+            currentIndex = (currentIndex + 1) % messages.length;
+
+            textEl.style.opacity = '0';
+            textEl.style.transform = 'scale(0.96)';
+            if (bubble) {
+                bubble.style.transform = 'scale(1.05)';
+            }
+
+            setTimeout(function() {
+                textEl.textContent = messages[currentIndex];
+                textEl.style.opacity = '1';
+                textEl.style.transform = 'scale(1)';
+                if (bubble) {
+                    bubble.style.transform = 'scale(1)';
+                }
+            }, 120);
+        }
+
+        container.addEventListener('click', function(e) {
+            e.preventDefault();
+            advanceMessage();
+        });
+
+        container.addEventListener('mouseenter', function() {
+            advanceMessage();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlabbyMascot);
+    } else {
+        initSlabbyMascot();
+    }
+})();
+</script>
