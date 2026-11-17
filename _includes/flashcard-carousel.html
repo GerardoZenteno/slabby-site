@@ -1,0 +1,160 @@
+<!-- Reusable Climbing Hold Flashcards Loop Carousel (Front-Only) -->
+<div class="w-full relative select-none" aria-label="Climbing Hold Flashcards Carousel">
+    <div id="slabby-flashcard-carousel" class="slabby-carousel-viewport">
+        <div id="slabby-carousel-track" class="slabby-carousel-track">
+            <div class="slabby-carousel-set">
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Jug" image="/assets/holds/jug_hold.webp" alt="Jug climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Crimp" image="/assets/holds/crimp_hold.webp" alt="Crimp climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Edge" image="/assets/holds/edge_hold.webp" alt="Edge climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Sloper" image="/assets/holds/sloper_hold.webp" alt="Sloper climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Pinch" image="/assets/holds/pinch_hold.webp" alt="Pinch climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Pocket" image="/assets/holds/pocket_hold.webp" alt="Pocket climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Volume" image="/assets/holds/volume.webp" alt="Volume in indoor climbing illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Gaston" image="/assets/holds/gaston.webp" alt="Gaston climbing hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Undercling" image="/assets/holds/undercling.webp" alt="Undercling hold illustration" front_only=true %}
+                </div>
+                <div class="slabby-carousel-slot">
+                    {% include flashcard.html category="Hold Types" category_key="hold_types" title="Sidepull" image="/assets/holds/sidepull.webp" alt="Sidepull climbing hold illustration" front_only=true %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    function initFlashcardCarousel() {
+        var viewport = document.getElementById('slabby-flashcard-carousel');
+        var track = document.getElementById('slabby-carousel-track');
+        if (!viewport || !track || viewport.dataset.carouselInit === 'true') return;
+        viewport.dataset.carouselInit = 'true';
+
+        var baseSet = track.querySelector('.slabby-carousel-set');
+        if (!baseSet) return;
+
+        // Clone sets for seamless infinite bidirectional loop
+        var clone1 = baseSet.cloneNode(true);
+        clone1.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone1);
+
+        var clone2 = baseSet.cloneNode(true);
+        clone2.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone2);
+
+        var setWidth = baseSet.getBoundingClientRect().width || 2200;
+        var offset = 0;
+        var speed = 46; // pixels per second auto-advance
+        var isDragging = false;
+        var lastX = 0;
+        var lastTime = performance.now();
+
+        function measureSetWidth() {
+            var measured = baseSet.getBoundingClientRect().width;
+            if (measured > 0) {
+                setWidth = measured;
+            }
+        }
+
+        function wrapOffset() {
+            if (setWidth <= 0) return;
+            while (offset <= -setWidth) {
+                offset += setWidth;
+            }
+            while (offset > 0) {
+                offset -= setWidth;
+            }
+        }
+
+        function render() {
+            track.style.transform = 'translate3d(' + offset + 'px, 0, 0)';
+        }
+
+        function animate(now) {
+            var dt = Math.min((now - lastTime) / 1000, 0.05);
+            lastTime = now;
+
+            if (!isDragging) {
+                offset -= speed * dt;
+                wrapOffset();
+                render();
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Only pause when user clicks/drags, NEVER on simple hover
+        viewport.addEventListener('pointerdown', function(e) {
+            if (e.button !== 0 && e.pointerType === 'mouse') return;
+            isDragging = true;
+            lastX = e.clientX;
+            viewport.classList.add('is-dragging');
+            try {
+                viewport.setPointerCapture(e.pointerId);
+            } catch (err) {}
+        });
+
+        viewport.addEventListener('pointermove', function(e) {
+            if (!isDragging) return;
+            var dx = e.clientX - lastX;
+            lastX = e.clientX;
+            offset += dx;
+            wrapOffset();
+            render();
+        });
+
+        function endDrag(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            viewport.classList.remove('is-dragging');
+            lastTime = performance.now();
+            if (e && e.pointerId !== undefined) {
+                try {
+                    viewport.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+            }
+        }
+
+        viewport.addEventListener('pointerup', endDrag);
+        viewport.addEventListener('pointercancel', endDrag);
+        viewport.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        window.addEventListener('resize', function() {
+            measureSetWidth();
+            wrapOffset();
+            render();
+        });
+
+        // Re-measure once fonts/layout settle
+        requestAnimationFrame(function() {
+            measureSetWidth();
+            lastTime = performance.now();
+            requestAnimationFrame(animate);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFlashcardCarousel);
+    } else {
+        initFlashcardCarousel();
+    }
+})();
+</script>

@@ -1,0 +1,504 @@
+<style>
+    /* ==========================================================
+       Slabby App Exact Flashcard Design System
+       ========================================================== */
+    .slabby-card-container {
+        --cat-color: #FF5301;
+        --cat-rgb: 255, 83, 1;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        width: 100%;
+        max-width: 320px;
+        max-height: 440px;
+        aspect-ratio: 320 / 440;
+        margin: 0 auto;
+        cursor: pointer;
+        user-select: none;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Category Exact Color Palette (Section 7) */
+    .slabby-cat-holds,
+    .slabby-cat-hold_types {
+        --cat-color: #FF5301;
+        --cat-rgb: 255, 83, 1;
+    }
+    .slabby-cat-movements_techniques {
+        --cat-color: #3D9B56;
+        --cat-rgb: 61, 155, 86;
+    }
+    .slabby-cat-walls,
+    .slabby-cat-wall_angles_types {
+        --cat-color: #FFA02D;
+        --cat-rgb: 255, 160, 45;
+    }
+    .slabby-cat-send,
+    .slabby-cat-send_terminology {
+        --cat-color: #ED1111;
+        --cat-rgb: 237, 17, 17;
+    }
+    .slabby-cat-general_gym_terms {
+        --cat-color: #19ADD9;
+        --cat-rgb: 25, 173, 217;
+    }
+    .slabby-cat-gear_equipment {
+        --cat-color: #924FC9;
+        --cat-rgb: 146, 79, 201;
+    }
+    .slabby-cat-competition_types {
+        --cat-color: #FFD412;
+        --cat-rgb: 255, 212, 18;
+    }
+    .slabby-cat-outdoor_rock_trad {
+        --cat-color: #0040BE;
+        --cat-rgb: 0, 64, 190;
+    }
+    .slabby-cat-ethics {
+        --cat-color: #009B01;
+        --cat-rgb: 0, 155, 1;
+    }
+    .slabby-cat-grades_scales {
+        --cat-color: #E71687;
+        --cat-rgb: 231, 22, 135;
+    }
+
+    /* Blog Stage Background (#F6F6F6 behind borderless #FFFFFF card) */
+    .slabby-blog-card-stage {
+        background-color: #F6F6F6;
+        border-radius: 24px;
+        padding: 2rem 1.25rem;
+        margin: 2rem auto 2.5rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Front-only & Hero Carousel Variant (Strict 320/440 ratio) */
+    .slabby-card-container.slabby-card-static {
+        cursor: inherit;
+        perspective: none;
+        -webkit-perspective: none;
+    }
+    .slabby-card-container.slabby-card-carousel-size {
+        width: 224px;
+        max-width: 224px;
+        max-height: 308px;
+        aspect-ratio: 320 / 440;
+        margin: 0;
+        flex-shrink: 0;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-container.slabby-card-carousel-size {
+            width: 256px;
+            max-width: 256px;
+            max-height: 352px;
+        }
+    }
+
+    /* 3D Flip Container (400ms, rotateY, origin center) */
+    .slabby-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transform-origin: center center;
+        transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-radius: 24px;
+        will-change: transform;
+    }
+    .slabby-card-static .slabby-card {
+        transform-style: flat;
+        -webkit-transform-style: flat;
+        transition: none;
+        will-change: auto;
+    }
+    .slabby-card.is-flipped {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    /* Card Faces with Climbing-Wall Quincunx Dot Pattern */
+    .slabby-card-face {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+        border: none;
+        background-color: #FFFFFF;
+        /* Quincunx dot grid: 7px dots (r=3.5), #9CA3AF @ 20%, 80px horiz, 40px vert, +40px odd-row shift, >=36.5px (>=28px) symmetric safe margin */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='440' viewBox='0 0 320 440'%3E%3Cg fill='%239CA3AF' fill-opacity='0.20'%3E%3Ccircle cx='40' cy='40' r='3.5'/%3E%3Ccircle cx='120' cy='40' r='3.5'/%3E%3Ccircle cx='200' cy='40' r='3.5'/%3E%3Ccircle cx='280' cy='40' r='3.5'/%3E%3Ccircle cx='80' cy='80' r='3.5'/%3E%3Ccircle cx='160' cy='80' r='3.5'/%3E%3Ccircle cx='240' cy='80' r='3.5'/%3E%3Ccircle cx='40' cy='120' r='3.5'/%3E%3Ccircle cx='120' cy='120' r='3.5'/%3E%3Ccircle cx='200' cy='120' r='3.5'/%3E%3Ccircle cx='280' cy='120' r='3.5'/%3E%3Ccircle cx='80' cy='160' r='3.5'/%3E%3Ccircle cx='160' cy='160' r='3.5'/%3E%3Ccircle cx='240' cy='160' r='3.5'/%3E%3Ccircle cx='40' cy='200' r='3.5'/%3E%3Ccircle cx='120' cy='200' r='3.5'/%3E%3Ccircle cx='200' cy='200' r='3.5'/%3E%3Ccircle cx='280' cy='200' r='3.5'/%3E%3Ccircle cx='80' cy='240' r='3.5'/%3E%3Ccircle cx='160' cy='240' r='3.5'/%3E%3Ccircle cx='240' cy='240' r='3.5'/%3E%3Ccircle cx='40' cy='280' r='3.5'/%3E%3Ccircle cx='120' cy='280' r='3.5'/%3E%3Ccircle cx='200' cy='280' r='3.5'/%3E%3Ccircle cx='280' cy='280' r='3.5'/%3E%3Ccircle cx='80' cy='320' r='3.5'/%3E%3Ccircle cx='160' cy='320' r='3.5'/%3E%3Ccircle cx='240' cy='320' r='3.5'/%3E%3Ccircle cx='40' cy='360' r='3.5'/%3E%3Ccircle cx='120' cy='360' r='3.5'/%3E%3Ccircle cx='200' cy='360' r='3.5'/%3E%3Ccircle cx='280' cy='360' r='3.5'/%3E%3Ccircle cx='80' cy='400' r='3.5'/%3E%3Ccircle cx='160' cy='400' r='3.5'/%3E%3Ccircle cx='240' cy='400' r='3.5'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .slabby-card-front {
+        padding: 20px 24px;
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+    }
+    .slabby-card-back {
+        padding: 24px;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+    .slabby-card.is-flipped .slabby-card-front {
+        pointer-events: none;
+    }
+    .slabby-card:not(.is-flipped) .slabby-card-back {
+        pointer-events: none;
+    }
+
+    /* Carousel card inner spacing scaled proportionally */
+    .slabby-card-carousel-size .slabby-card-front {
+        padding: 16px 18px;
+        transform: none !important;
+        -webkit-transform: none !important;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-carousel-size .slabby-card-front {
+            padding: 18px 22px;
+        }
+    }
+
+    /* Category Label (Plain text, Plus Jakarta Sans 800, 15px) */
+    .slabby-card-category {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        line-height: 1.25;
+        color: var(--cat-color);
+        text-align: center;
+        display: block;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+    .slabby-card-carousel-size .slabby-card-category {
+        font-size: 13.5px;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-carousel-size .slabby-card-category {
+            font-size: 14.5px;
+        }
+    }
+
+    /* Term Illustration Container (180x180, inner 140x140) */
+    .slabby-card-img-wrap {
+        width: 180px;
+        height: 180px;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .slabby-card-img {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        transition: none !important;
+        transform: none !important;
+        pointer-events: none;
+        user-select: none;
+    }
+    .slabby-card-carousel-size .slabby-card-img-wrap {
+        width: 132px;
+        height: 132px;
+        margin-top: 16px;
+    }
+    .slabby-card-carousel-size .slabby-card-img {
+        width: 108px;
+        height: 108px;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-carousel-size .slabby-card-img-wrap {
+            width: 152px;
+            height: 152px;
+            margin-top: 18px;
+        }
+        .slabby-card-carousel-size .slabby-card-img {
+            width: 122px;
+            height: 122px;
+        }
+    }
+
+    /* Term Title + Front Audio Row (gap 8px, margin-top 24px) */
+    .slabby-card-term-row {
+        margin-top: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .slabby-card-carousel-size .slabby-card-term-row {
+        margin-top: 16px;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-carousel-size .slabby-card-term-row {
+            margin-top: 18px;
+        }
+    }
+
+    .slabby-card-title {
+        font-family: 'Lexend', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1.2;
+        color: #1F2937;
+        text-align: center;
+        margin: 0;
+    }
+    .slabby-card-carousel-size .slabby-card-title {
+        font-size: 19px;
+    }
+    @media (min-width: 640px) {
+        .slabby-card-carousel-size .slabby-card-title {
+            font-size: 20px;
+        }
+    }
+
+    /* Front Audio Button (22px volume_up rounded, #3E5479, padding 4px) */
+    .slabby-front-speaker-btn {
+        padding: 4px;
+        background: transparent;
+        border: none;
+        color: #3E5479;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 9999px;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        flex-shrink: 0;
+    }
+    .slabby-front-speaker-btn svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+        display: block;
+    }
+    .slabby-card-carousel-size .slabby-front-speaker-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    .slabby-front-speaker-btn:hover {
+        transform: scale(1.1);
+        opacity: 0.85;
+    }
+    .slabby-front-speaker-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Front Tap Hint (Only visible on first card, margin-top 12px) */
+    .slabby-card-hint {
+        margin-top: 12px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Lexend', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #3E5479;
+        line-height: 1.3;
+    }
+    .slabby-has-hint-true .slabby-card-hint {
+        display: inline-flex;
+    }
+    .slabby-card-hint svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        fill: currentColor;
+        flex-shrink: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Back Card Top-Right Audio Button (28px, category color, no bg/border) */
+    .slabby-speaker-btn {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: var(--cat-color);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        z-index: 10;
+    }
+    .slabby-speaker-btn svg {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
+        display: block;
+    }
+    .slabby-speaker-btn:hover {
+        transform: scale(1.12);
+        opacity: 0.85;
+    }
+    .slabby-speaker-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Back Central Block */
+    .slabby-back-body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .slabby-card-back .slabby-back-title {
+        margin-top: 16px;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1.2;
+        color: #1F2937;
+        text-align: center;
+    }
+    .slabby-card-definition {
+        margin: 12px 0 0 0;
+        font-family: 'Lexend', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: #3E5479;
+        text-align: center;
+    }
+
+    /* Example Sentence Box (bg catColor @ 90%, radius 12px, padding 12px) */
+    .slabby-example-box {
+        margin-top: 24px;
+        width: 100%;
+        background-color: rgba(var(--cat-rgb), 0.90);
+        border-radius: 12px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #FFFFFF;
+        box-sizing: border-box;
+    }
+    .slabby-speech-icon {
+        font-size: 18px;
+        color: #FFFFFF;
+        flex-shrink: 0;
+    }
+    .slabby-example-phrase {
+        font-family: 'Lexend', sans-serif;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0;
+        text-align: center;
+        flex: 1;
+    }
+
+    /* ==========================================================
+       Flashcards Infinite Loop Carousel (Hero)
+       ========================================================== */
+    .slabby-carousel-viewport {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 1.25rem 0 1.75rem 0;
+        cursor: grab;
+        cursor: -webkit-grab;
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    }
+    @media (min-width: 768px) {
+        .slabby-carousel-viewport {
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+    }
+    .slabby-carousel-viewport.is-dragging {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+    .slabby-carousel-viewport.is-dragging * {
+        cursor: grabbing !important;
+        cursor: -webkit-grabbing !important;
+    }
+
+    .slabby-carousel-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        will-change: transform;
+    }
+    .slabby-carousel-set {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    @media (min-width: 640px) {
+        .slabby-carousel-set {
+            gap: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    /* Subtle playful tilt matching screenshot rhythm (without string/clips) */
+    .slabby-carousel-slot {
+        flex-shrink: 0;
+        transition: transform 0.25s ease;
+    }
+    .slabby-carousel-slot:nth-child(4n+1) {
+        transform: rotate(-2.5deg) translateY(5px);
+    }
+    .slabby-carousel-slot:nth-child(4n+2) {
+        transform: rotate(1.6deg) translateY(-5px);
+    }
+    .slabby-carousel-slot:nth-child(4n+3) {
+        transform: rotate(-1.4deg) translateY(3px);
+    }
+    .slabby-carousel-slot:nth-child(4n+4) {
+        transform: rotate(2.4deg) translateY(-3px);
+    }
+</style>
+<script>
+    if (typeof window.playPronunciation !== 'function') {
+        window.playPronunciation = function(word, event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.92;
+                window.speechSynthesis.speak(utterance);
+            }
+        };
+    }
+</script>
