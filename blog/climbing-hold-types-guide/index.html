@@ -63,10 +63,11 @@ permalink: /blog/climbing-hold-types-guide/
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Schibsted+Grotesk:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Schibsted+Grotesk:wght@800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome 6 Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% include flashcard-styles.html %}
 
     <!-- Schema.org JSON-LD (Combined Article & FAQPage) -->
     <script type="application/ld+json">
@@ -277,196 +278,6 @@ permalink: /blog/climbing-hold-types-guide/
             transform: translateX(4px);
         }
 
-        /* 3D Flip Card Component (Matching Slabby App Design) */
-        .slabby-card-container {
-            perspective: 1000px;
-            -webkit-perspective: 1000px;
-            width: 100%;
-            max-width: 350px;
-            height: 490px;
-            margin: 2rem auto 2.5rem auto;
-            cursor: pointer;
-            user-select: none;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .slabby-card {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.25, 1);
-            border-radius: 2rem;
-            will-change: transform;
-        }
-        .slabby-card.is-flipped {
-            transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
-        }
-        .slabby-card-face {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 2rem;
-            background-color: #ffffff;
-            background-image: radial-gradient(#d1d5db 1.25px, transparent 1.25px);
-            background-size: 24px 24px;
-            background-position: center;
-            border: 1px solid rgba(226, 232, 240, 0.85);
-            box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 2.2rem 1.6rem 1.6rem 1.6rem;
-            box-sizing: border-box;
-        }
-        .slabby-card-front {
-            transform: rotateY(0deg) translateZ(1px);
-            -webkit-transform: rotateY(0deg) translateZ(1px);
-        }
-        .slabby-card-back {
-            transform: rotateY(180deg) translateZ(1px);
-            -webkit-transform: rotateY(180deg) translateZ(1px);
-        }
-        .slabby-card.is-flipped .slabby-card-front {
-            pointer-events: none;
-        }
-        .slabby-card:not(.is-flipped) .slabby-card-back {
-            pointer-events: none;
-        }
-
-        /* Category Header (Coral-red from Slabby app) */
-        .slabby-card-category {
-            font-family: 'Lexend', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #FF5C4D;
-            letter-spacing: -0.01em;
-            text-align: center;
-            display: block;
-        }
-
-        /* Image Area (Front) */
-        .slabby-card-img-wrap {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 0;
-            overflow: hidden;
-        }
-        .slabby-card-img {
-            max-height: 120px;
-            max-width: 60%;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
-            transition: none !important;
-            transform: none !important;
-        }
-        .slabby-card-img:hover {
-            transform: none !important;
-        }
-
-        /* Term Title */
-        .slabby-card-title {
-            font-family: 'Lexend', sans-serif;
-            font-weight: 800;
-            font-size: 1.9rem;
-            color: #1E293B;
-            text-align: center;
-            margin: 0;
-            letter-spacing: -0.02em;
-        }
-
-        /* Front Tap Hint */
-        .slabby-card-hint {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.45rem;
-            font-size: 0.85rem;
-            color: #94A3B8;
-            font-weight: 500;
-            margin-top: 0.85rem;
-        }
-
-        /* Back Content */
-        .slabby-speaker-btn {
-            position: absolute;
-            top: 1.4rem;
-            right: 1.4rem;
-            color: #FF5C4D;
-            font-size: 1.4rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            transition: transform 0.15s ease, color 0.15s ease;
-            z-index: 10;
-        }
-        .slabby-speaker-btn:hover {
-            transform: scale(1.15);
-            color: #e04434;
-        }
-        .slabby-speaker-btn:active {
-            transform: scale(0.95);
-        }
-
-        .slabby-back-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 1.5rem 0.5rem 0.75rem 0.5rem;
-        }
-        .slabby-card-definition {
-            font-size: 0.96rem;
-            line-height: 1.55;
-            color: #64748B;
-            font-weight: 400;
-            margin: 0.75rem 0 0 0;
-            max-width: 295px;
-            text-align: center;
-        }
-
-        /* Coral Example Bubble Box */
-        .slabby-example-box {
-            background-color: #FF7B6E;
-            border-radius: 1.25rem;
-            padding: 1rem 1.15rem;
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            color: #ffffff;
-            box-shadow: 0 6px 18px rgba(255, 123, 110, 0.28);
-            margin-top: auto;
-        }
-        .slabby-speech-icon {
-            font-size: 1.15rem;
-            color: #ffffff;
-            flex-shrink: 0;
-        }
-        .slabby-example-phrase {
-            color: #ffffff;
-            font-size: 0.875rem;
-            line-height: 1.4;
-            font-weight: 500;
-            margin: 0;
-            text-align: left;
-        }
-
         /* Real Photos Gallery Component */
         .real-photos-gallery {
             margin: 1.75rem 0 2.25rem 0;
@@ -634,39 +445,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="jug-holds">1. Jug Climbing Holds: The Climber's Best Friend</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Jug hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/jug_hold.webp" alt="Jug climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Jug</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Jug', event)" aria-label="Listen to pronunciation of Jug" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Jug</h4>
-                            <p class="slabby-card-definition">A large, deep hold that is easy to grip with the whole hand.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Thank goodness the last hold on this route is a massive jug."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" show_hint=true title="Jug" image="/assets/holds/jug_hold.webp" alt="Jug climbing hold illustration" definition="A large, deep hold that is easy to grip with the whole hand." example="&quot;Thank goodness the last hold on this route is a massive jug.&quot;" %}
 
             <h3>How to Use Jug Holds Effectively on Steep Overhangs</h3>
             <p>Also known as "buckets," <strong>jug holds</strong> feature a deep, positive lip that allows all four fingers to wrap securely over the edge. While jugs dominate beginner V0–V2 boulder problems, route setters also place them on steep roofs and advanced sport routes as recovery stations. According to <a href="https://www.rei.com/learn/expert-advice/climbing-holds.html" target="_blank" rel="noopener">REI's Expert Advice on Rock Climbing Holds</a>, the most common mistake beginners make on jugs is over-gripping with bent elbows. To maximize efficiency, hang with straight arms ("skeleton hanging"), engage your scapular stabilizers, and shake out one forearm at a time to clear lactic acid.</p>
@@ -688,39 +467,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="crimp-holds">2. Crimp Holds: Mastering Tiny Edges Safely</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Crimp hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/crimp_hold.webp" alt="Crimp climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Crimp</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Crimp', event)" aria-label="Listen to pronunciation of Crimp" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Crimp</h4>
-                            <p class="slabby-card-definition">A very small edge that accommodates only the fingertips. Can be gripped in a "full crimp" or "half crimp".</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"The crux move involves pulling hard on a tiny crimp."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Crimp" image="/assets/holds/crimp_hold.webp" alt="Crimp climbing hold illustration" definition="A very small edge that accommodates only the fingertips. Can be gripped in a &quot;full crimp&quot; or &quot;half crimp&quot;." example="&quot;The crux move involves pulling hard on a tiny crimp.&quot;" %}
 
             <h3>Biomechanics of Crimping and A2 Pulley Injury Prevention</h3>
             <p>A <strong>crimp hold</strong> measures anywhere from a single finger pad (~20mm) down to razor-thin micro ledges (6mm–10mm). Pulling hard on crimps places immense mechanical stress on the flexor tendons and annular pulleys of your fingers—specifically the A2 and A4 pulleys. Research into <a href="https://rockclimbingrealms.com/climbing-hold-shapes/" target="_blank" rel="noopener">climbing hold biomechanics and grip safety</a> highlights that using an open-hand or half-crimp grip should be your default training posture, reserving the closed full crimp strictly for limit-level crux moves.</p>
@@ -742,39 +489,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="edge-holds">3. Edge Climbing Holds: The Foundation of Technical Footwork and Finger Strength</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Edge hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/edge_hold.webp" alt="Edge climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Edge</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Edge', event)" aria-label="Listen to pronunciation of Edge" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Edge</h4>
-                            <p class="slabby-card-definition">A flat, positive hold that is wider than a crimp.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Stand up tall on that sharp edge."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Edge" image="/assets/holds/edge_hold.webp" alt="Edge climbing hold illustration" definition="A flat, positive hold that is wider than a crimp." example="&quot;Stand up tall on that sharp edge.&quot;" %}
 
             <h3>Edge vs. Crimp: How Depth Changes Your Grip Mechanics</h3>
             <p>Climbers often confuse edges and crimps, but an <strong>edge hold</strong> (or ledge) generally accommodates one to two full finger pads (~18mm to 35mm deep) and forms a clean, horizontal shelf against the wall. Because you have more surface area than on a micro-crimp, you can relax your DIP (distal interphalangeal) joints into an ergonomic open-hand drag. Edges are also the primary testing ground for precise footwork—"edging" with the inside or outside rubber of your climbing shoe allows you to transfer up to 70% of your body weight off your forearms.</p>
@@ -796,39 +511,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="sloper-holds">4. Sloper Holds: How to Trust Friction and Body Positioning</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Sloper hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/sloper_hold.webp" alt="Sloper climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Sloper</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Sloper', event)" aria-label="Listen to pronunciation of Sloper" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Sloper</h4>
-                            <p class="slabby-card-definition">A rounded hold with no positive edge, requiring an open-hand grip and reliance on friction and body positioning.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Keep your center of gravity low to stay on the sloper."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Sloper" image="/assets/holds/sloper_hold.webp" alt="Sloper climbing hold illustration" definition="A rounded hold with no positive edge, requiring an open-hand grip and reliance on friction and body positioning." example="&quot;Keep your center of gravity low to stay on the sloper.&quot;" %}
 
             <h3>The Physics of Slopers: Friction, Surface Area, and Center of Gravity</h3>
             <p>For many climbers, the <strong>sloper</strong> is the most frustrating hold type in the gym because brute finger strength won't save you. As explained in <a href="https://boulderingproject.com/blog/types-of-climbing-holds-a-beginners-guide-to-rock-wall-grips/" target="_blank" rel="noopener">Bouldering Project's guide to rock wall grips</a>, mastering slopers requires maximizing skin-to-hold contact area with an open hand and keeping your center of gravity directly perpendicular to the hold's best friction angle. Keep your elbows tucked in, flex your wrists slightly to engage forearm tension, and avoid sudden jerky movements that break static friction.</p>
@@ -850,39 +533,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="pinch-holds">5. Pinch Climbing Holds: Building Crushing Thumb Opposition</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Pinch hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/pinch_hold.webp" alt="Pinch climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Pinch</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Pinch', event)" aria-label="Listen to pronunciation of Pinch" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Pinch</h4>
-                            <p class="slabby-card-definition">A hold that must be squeezed between the thumb and fingers, resembling a pinching motion.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"You need strong thumbs to hold onto that vertical pinch."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Pinch" image="/assets/holds/pinch_hold.webp" alt="Pinch climbing hold illustration" definition="A hold that must be squeezed between the thumb and fingers, resembling a pinching motion." example="&quot;You need strong thumbs to hold onto that vertical pinch.&quot;" %}
 
             <h3>Why Pinches Challenge Both Your Thenar Muscles and Forearms</h3>
             <p>Unlike edges where four fingers pull in a single plane, a <strong>pinch hold</strong> demands active thumb opposition (activating the adductor pollicis and thenar eminence in your palm) alongside finger flexion. To hold a difficult pinch on an overhang, avoid letting your wrist collapse outward; engage your shoulder and rotate your elbow slightly inward to create a mechanical wedge between your thumb and index/middle fingers.</p>
@@ -912,39 +563,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="pocket-holds">6. Pocket Holds: Precision Pulling for One to Three Fingers</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Pocket hold">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/pocket_hold.webp" alt="Pocket climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Pocket</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Pocket', event)" aria-label="Listen to pronunciation of Pocket" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Pocket</h4>
-                            <p class="slabby-card-definition">A hole or depression in the rock or wall that can fit one to a few fingers (e.g., mono, two-finger pocket).</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Careful not to strain a tendon on that mono pocket."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Pocket" image="/assets/holds/pocket_hold.webp" alt="Pocket climbing hold illustration" definition="A hole or depression in the rock or wall that can fit one to a few fingers (e.g., mono, two-finger pocket)." example="&quot;Careful not to strain a tendon on that mono pocket.&quot;" %}
 
             <h3>How to Grip Pockets Without Triggering the Lumbrical Shift</h3>
             <p>Common on volcanic tuft (like Smith Rock) and limestone (like Frankenjura), <strong>pocket holds</strong> isolate one, two, or three fingers inside a recessed cavity. When pulling on a two-finger pocket, always pair your strongest adjacent tendons—typically your <strong>middle and ring fingers</strong>. Never curl your unused pinky or index finger tightly into your palm while loading a pocket; this creates a shearing force in the palm known as the <em>quadriga effect</em> (or lumbrical tear). Also, never use a full crimp inside a pocket.</p>
@@ -966,39 +585,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="climbing-volumes">7. Climbing Volumes: 3D Architecture on the Bouldering Wall</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Volume feature">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/volume.webp" alt="Volume in indoor climbing illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Volume</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Volume', event)" aria-label="Listen to pronunciation of Volume" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Volume</h4>
-                            <p class="slabby-card-definition">A large geometric structure bolted to the wall, often with holds attached, used to change the wall's shape.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Use the side of the volume to stem across the corner."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Volume" image="/assets/holds/volume.webp" alt="Volume in indoor climbing illustration" definition="A large geometric structure bolted to the wall, often with holds attached, used to change the wall's shape." example="&quot;Use the side of the volume to stem across the corner.&quot;" %}
 
             <h3>Smearing, Compression, and Route Setting with Volumes</h3>
             <p>Constructed from textured plywood or molded fiberglass, <strong>climbing volumes</strong> transform flat gym walls into dynamic three-dimensional terrain. As noted in <a href="https://climbingbusinessjournal.com/the-setters-archive-classic-setting-tips-for-modern-gyms/" target="_blank" rel="noopener">Climbing Business Journal's modern route setting archive</a>, setters use volumes both as giant holds in their own right and as bases to change the angle of smaller holds bolted onto them ("blockers"). Standing on a volume requires <strong>smearing</strong>—dropping your heels to press maximum shoe rubber flat against the angled face rather than standing on your tiptoes.</p>
@@ -1020,39 +607,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="gaston-move">8. Gaston: Mastering the Outward-Pushing Shoulder Move</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Gaston grip">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/gaston.webp" alt="Gaston climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Gaston</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Gaston', event)" aria-label="Listen to pronunciation of Gaston" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Gaston</h4>
-                            <p class="slabby-card-definition">A hold gripped with the thumb down and elbow out, pulling sideways away from the body.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"You have to gaston with your left hand to reach the next crimp."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Gaston" image="/assets/holds/gaston.webp" alt="Gaston climbing hold illustration" definition="A hold gripped with the thumb down and elbow out, pulling sideways away from the body." example="&quot;You have to gaston with your left hand to reach the next crimp.&quot;" %}
 
             <h3>Shoulder Stability and Rotator Cuff Care on Gaston Moves</h3>
             <p>Named after legendary French alpinist Gaston Rébuffat, the <strong>gaston</strong> isn't a standalone plastic shape—it is any vertically oriented edge, crimp, or pocket where the positive surface faces <em>inward</em> toward your midline. To use it, you rotate your thumb downward, flare your elbow outward, and push/pull laterally as if prying open a pair of elevator doors. According to <a href="https://www.99boulders.com/climbing-moves-holds-and-technique" target="_blank" rel="noopener">99Boulders' guide to climbing moves and holds</a>, dynamic lunges into a gaston place heavy torque on the rotator cuff and posterior deltoid, so keep your scapula engaged and step high to shift your torso close to the hold before pulling across.</p>
@@ -1074,39 +629,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="undercling-holds">9. Undercling Holds: Generating Upward Power Through Body Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Undercling grip">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/undercling.webp" alt="Undercling hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Undercling</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Undercling', event)" aria-label="Listen to pronunciation of Undercling" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Undercling</h4>
-                            <p class="slabby-card-definition">A hold gripped from underneath, pulling upward while leaning back.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Get your feet high before you pull on the undercling."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Undercling" image="/assets/holds/undercling.webp" alt="Undercling hold illustration" definition="A hold gripped from underneath, pulling upward while leaning back." example="&quot;Get your feet high before you pull on the undercling.&quot;" %}
 
             <h3>Why High Feet Are the Secret to Every Undercling Move</h3>
             <p>An <strong>undercling</strong> flips a traditional hold upside down so the positive lip faces the floor. With your palms facing upward (supinated), your biceps and core work together in opposition against your feet. If your feet are too low, an undercling feels nearly impossible to hold because you cannot generate outward pressure against the wall. Walk your feet up as high as your hip mobility allows, drop your hips slightly back, and drive through your toes to wedge yourself between the footholds and the undercling.</p>
@@ -1128,39 +651,7 @@ permalink: /blog/climbing-hold-types-guide/
             <h2 id="sidepull-holds">10. Sidepull Holds: Leaning Away to Create Opposing Tension</h2>
 
             <!-- Interactive 3D Slabby Flashcard -->
-            <div class="slabby-card-container" tabindex="0" role="button" aria-label="Flip card for Sidepull grip">
-                <div class="slabby-card">
-                    <!-- Front -->
-                    <div class="slabby-card-face slabby-card-front">
-                        <span class="slabby-card-category">Hold Types</span>
-                        <div class="slabby-card-img-wrap">
-                            <img src="/assets/holds/sidepull.webp" alt="Sidepull climbing hold illustration" loading="lazy" class="slabby-card-img" />
-                        </div>
-                        <div>
-                            <h4 class="slabby-card-title">Sidepull</h4>
-                            <div class="slabby-card-hint">
-                                <i class="fa-solid fa-hand-pointer text-gray-400"></i>
-                                <span>Tap card to reveal definition</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Back -->
-                    <div class="slabby-card-face slabby-card-back">
-                        <button type="button" class="slabby-speaker-btn" onclick="playPronunciation('Sidepull', event)" aria-label="Listen to pronunciation of Sidepull" title="Listen pronunciation">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <div class="slabby-back-body">
-                            <span class="slabby-card-category">Hold Types</span>
-                            <h4 class="slabby-card-title mt-2 mb-2">Sidepull</h4>
-                            <p class="slabby-card-definition">A vertically-oriented hold gripped from the side, requiring opposing body tension to use.</p>
-                        </div>
-                        <div class="slabby-example-box">
-                            <i class="fa-solid fa-comment slabby-speech-icon"></i>
-                            <p class="slabby-example-phrase">"Lean your body weight away from the sidepull to generate tension."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include flashcard.html category="Hold Types" category_key="hold_types" title="Sidepull" image="/assets/holds/sidepull.webp" alt="Sidepull climbing hold illustration" definition="A vertically-oriented hold gripped from the side, requiring opposing body tension to use." example="&quot;Lean your body weight away from the sidepull to generate tension.&quot;" %}
 
             <h3>Sidepull vs. Gaston: How Orientation Dictates Your Hip Position</h3>
             <p>While both holds are oriented vertically, a <strong>sidepull</strong> is the anatomical mirror of a gaston: its positive edge faces <em>outward</em> away from your body, and you grip it with your <strong>thumb pointing up</strong> and elbow tucked in. Because pulling straight down on a vertical rail causes your hand to slip right off, you must place a foot close to the hold's vertical line and lean your hips aggressively in the opposite direction (a technique known in big-wall climbing as a <em>layback</em>).</p>
@@ -1233,22 +724,6 @@ permalink: /blog/climbing-hold-types-guide/
     <!-- Footer (Shared Component) -->
     {% include footer.html %}
 
-    <!-- Native Pronunciation Logic -->
-    <script>
-        function playPronunciation(word, event) {
-            if (event) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.92;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-    </script>
     <script src="/acciones.js"></script>
 </body>
 </html>
