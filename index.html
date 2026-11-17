@@ -56,9 +56,10 @@ is_home: true
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=Schibsted+Grotesk:wght@800&family=Grandstander:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@700&family=Lexend:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&family=Roboto:wght@400;500;700&family=Schibsted+Grotesk:wght@800&family=Grandstander:wght@900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% include flashcard-styles.html %}
     <style>
         @font-face {
             font-family: 'Ledenx';
@@ -177,16 +178,74 @@ is_home: true
             border-radius: 2rem;
             border: 1px solid rgba(226, 232, 240, 0.85);
             box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
-            padding: 2.25rem 2rem;
+            padding: 1.75rem 1.75rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 1.5rem;
-            transition: transform 0.25s cubic-bezier(0.2, 0.85, 0.25, 1), box-shadow 0.25s cubic-bezier(0.2, 0.85, 0.25, 1);
+            gap: 1.25rem;
+            height: 100%;
+            transition: box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease;
         }
-        .slabby-review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 42px -8px rgba(15, 23, 42, 0.12), 0 6px 16px rgba(15, 23, 42, 0.05);
+        @media (min-width: 1024px) {
+            .slabby-review-card {
+                padding: 2rem 2.25rem;
+                gap: 1.35rem;
+            }
+        }
+
+        /* Reviews Coverflow Carousel (Fanned 5-card layout) */
+        .reviews-coverflow-stage {
+            position: relative;
+            width: 100%;
+            min-height: 340px;
+            overflow: visible;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+        }
+        .reviews-coverflow-stage.is-dragging {
+            cursor: grabbing;
+        }
+        .reviews-coverflow-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .reviews-coverflow-slide {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: calc(100vw - 56px);
+            max-width: 330px;
+            min-height: 268px;
+            transform-origin: center center;
+            transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        @media (min-width: 640px) {
+            .reviews-coverflow-slide {
+                width: 390px;
+                max-width: 390px;
+                min-height: 265px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .reviews-coverflow-slide {
+                width: 470px;
+                max-width: 470px;
+                min-height: 270px;
+            }
+        }
+        .reviews-coverflow-slide[data-pos="0"] .slabby-review-card {
+            box-shadow: 0 24px 50px -12px rgba(15, 23, 42, 0.14), 0 8px 20px rgba(15, 23, 42, 0.05);
+            border-color: rgba(203, 213, 225, 0.9);
+        }
+        .reviews-coverflow-slide[data-pos="-1"],
+        .reviews-coverflow-slide[data-pos="1"],
+        .reviews-coverflow-slide[data-pos="-2"],
+        .reviews-coverflow-slide[data-pos="2"] {
+            cursor: pointer;
         }
 
         /* Feature Cards - Same border, 2rem radius, shadow, background as reviews, without hover motion */
@@ -210,12 +269,15 @@ is_home: true
         <div id="download" class="scroll-mt-24"></div>
 
         <!-- ========================================== -->
-        <!-- HERO SECTION - DESKTOP VIEW (lg:grid) -->
+        <!-- HERO SECTION (CENTERED ALL VIEWPORTS)      -->
         <!-- ========================================== -->
-        <section class="hidden lg:grid max-w-[1050px] mx-auto px-6 py-16 lg:grid-cols-[1fr_auto] gap-12 xl:gap-14 items-center min-h-[calc(100vh-4rem)]">
-            <div class="space-y-6">
-                <!-- Clickable Reviews Community Pill (Static styling, no hover state change) -->
-                <button type="button" data-target="reviews-section" onclick="document.getElementById('reviews-section')?.scrollIntoView({behavior:'smooth'});" class="reveal-item hero-reveal delay-0 nav-btn cursor-pointer inline-flex items-center py-1.5 pl-3.5 pr-4 sm:pr-5 bg-white border border-gray-200/90 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] mb-2 text-left">
+        <section class="relative pt-10 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16 flex flex-col items-center text-center min-h-[calc(100vh-4rem)] justify-center">
+            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-[520px] max-w-[90vw] aspect-square bg-black/[0.03] rounded-full blur-[90px] -z-10 pointer-events-none"></div>
+
+            <!-- Centered Hero Text & Store Badges -->
+            <div class="max-w-3xl mx-auto px-6 flex flex-col items-center">
+                <!-- Clickable Reviews Community Pill -->
+                <button type="button" data-target="reviews-section" onclick="document.getElementById('reviews-section')?.scrollIntoView({behavior:'smooth'});" class="reveal-item hero-reveal delay-0 nav-btn cursor-pointer inline-flex items-center justify-center py-1.5 pl-3.5 pr-4 sm:pr-5 bg-white border border-gray-200/90 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] mb-5 max-w-full">
                     <!-- 5 Stars -->
                     <div class="flex items-center gap-0.5 sm:gap-1 text-[#F59E0B] flex-shrink-0 text-xs sm:text-sm">
                         <i class="fa-solid fa-star"></i>
@@ -226,96 +288,61 @@ is_home: true
                     </div>
 
                     <!-- Community Rating Text -->
-                    <div class="ml-2.5 sm:ml-3 text-xs sm:text-sm leading-tight">
+                    <div class="ml-2 sm:ml-3 text-xs sm:text-sm leading-tight whitespace-nowrap">
                         <span class="font-bold text-gray-900 titles">200+</span>
                         <span class="text-gray-600 font-normal ml-0.5">climbers and coaches</span>
                     </div>
                 </button>
-                <h1 class="reveal-item hero-reveal delay-100 titles text-5xl xl:text-6xl tracking-tight text-black leading-[1.15]">
+
+                <!-- Main H1 Title -->
+                <h1 class="reveal-item hero-reveal delay-100 titles text-4xl sm:text-5xl lg:text-[3.5rem] tracking-tight text-black leading-[1.12] mb-4">
                     Speak fluent Climbing
                 </h1>
-                <p class="reveal-item hero-reveal delay-200 text-gray-600 text-lg leading-relaxed">
-                    Learn essential climbing terminology, master gym beta with ease, and build unshakeable confidence every time you step into the climbing gym.
+
+                <!-- Subtitle Paragraph -->
+                <p class="reveal-item hero-reveal delay-200 text-gray-600 text-[12px] sm:text-[14px] lg:text-[16px] leading-relaxed max-w-2xl mx-auto mb-7">
+                    Master climbing terminology, understand gym beta effortlessly, and build unshakeable confidence every time you step into the climbing gym.
                 </p>
-                <div class="reveal-item hero-reveal delay-300 pt-4 flex flex-wrap items-center gap-4">
+
+                <!-- Store Download Buttons (Centered) -->
+                <div class="reveal-item hero-reveal delay-300 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-6 sm:mb-8">
                     <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform hover:scale-105 active:scale-95">
-                        <img src="./app-store-badge.png" alt="Download on the App Store" class="h-14 w-auto shadow-md rounded-lg">
+                        <img src="./app-store-badge.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform hover:scale-105 active:scale-95">
-                        <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-14 w-auto shadow-md rounded-lg">
+                        <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
                     </a>
                 </div>
             </div>
-            <div class="reveal-item hero-reveal delay-400 relative flex justify-center lg:justify-end items-center">
-                <div class="absolute w-[320px] h-[320px] bg-black/5 blur-[90px] rounded-full -z-10"></div>
-                <div class="phone-frame w-[300px] max-w-full animate-float">
-                    <img src="./mockup_1.png" alt="App Screen" class="w-full h-auto object-cover">
-                </div>
-            </div>
-        </section>
 
-        <!-- ========================================== -->
-        <!-- HERO SECTION - MOBILE VIEW (lg:hidden) -->
-        <!-- ========================================== -->
-        <section class="lg:hidden pt-10 pb-16 px-6 text-center flex flex-col items-center relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] aspect-square bg-black/5 rounded-full blur-[80px] -z-10"></div>
-            <!-- Clickable Reviews Community Pill (Mobile - Static styling, no hover state change) -->
-            <button type="button" data-target="reviews-section" onclick="document.getElementById('reviews-section')?.scrollIntoView({behavior:'smooth'});" class="reveal-item hero-reveal delay-0 nav-btn cursor-pointer inline-flex items-center py-1.5 pl-3 pr-3.5 sm:pr-4 bg-white border border-gray-200/90 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] mb-4 text-left max-w-full">
-                <!-- 5 Stars -->
-                <div class="flex items-center gap-0.5 text-[#F59E0B] flex-shrink-0 text-xs">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-
-                <!-- Community Rating Text -->
-                <div class="ml-2 text-[11px] sm:text-xs leading-tight whitespace-nowrap">
-                    <span class="font-bold text-gray-900 titles">200+</span>
-                    <span class="text-gray-600 font-normal ml-0.5">climbers and coaches</span>
-                </div>
-            </button>
-            <h1 class="reveal-item hero-reveal delay-100 titles text-3xl sm:text-4xl text-black leading-tight mb-4">
-                Speak fluent Climbing
-            </h1>
-            <p class="reveal-item hero-reveal delay-200 text-gray-600 text-base leading-relaxed max-w-md mx-auto mb-6">
-                Master climbing vocabulary, understand gym beta effortlessly, and feel more confident on the wall every day.
-            </p>
-            <div class="reveal-item hero-reveal delay-300 flex flex-wrap items-center justify-center gap-3 mb-8">
-                <a href="https://apps.apple.com/us/app/slabby-climbing-terms-gear/id6818288177" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform active:scale-95">
-                    <img src="./app-store-badge.png" alt="Download on the App Store" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.zega.sloper" target="_blank" rel="noopener noreferrer" class="store-badge inline-block transition-transform active:scale-95">
-                    <img src="./google-play-badge.png" alt="Get it on Google Play" class="h-12 sm:h-14 w-auto shadow-md rounded-lg">
-                </a>
-            </div>
-            <div class="reveal-item hero-reveal delay-400 relative w-full max-w-[280px] mx-auto animate-float">
-                <div class="phone-frame w-full">
-                    <img src="./mockup_1.png" alt="App Screen" class="w-full h-auto object-cover">
-                </div>
+            <!-- Hold Flashcards Loop Carousel (Bottom of Hero) -->
+            <div class="reveal-item hero-reveal delay-400 w-full max-w-[1440px] mx-auto px-0 sm:px-4">
+                {% include flashcard-carousel.html %}
             </div>
         </section>
 
         <!-- ========================================== -->
         <!-- REVIEWS SECTION: Real people, real climbers. -->
         <!-- ========================================== -->
-        <section id="reviews-section" class="scroll-mt-16 py-16 sm:py-20 px-6 bg-white border-y border-gray-200 scroll-reveal">
-            <div class="max-w-[1100px] mx-auto">
+        <section id="reviews-section" class="scroll-mt-16 py-16 sm:py-20 bg-white border-y border-gray-200 scroll-reveal overflow-x-clip">
+            <div class="max-w-[1100px] mx-auto px-6">
                 <!-- Section Header -->
                 <div class="text-center max-w-2xl mx-auto">
                     <h2 class="reveal-item delay-0 titles text-3xl sm:text-4xl text-black">
                         Master Climbing with Total Confidence
                     </h2>
-                    <p class="reveal-item delay-100 text-gray-600 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mt-4 sm:mt-5">
+                    <p class="reveal-item delay-100 text-gray-600 text-[12px] sm:text-[14px] lg:text-[16px] leading-relaxed max-w-xl mx-auto mt-4 sm:mt-5">
                         Real people, real climbers.
                     </p>
                 </div>
+            </div>
 
-                <!-- 6 Reviews Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-14">
+            <!-- 6 Reviews Fanned Coverflow Carousel -->
+            <div id="reviews-coverflow" class="reveal-item delay-200 reviews-coverflow-stage mt-12 sm:mt-14" aria-label="Climber reviews carousel">
+                <div class="reviews-coverflow-track">
                     <!-- Review 1 -->
-                    <div class="reveal-item delay-100 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="0">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -337,10 +364,12 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">App Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Review 2 -->
-                    <div class="reveal-item delay-200 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="1">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -362,10 +391,12 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">Play Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Review 3 -->
-                    <div class="reveal-item delay-300 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="2">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -387,10 +418,12 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">App Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Review 4 -->
-                    <div class="reveal-item delay-100 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="3">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -412,10 +445,12 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">Play Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Review 5 -->
-                    <div class="reveal-item delay-200 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="4">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -437,10 +472,12 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">App Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Review 6 -->
-                    <div class="reveal-item delay-300 slabby-review-card">
+                    <div class="reviews-coverflow-slide" data-review-index="5">
+                        <div class="slabby-review-card">
                         <div class="space-y-4">
                             <div class="flex items-center gap-1.5 text-[#F59E0B]">
                                 <i class="fa-solid fa-star text-base"></i>
@@ -462,15 +499,16 @@ is_home: true
                                 <div class="text-xs sm:text-sm font-semibold primary" style="color: #4583E2 !important;">Play Store</div>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- View All Reviews Link (Discreet gray styling, not competing with page elements) -->
-                <div class="reveal-item delay-200 text-center mt-12 sm:mt-14">
-                    <a href="/reviews/" class="text-gray-500 hover:text-gray-800 text-sm font-medium underline underline-offset-4 decoration-gray-300 hover:decoration-gray-500 transition-colors">
-                        View all reviews
-                    </a>
-                </div>
+            <!-- View All Reviews Link (Discreet gray styling, not competing with page elements) -->
+            <div class="reveal-item delay-200 text-center mt-8 sm:mt-10 px-6">
+                <a href="/reviews/" class="text-gray-500 hover:text-gray-800 text-sm font-medium underline underline-offset-4 decoration-gray-300 hover:decoration-gray-500 transition-colors">
+                    View all reviews
+                </a>
             </div>
         </section>
 
@@ -642,6 +680,235 @@ is_home: true
 
     <!-- Mobile Fixed Bottom Navigation Bar (Exclusive to Home) -->
     {% include bottom-nav.html %}
+
+    <!-- Reviews Fanned Coverflow Carousel Script -->
+    <script>
+        (function() {
+            function initReviewsCoverflow() {
+                var stage = document.getElementById('reviews-coverflow');
+                if (!stage || stage.dataset.coverflowInit === 'true') return;
+                stage.dataset.coverflowInit = 'true';
+
+                var slides = Array.prototype.slice.call(stage.querySelectorAll('.reviews-coverflow-slide'));
+                var total = slides.length;
+                if (total === 0) return;
+
+                var activeIndex = 0;
+                var prevDiffs = new Array(total);
+                var isDragging = false;
+                var startX = 0;
+                var dragOffset = 0;
+                var dragMoved = false;
+                var isHovered = false;
+                var autoTimer = null;
+
+                function getCyclicDiff(index, center) {
+                    var diff = index - center;
+                    var half = total / 2;
+                    while (diff > half) diff -= total;
+                    while (diff <= -half) diff += total;
+                    return diff;
+                }
+
+                function computeTransformForDiff(diff, cardWidth, dragShift) {
+                    var absDiff = Math.abs(diff);
+                    var x, y, rot, scale, opacity, z;
+
+                    if (absDiff <= 0.001) {
+                        x = dragShift;
+                        y = 0;
+                        rot = dragShift * 0.015;
+                        scale = 1;
+                        opacity = 1;
+                        z = 30;
+                    } else if (absDiff <= 1.001) {
+                        var dir1 = diff > 0 ? 1 : -1;
+                        x = dir1 * cardWidth * 0.90 + dragShift * 0.92;
+                        y = 14;
+                        rot = dir1 * 5.2;
+                        scale = 0.92;
+                        opacity = 0.92;
+                        z = 20;
+                    } else if (absDiff <= 2.001) {
+                        var dir2 = diff > 0 ? 1 : -1;
+                        x = dir2 * cardWidth * 1.72 + dragShift * 0.84;
+                        y = 38;
+                        rot = dir2 * 9.5;
+                        scale = 0.84;
+                        opacity = 0.52;
+                        z = 10;
+                    } else {
+                        var dir3 = diff >= 0 ? 1 : -1;
+                        x = dir3 * cardWidth * 2.48 + dragShift * 0.76;
+                        y = 64;
+                        rot = dir3 * 13;
+                        scale = 0.76;
+                        opacity = 0;
+                        z = 1;
+                    }
+
+                    return {
+                        transform: 'translate3d(calc(-50% + ' + x.toFixed(1) + 'px), ' + y.toFixed(1) + 'px, 0) rotate(' + rot.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')',
+                        opacity: opacity,
+                        zIndex: z
+                    };
+                }
+
+                function syncStageHeight() {
+                    var maxH = 0;
+                    slides.forEach(function(slide) {
+                        slide.style.height = '';
+                    });
+                    slides.forEach(function(slide) {
+                        var h = slide.offsetHeight;
+                        if (h > maxH) maxH = h;
+                    });
+                    if (maxH > 0) {
+                        slides.forEach(function(slide) {
+                            slide.style.height = maxH + 'px';
+                        });
+                        stage.style.height = (maxH + 62) + 'px';
+                    }
+                }
+
+                function updateSlides(instant, dragShift) {
+                    var cardWidth = slides[0].offsetWidth || 470;
+                    var shift = dragShift || 0;
+
+                    for (var i = 0; i < total; i++) {
+                        var slide = slides[i];
+                        var diff = getCyclicDiff(i, activeIndex);
+                        var prev = prevDiffs[i];
+
+                        // Avoid crossing the center when wrapping at the ±3 seam
+                        if (!instant && prev !== undefined && Math.abs(diff - prev) > 2) {
+                            var entryDir = diff > 0 ? 3 : -3;
+                            var entryStyle = computeTransformForDiff(entryDir, cardWidth, 0);
+                            slide.style.transition = 'none';
+                            slide.style.transform = entryStyle.transform;
+                            slide.style.opacity = String(entryStyle.opacity);
+                            slide.style.zIndex = String(entryStyle.zIndex);
+                            void slide.offsetWidth;
+                        }
+
+                        var targetStyle = computeTransformForDiff(diff, cardWidth, shift);
+                        slide.style.transition = instant ? 'none' : '';
+                        slide.style.transform = targetStyle.transform;
+                        slide.style.opacity = String(targetStyle.opacity);
+                        slide.style.zIndex = String(targetStyle.zIndex);
+                        slide.setAttribute('data-pos', String(diff));
+                        slide.style.pointerEvents = Math.abs(diff) <= 2 ? 'auto' : 'none';
+                        slide.setAttribute('aria-hidden', Math.abs(diff) > 2 ? 'true' : 'false');
+
+                        prevDiffs[i] = diff;
+                    }
+                }
+
+                function goTo(index) {
+                    activeIndex = ((index % total) + total) % total;
+                    updateSlides(false, 0);
+                }
+
+                function step(delta) {
+                    goTo(activeIndex + delta);
+                }
+
+                function startAutoPlay() {
+                    stopAutoPlay();
+                    autoTimer = setInterval(function() {
+                        if (!isDragging && !isHovered) {
+                            step(1);
+                        }
+                    }, 5200);
+                }
+
+                function stopAutoPlay() {
+                    if (autoTimer) {
+                        clearInterval(autoTimer);
+                        autoTimer = null;
+                    }
+                }
+
+                slides.forEach(function(slide, idx) {
+                    slide.addEventListener('click', function() {
+                        if (dragMoved) return;
+                        var pos = Number(slide.getAttribute('data-pos'));
+                        if (pos !== 0) {
+                            goTo(idx);
+                            startAutoPlay();
+                        }
+                    });
+                });
+
+                stage.addEventListener('pointerdown', function(e) {
+                    if (e.button !== 0 && e.pointerType === 'mouse') return;
+                    isDragging = true;
+                    dragMoved = false;
+                    startX = e.clientX;
+                    dragOffset = 0;
+                    stage.classList.add('is-dragging');
+                });
+
+                window.addEventListener('pointermove', function(e) {
+                    if (!isDragging) return;
+                    var dx = e.clientX - startX;
+                    if (Math.abs(dx) > 6) {
+                        dragMoved = true;
+                    }
+                    dragOffset = Math.max(-160, Math.min(160, dx));
+                    updateSlides(true, dragOffset);
+                });
+
+                function finishDrag() {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    stage.classList.remove('is-dragging');
+                    if (dragOffset <= -48) {
+                        step(1);
+                    } else if (dragOffset >= 48) {
+                        step(-1);
+                    } else {
+                        updateSlides(false, 0);
+                    }
+                    dragOffset = 0;
+                    setTimeout(function() {
+                        dragMoved = false;
+                    }, 40);
+                    startAutoPlay();
+                }
+
+                window.addEventListener('pointerup', finishDrag);
+                window.addEventListener('pointercancel', finishDrag);
+                stage.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                });
+
+                stage.addEventListener('mouseenter', function() {
+                    isHovered = true;
+                });
+                stage.addEventListener('mouseleave', function() {
+                    isHovered = false;
+                });
+
+                window.addEventListener('resize', function() {
+                    syncStageHeight();
+                    updateSlides(true, 0);
+                });
+
+                requestAnimationFrame(function() {
+                    syncStageHeight();
+                    updateSlides(true, 0);
+                    startAutoPlay();
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initReviewsCoverflow);
+            } else {
+                initReviewsCoverflow();
+            }
+        })();
+    </script>
 
     <!-- External JavaScript: Micro-Interactions, Smooth Scroll & Scroll Reveal -->
     <script src="./acciones.js"></script>
