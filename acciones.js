@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     const flipCards = document.querySelectorAll('.slabby-card-container, .slabby-card-wrapper');
     flipCards.forEach((cardEl) => {
-        if (cardEl.dataset.flipInit) return;
+        if (cardEl.dataset.flipInit || cardEl.dataset.noFlip === 'true' || cardEl.classList.contains('slabby-card-static')) return;
         cardEl.dataset.flipInit = 'true';
 
         const toggleCard = (e) => {
@@ -271,4 +271,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+window.playPronunciation = function(word, event) {
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.92;
+        window.speechSynthesis.speak(utterance);
+    }
+};
+
 
